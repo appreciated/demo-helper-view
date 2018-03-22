@@ -1,6 +1,6 @@
-# MyComponent Add-on for Vaadin 8
+# demo-helper Add-on for Vaadin 8
 
-${ComponentClassName} is a UI component add-on for Vaadin 8.
+demo-helper is a UI component add-on for Vaadin 8 to assist you in creating visually appealing demos including code examples in a short amount of time.
 
 ## Online demo
 
