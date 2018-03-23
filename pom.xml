@@ -5,7 +5,7 @@
 	<groupId>com.github.appreciated</groupId>
 	<artifactId>demo-helper-root</artifactId>
 	<packaging>pom</packaging>
-	<version>0.5</version>
+	<version>0.7</version>
 	<name>MyComponent Add-on Root Project</name>
 
 	<prerequisites>
