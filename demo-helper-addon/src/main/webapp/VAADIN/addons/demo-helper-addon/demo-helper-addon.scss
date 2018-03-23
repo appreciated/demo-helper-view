@@ -18,6 +18,10 @@
     }
   }
 
+  .code-example-text-area {
+    font-family: monospace;
+  }
+
   .v-slot-step-view-wrapper + .v-spacing + .v-slot-step-view-wrapper .step-view, .v-slot-step-view-wrapper + .v-slot-step-view-wrapper .step-view {
     border-top: 1px solid valo-font-color($v-background-color,0.3);
   }
