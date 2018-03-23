@@ -1,0 +1,130 @@
+@mixin demo-helper-addon {
+  .step-content-holder {
+    color:  $v-focus-color;
+    line-height: 50px;
+    font-size: 18px !important;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .v-slot-code-type-label {
+    margin-bottom: -25px;
+    position: relative;
+    top: -27px;
+    margin-right: 6px;
+    pointer-events: none;
+    .code-type-label{
+      text-transform: uppercase;
+    }
+  }
+
+  .v-slot-step-view-wrapper + .v-spacing + .v-slot-step-view-wrapper .step-view, .v-slot-step-view-wrapper + .v-slot-step-view-wrapper .step-view {
+    border-top: 1px solid valo-font-color($v-background-color,0.3);
+  }
+
+  .step-number {
+    background:  $v-focus-color;
+    color: valo-font-color($v-focus-color);
+    border-radius: 100%;
+    text-align: center;
+    line-height: 50px;
+  }
+
+  .device-wrapper {
+    display: flex !important;
+    flex-flow: row wrap;
+  }
+
+  .justify-content-evenly {
+    justify-content: space-evenly !important;
+  }
+
+  .justify-content-center {
+    justify-content: center !important;
+  }
+  .device-wrapper > * {
+    margin: 30px;
+  }
+  .device-wrapper.align-end > * {
+    align-self: flex-end;
+  }
+  .device-wrapper.align-center > * {
+    align-self: center;
+  }
+  .handheld-view {
+    width: 15vw !important;
+    height: 30vw !important;
+    max-width: 261px;
+    max-height: 523px;
+    min-width: 200px;
+    min-height: 400px;
+    padding: 50px 10px 54px 10px !important;
+    border: 2px solid lightgray;
+    border-radius: 20px;
+    background: #272727;
+    position: relative;
+    box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.6);
+  }
+
+  .handheld-view > .v-panel-content {
+    background: #303030;
+  }
+
+  .handheld-view:after {
+    position: absolute;
+    content: "";
+    border: 1px solid #424242;
+    border-radius: 100%;
+    width: 3vw;
+    height: 3vw;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    bottom: 6px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    margin: auto;
+  }
+
+  .tablet-view {
+    width: 63vw !important;
+    height: 45vw !important;
+    max-width: 1100px;
+    max-height: 785px;
+    min-width: 840px;
+    min-height: 600px;
+    padding: 20px 70px 20px 70px !important;
+    border: 3px solid lightgray;
+    border-radius: 20px;
+    background: #272727;
+    position: relative;
+    box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.9);
+  }
+
+  .tablet-view > .v-panel-content {
+    background: #303030;
+  }
+
+  .tablet-view:after {
+    position: absolute;
+    content: "";
+    border: 1px solid #424242;
+    border-radius: 100%;
+    width: 3vw;
+    height: 3vw;
+    max-width: 45px !important;
+    max-height: 45px !important;
+    right: 10px;
+    top: 50%;
+    transform: translate(0%, 0%);
+    margin: auto;
+  }
+
+  .content-wrapper {
+    max-width: 1600px;
+  }
+
+  .content-wrapper-small {
+    max-width: 1260px;
+  }
+
+}

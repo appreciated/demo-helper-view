@@ -1,0 +1,4 @@
+@import "../../addons/demo-helper-addon/demo-helper-addon";
+@mixin addons {
+  @include demo-helper-addon;
+}

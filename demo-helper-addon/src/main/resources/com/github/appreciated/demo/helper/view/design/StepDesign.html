@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:true,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;demo-helper&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-horizontal-layout style-name="step-view-wrapper" size-full>
+   <vaadin-horizontal-layout style-name="step-view content-wrapper-small" width-full margin-top margin-bottom :center>
+    <vaadin-horizontal-layout>
+     <vaadin-label style-name="step-number h3 no-margin bold" width="50px" height="50px" plain-text _id="stepNumber">
+       1 
+     </vaadin-label>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout width-full :expand>
+     <vaadin-vertical-layout size-full margin="false">
+      <vaadin-label style-name="h3 no-margin step-content-holder" plain-text _id="stepHeader">
+        Some Header 
+      </vaadin-label>
+      <vaadin-label plain-text _id="stepDescription">
+        Some description ................ 
+      </vaadin-label>
+     </vaadin-vertical-layout>
+     <vaadin-vertical-layout size-full margin="false" _id="codeExampleHolder"></vaadin-vertical-layout>
+    </vaadin-horizontal-layout>
+   </vaadin-horizontal-layout>
+  </vaadin-horizontal-layout>
+ </body>
+</html>
