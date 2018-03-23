@@ -10,6 +10,7 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CssLayout;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 
 import javax.servlet.annotation.WebServlet;
@@ -29,43 +30,49 @@ public class DemoUI extends UI {
 
         // Initialize our new UI component
         DemoHelperView demoView = new DemoHelperView()
-                .withHeaderView("My demo!")
-                .withTabletAndPhoneView(new CssLayout(new Button("Tablet")), new CssLayout(new Button("Phone")))
-                .withTextContentView("My lovely header", "My lovely description ..........")
-                .withPhoneView(new CssLayout(new Button("Phone")), "Some inspirational letters ...")
-                .withImageContentView("My lovely header", "My lovely description ..........", new ThemeResource("images/phone.png"))
-                .withTabletView(new CssLayout(new Button("Tablet")))
-                .withTextContentView("My lovely header", "My lovely description ..........")
-                .withLaptopView(new CssLayout(new Button("Laptop")))
-                .withStepView("Add the Maven dependencies",
-                        "Copy the code and paste it to your pom.xml beside the other dependencies",
+                .withHeaderView("I am a HeaderView I display a header for the demo")
+                .withTabletAndPhoneView(
+                        new CssLayout(new Label("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >")),
+                        new CssLayout(new Label("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >"))
+                )
+                .withTextContentView("I am a TextContentView", "I can display a header and a description")
+                .withPhoneView(
+                        new CssLayout(new Label("< I belong to a PhoneView I display content inside a css rendered phone >")),
+                        "Also I can show an optional message beside the css rendered phone"
+                )
+                .withImageContentView("I am a ImageContentView", "I can display a header, a description and an image", new ThemeResource("images/phone.png"))
+                .withTabletView(new CssLayout(new Label("< I belong to a TabletView I display content inside a css rendered tablet >")))
+                .withTextContentView("I am a TextContentView", "I display a header and a description")
+                .withLaptopView(new CssLayout(new Label("< I belong to a LaptopView I display content inside a css rendered laptop >")))
+                .withStepView("I am a StepView",
+                        "I display a header step number (1,2,3,4,5) which is automatically generated, also a description and one or multiple code examples",
                         new CodeExample("<dependency>\n" +
                                 "\t<groupId>com.github.appreciated</groupId>\n" +
                                 "\t<artifactId>demo-helper</artifactId>\n" +
                                 "\t<version>0.7</version>\n" +
-                                "</dependency>","Maven")
+                                "</dependency>", "Maven")
                 )
-                .withStepView("Install the Maven dependencies",
-                        "Run a Maven with the following goals to install the dependencies",
-                        new CodeExample("clean install","Maven")
+                .withStepView("I am also a StepView",
+                        "And I contain a single code examples",
+                        new CodeExample("clean install", "Maven")
                 )
-                .withStepView("Example CodeExample", "Copy the code into your UI class",
+                .withStepView("I am also a StepView", "And I contain multiple code examples",
                         new CodeExample("// Initialize our new UI component\n" +
                                 "DemoView demoView = new DemoView(\"DemoView Demo\", \n" +
                                 "        \"https://github.com/appreciated/vaadin-app-layout\", \n" +
                                 "        new VerticalLayout(new Button(\"Tablet\")), \n" +
                                 "        new VerticalLayout(new Button(\"Handheld\"))\n" +
-                                ");","JAVA"),
+                                ");", "JAVA"),
                         new CodeExample("DemoView demoView = new DemoView(\"DemoView Demo\", \n" +
                                 "        \"https://github.com/appreciated/vaadin-app-layout\", \n" +
                                 "        new VerticalLayout(new Button(\"Tablet\")), \n" +
                                 "        new VerticalLayout(new Button(\"Handheld\"))\n" +
-                                ");","JAVA"),
+                                ");", "JAVA"),
                         new CodeExample("DemoView demoView = new DemoView(\"DemoView Demo\", \n" +
                                 "        \"https://github.com/appreciated/vaadin-app-layout\", \n" +
                                 "        new VerticalLayout(new Button(\"Tablet\")), \n" +
                                 "        new VerticalLayout(new Button(\"Handheld\"))\n" +
-                                ");","JAVA")
+                                ");", "JAVA")
                 );
 
         demoView.setSizeFull();
