@@ -8,12 +8,8 @@
   }
 
   .v-slot-code-type-label {
-    margin-bottom: -25px;
-    position: relative;
-    top: -27px;
-    margin-right: 6px;
-    pointer-events: none;
     .code-type-label{
+      color: $v-focus-color;
       text-transform: uppercase;
     }
   }

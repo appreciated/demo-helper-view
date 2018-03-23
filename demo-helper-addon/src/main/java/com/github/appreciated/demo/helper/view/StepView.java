@@ -15,7 +15,7 @@ public class StepView extends StepDesign {
      * @param codeExamples
      */
     public StepView(int stepNumber, String title, String description, CodeExample... codeExamples) {
-        this.getStepHeader().setValue(String.valueOf(stepNumber));
+        this.getStepNumber().setValue(String.valueOf(stepNumber));
         this.getStepHeader().setValue(title);
         this.getStepDescription().setValue(description);
         Arrays.stream(codeExamples).forEach(codeExample -> {

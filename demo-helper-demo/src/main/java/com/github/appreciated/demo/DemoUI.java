@@ -49,7 +49,7 @@ public class DemoUI extends UI {
                         new CodeExample("<dependency>\n" +
                                 "\t<groupId>com.github.appreciated</groupId>\n" +
                                 "\t<artifactId>demo-helper</artifactId>\n" +
-                                "\t<version>0.7</version>\n" +
+                                "\t<version>0.7.1</version>\n" +
                                 "</dependency>", "Maven")
                 )
                 .withStepView("I am also a StepView",
