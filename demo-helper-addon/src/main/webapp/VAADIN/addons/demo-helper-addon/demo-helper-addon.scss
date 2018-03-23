@@ -79,6 +79,8 @@
     height: 3vw;
     max-width: 40px !important;
     max-height: 40px !important;
+    min-width: 33px !important;
+    min-height: 33px !important;
     bottom: 6px;
     left: 50%;
     transform: translate(-50%, 0%);
@@ -113,11 +115,59 @@
     height: 3vw;
     max-width: 45px !important;
     max-height: 45px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
     right: 10px;
     top: 50%;
     transform: translate(0%, 0%);
     margin: auto;
   }
+
+  .laptop-view {
+    width: 72vw !important;
+    height: 45vw !important;
+    max-width: 1100px;
+    max-height: 785px;
+    min-width: 840px;
+    min-height: 600px;
+    padding: 40px 40px 40px 40px !important;
+    border-left: 3px solid lightgray;
+    border-top: 3px solid lightgray;
+    border-right: 3px solid lightgray;
+    border-bottom: 0px solid lightgray;
+    border-radius: 20px;
+    background: #272727;
+    position: relative;
+    box-shadow: 0 40px 150px -30px rgba(0, 0, 0, 0.9);
+  }
+
+  .laptop-view > .v-panel-content {
+    background: #303030;
+  }
+
+  .laptop-view:after {
+    width: 82vw;
+    height: 1.5vw;
+    max-width: 1270px;
+    max-height: 30px;
+    min-width: 967px;
+    min-height: 19px;
+    @include linear-gradient(to bottom, #dadada 0%,#dadada 50%, #aaabac 50%, #626365 100%);
+    position: absolute;
+    content: "";
+    border: 0px solid transparent;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    bottom: -1%;
+    left: -8%;
+    transform: translate(0%, 0%);
+    margin: auto;
+    box-shadow: 0 40px 150px -30px rgba(0, 0, 0, 0.9);
+  }
+
+
 
   .content-wrapper {
     max-width: 1600px;
