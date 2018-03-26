@@ -53,7 +53,7 @@ public class DemoUI extends UI {
                                 "</dependency>", "Maven")
                 )
                 .withStepView("I am also a StepView",
-                        "And I contain a single code examples",
+                        "And I contain a single code example",
                         new CodeExample("clean install", "Maven")
                 )
                 .withStepView("I am also a StepView", "And I contain multiple code examples",
