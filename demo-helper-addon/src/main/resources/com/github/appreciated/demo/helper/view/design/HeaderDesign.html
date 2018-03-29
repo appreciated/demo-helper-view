@@ -6,9 +6,11 @@
   <meta name="vaadin-version" content="8.0.5">
  </head>
  <body>
-  <vaadin-vertical-layout style-name="header-view" height="350px" margin="false">
-   <vaadin-vertical-layout margin="false" :middle :center>
-    <vaadin-image _id="image" :center></vaadin-image>
+  <vaadin-vertical-layout style-name="header-view" spacing="false" height="500px" margin="false">
+   <vaadin-vertical-layout spacing="false" margin="false" :middle :center>
+    <vaadin-horizontal-layout margin-bottom :center>
+     <vaadin-image width="150px" height="150px" _id="image"></vaadin-image>
+    </vaadin-horizontal-layout>
     <vaadin-horizontal-layout margin-bottom :center>
      <vaadin-label style-name="h1 no-margin" plain-text _id="header">
        Label 

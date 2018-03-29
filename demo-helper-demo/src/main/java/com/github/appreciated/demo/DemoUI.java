@@ -27,7 +27,7 @@ public class DemoUI extends UI {
 
         // Initialize our new UI component
         DemoHelperView demoView = new DemoHelperView()
-                .withHeaderView("I am a HeaderView", "I display a header and an optional subtitle for the demo")
+                .withHeaderView("I am a HeaderView", "I can display a header and an optionally an image or a subtitle",  new ThemeResource("images/demo-helper-logo.png"))
                 .withTabletAndPhoneView(
                         getLabel("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >"),
                         getLabel("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >")
@@ -77,7 +77,7 @@ public class DemoUI extends UI {
     }
 
     VerticalLayout getLabel(String text) {
-        Label label = new Label("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >");
+        Label label = new Label(text);
         label.setSizeFull();
         return new VerticalLayout(label);
     }
