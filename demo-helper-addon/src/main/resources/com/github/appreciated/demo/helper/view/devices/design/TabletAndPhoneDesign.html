@@ -7,14 +7,14 @@
   <meta name="package-mapping" content="com_github_appreciated_view_devices:com.github.appreciated.view.devices">
  </head>
  <body>
-  <vaadin-vertical-layout size-full margin="false">
+  <vaadin-vertical-layout size-full margin-left="false" margin-right="false">
    <vaadin-horizontal-layout spacing="false" size-full :middle :center :expand>
-    <vaadin-vertical-layout style-name="content-wrapper" size-full margin-top="false" :center :expand>
+    <vaadin-vertical-layout style-name="content-wrapper" size-full margin="false" :center :expand>
      <vaadin-css-layout style-name="device-wrapper align-end justify-content-evenly" width-full _id="deviceWrapper" :expand>
       <vaadin-panel style-name="tablet-view" width="300px" height="300px" _id="tabletContent">
        <vaadin-css-layout size-full></vaadin-css-layout>
       </vaadin-panel>
-      <vaadin-panel style-name="handheld-view" width="450px" height="300px" _id="handheldContent"></vaadin-panel>
+      <vaadin-panel style-name="phone-view" width="450px" height="300px" _id="phoneContent"></vaadin-panel>
      </vaadin-css-layout>
     </vaadin-vertical-layout>
    </vaadin-horizontal-layout>

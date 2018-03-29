@@ -21,7 +21,7 @@ import com.vaadin.ui.Panel;
 public class TabletAndPhoneDesign extends VerticalLayout {
     private CssLayout deviceWrapper;
     private Panel tabletContent;
-    private Panel handheldContent;
+    private Panel phoneContent;
 
     public TabletAndPhoneDesign() {
         Design.read(this);
@@ -35,8 +35,8 @@ public class TabletAndPhoneDesign extends VerticalLayout {
         return tabletContent;
     }
 
-    public Panel getHandheldContent() {
-        return handheldContent;
+    public Panel getPhoneContent() {
+        return phoneContent;
     }
 
 }

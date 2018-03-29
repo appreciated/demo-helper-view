@@ -2,7 +2,7 @@
 @import "demo.scss";
 
 .demo {
-	@include demo;
 	@include addons;
+	@include demo;
 }
 

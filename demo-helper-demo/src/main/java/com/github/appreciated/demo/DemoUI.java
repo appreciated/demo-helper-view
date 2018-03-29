@@ -8,10 +8,7 @@ import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.CssLayout;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.UI;
+import com.vaadin.ui.*;
 
 import javax.servlet.annotation.WebServlet;
 
@@ -30,20 +27,20 @@ public class DemoUI extends UI {
 
         // Initialize our new UI component
         DemoHelperView demoView = new DemoHelperView()
-                .withParagraphView("I am a HeaderView I display a header for the demo")
+                .withParagraphView("I am a ParagraphView I display a header for the demo")
                 .withTabletAndPhoneView(
-                        new CssLayout(new Label("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >")),
-                        new CssLayout(new Label("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >"))
+                        getLabel("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >"),
+                        getLabel("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >")
                 )
                 .withParagraphView("I am a ParagraphView", "I can display a header and a description")
                 .withPhoneView(
-                        new CssLayout(new Label("< I belong to a PhoneView I display content inside a css rendered phone >")),
+                        getLabel("< I belong to a PhoneView I display content inside a css rendered phone >"),
                         "Also I can show a optional message beside the PhoneView"
                 )
-                .withImageParagraphView("I am a ImageContentView", "I can display a header, a description and an image", new ThemeResource("images/phone.png"))
-                .withTabletView(new CssLayout(new Label("< I belong to a TabletView I display content inside a css rendered tablet >")))
+                .withImageParagraphView("I am a ImageParagraphView", "I can display a header, a description and an image", new ThemeResource("images/phone.png"))
+                .withTabletView(getLabel("< I belong to a TabletView I display content inside a css rendered tablet >"))
                 .withParagraphView("I am a ParagraphView", "I display a header and a description")
-                .withLaptopView(new CssLayout(new Label("< I belong to a LaptopView I display content inside a css rendered laptop >")))
+                .withLaptopView(getLabel("< I belong to a LaptopView I display content inside a css rendered laptop >"))
                 .withStepView("I am a StepView",
                         "I display a header step number (1,2,3,4,5) which is automatically generated, also a description and one or multiple code examples",
                         new CodeExample("<dependency>\n" +
@@ -78,4 +75,11 @@ public class DemoUI extends UI {
         demoView.setSizeFull();
         setContent(demoView);
     }
+
+    VerticalLayout getLabel(String text) {
+        Label label = new Label("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >");
+        label.setSizeFull();
+        return new VerticalLayout(label);
+    }
+
 }

@@ -6,15 +6,17 @@
   <meta name="vaadin-version" content="8.0.5">
  </head>
  <body>
-  <vaadin-vertical-layout margin-left="false" margin-right="false">
+  <vaadin-vertical-layout margin-left="false" margin-right="false" margin-bottom="false">
    <vaadin-horizontal-layout margin-bottom :center>
     <vaadin-label style-name="h1 no-margin" plain-text _id="headerLabel">
       Label 
     </vaadin-label>
    </vaadin-horizontal-layout>
-   <vaadin-label style-name="h3 no-margin" plain-text _id="descriptionLabel" :center>
-     Label 
-   </vaadin-label>
+   <vaadin-horizontal-layout margin-bottom _id="descriptionWrapper" :center>
+    <vaadin-label style-name="h3 no-margin" plain-text _id="descriptionLabel">
+      Label 
+    </vaadin-label>
+   </vaadin-horizontal-layout>
   </vaadin-vertical-layout>
  </body>
 </html>
