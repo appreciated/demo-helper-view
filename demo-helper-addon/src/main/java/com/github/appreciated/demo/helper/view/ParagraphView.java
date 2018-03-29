@@ -1,12 +1,19 @@
 package com.github.appreciated.demo.helper.view;
 
-import com.github.appreciated.demo.helper.view.design.TextContentDesign;
+import com.github.appreciated.demo.helper.view.design.ParagraphDesign;
 
-public class ParagraphView extends TextContentDesign {
+public class ParagraphView extends ParagraphDesign {
 
     public ParagraphView(String header, String description) {
         getHeaderLabel().setValue(header);
-        getDescriptionLabel().setValue(description);
+        if (description != null) {
+            getDescriptionLabel().setValue(description);
+        } else {
+            getDescriptionLabel().setVisible(false);
+        }
     }
 
+    public ParagraphView(String header) {
+        this(header, null);
+    }
 }

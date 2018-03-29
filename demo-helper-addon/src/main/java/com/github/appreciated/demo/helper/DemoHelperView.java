@@ -1,11 +1,10 @@
 package com.github.appreciated.demo.helper;
 
-import com.github.appreciated.demo.helper.view.HeaderView;
-import com.github.appreciated.demo.helper.view.ImageContentView;
-import com.github.appreciated.demo.helper.view.StepView;
+import com.github.appreciated.demo.helper.view.ImageParagraphView;
 import com.github.appreciated.demo.helper.view.ParagraphView;
-import com.github.appreciated.demo.helper.view.devices.HandheldView;
+import com.github.appreciated.demo.helper.view.StepView;
 import com.github.appreciated.demo.helper.view.devices.LaptopView;
+import com.github.appreciated.demo.helper.view.devices.PhoneView;
 import com.github.appreciated.demo.helper.view.devices.TabletAndPhoneView;
 import com.github.appreciated.demo.helper.view.devices.TabletView;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
@@ -25,28 +24,13 @@ public class DemoHelperView extends Panel {
         setContent(contentHolder);
     }
 
-    public DemoHelperView withHeaderView(String title) {
-        contentHolder.addComponent(new HeaderView(title));
-        return this;
-    }
-
-    public DemoHelperView withHeaderView(String title, String url) {
-        contentHolder.addComponent(new HeaderView(title, url));
-        return this;
-    }
-
-    public DemoHelperView withHeaderView(String title, Resource resource) {
-        contentHolder.addComponent(new HeaderView(title, resource));
-        return this;
-    }
-
     public DemoHelperView withPhoneView(Component content) {
-        contentHolder.addComponent(new HandheldView(content));
+        contentHolder.addComponent(new PhoneView(content));
         return this;
     }
 
     public DemoHelperView withPhoneView(Component content, String description) {
-        contentHolder.addComponent(new HandheldView(content, description));
+        contentHolder.addComponent(new PhoneView(content, description));
         return this;
     }
 
@@ -65,13 +49,18 @@ public class DemoHelperView extends Panel {
         return this;
     }
 
-    public DemoHelperView withTextContentView(String header, String description) {
+    public DemoHelperView withParagraphView(String header) {
+        contentHolder.addComponent(new ParagraphView(header));
+        return this;
+    }
+
+    public DemoHelperView withParagraphView(String header, String description) {
         contentHolder.addComponent(new ParagraphView(header, description));
         return this;
     }
 
-    public DemoHelperView withImageContentView(String header, String description, Resource resource) {
-        contentHolder.addComponent(new ImageContentView(header, description, resource));
+    public DemoHelperView withImageParagraphView(String header, String description, Resource resource) {
+        contentHolder.addComponent(new ImageParagraphView(header, description, resource));
         return this;
     }
 
@@ -88,6 +77,7 @@ public class DemoHelperView extends Panel {
     public VerticalLayout getContentHolder() {
         return contentHolder;
     }
+
 
 
 }

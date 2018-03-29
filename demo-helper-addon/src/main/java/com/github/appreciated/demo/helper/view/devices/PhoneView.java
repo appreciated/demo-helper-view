@@ -1,16 +1,16 @@
 package com.github.appreciated.demo.helper.view.devices;
 
-import com.github.appreciated.demo.helper.view.devices.design.HandheldDesign;
+import com.github.appreciated.demo.helper.view.devices.design.PhoneDesign;
 import com.vaadin.ui.Component;
 
-public class HandheldView extends HandheldDesign {
+public class PhoneView extends PhoneDesign {
 
-    public HandheldView(Component content) {
-        getHandheldContent().setContent(content);
+    public PhoneView(Component content) {
+        getPhoneContent().setContent(content);
         getLabel().setVisible(true);
     }
 
-    public HandheldView(Component content, String description) {
+    public PhoneView(Component content, String description) {
         this(content);
         if (description == null) {
             getLabel().setVisible(true);
@@ -20,7 +20,7 @@ public class HandheldView extends HandheldDesign {
     }
 
 
-    public HandheldView() {
+    public PhoneView() {
     }
 
 

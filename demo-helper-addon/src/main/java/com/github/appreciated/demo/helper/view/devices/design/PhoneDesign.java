@@ -22,7 +22,7 @@ import com.vaadin.ui.Label;
 @SuppressWarnings("serial")
 public class PhoneDesign extends VerticalLayout {
     private CssLayout deviceWrapper;
-    private Panel handheldContent;
+    private Panel phoneContent;
     private HorizontalLayout labelHolder;
     private Label label;
 
@@ -34,8 +34,8 @@ public class PhoneDesign extends VerticalLayout {
         return deviceWrapper;
     }
 
-    public Panel getHandheldContent() {
-        return handheldContent;
+    public Panel getPhoneContent() {
+        return phoneContent;
     }
 
     public HorizontalLayout getLabelHolder() {

@@ -30,26 +30,26 @@ public class DemoUI extends UI {
 
         // Initialize our new UI component
         DemoHelperView demoView = new DemoHelperView()
-                .withHeaderView("I am a HeaderView I display a header for the demo")
+                .withParagraphView("I am a HeaderView I display a header for the demo")
                 .withTabletAndPhoneView(
                         new CssLayout(new Label("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >")),
                         new CssLayout(new Label("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >"))
                 )
-                .withTextContentView("I am a ParagraphView", "I can display a header and a description")
+                .withParagraphView("I am a ParagraphView", "I can display a header and a description")
                 .withPhoneView(
                         new CssLayout(new Label("< I belong to a PhoneView I display content inside a css rendered phone >")),
                         "Also I can show a optional message beside the PhoneView"
                 )
-                .withImageContentView("I am a ImageContentView", "I can display a header, a description and an image", new ThemeResource("images/phone.png"))
+                .withImageParagraphView("I am a ImageContentView", "I can display a header, a description and an image", new ThemeResource("images/phone.png"))
                 .withTabletView(new CssLayout(new Label("< I belong to a TabletView I display content inside a css rendered tablet >")))
-                .withTextContentView("I am a ParagraphView", "I display a header and a description")
+                .withParagraphView("I am a ParagraphView", "I display a header and a description")
                 .withLaptopView(new CssLayout(new Label("< I belong to a LaptopView I display content inside a css rendered laptop >")))
                 .withStepView("I am a StepView",
                         "I display a header step number (1,2,3,4,5) which is automatically generated, also a description and one or multiple code examples",
                         new CodeExample("<dependency>\n" +
                                 "\t<groupId>com.github.appreciated</groupId>\n" +
                                 "\t<artifactId>demo-helper</artifactId>\n" +
-                                "\t<version>0.7.1</version>\n" +
+                                "\t<version>0.7.2</version>\n" +
                                 "</dependency>", "Maven")
                 )
                 .withStepView("I am also a StepView",

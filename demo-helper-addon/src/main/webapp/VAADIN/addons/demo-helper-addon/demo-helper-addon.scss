@@ -51,7 +51,7 @@
   .device-wrapper.align-center > * {
     align-self: center;
   }
-  .handheld-view {
+  .phone-view {
     width: 15vw !important;
     height: 30vw !important;
     max-width: 261px;
@@ -66,11 +66,11 @@
     box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.6);
   }
 
-  .handheld-view > .v-panel-content {
+  .phone-view > .v-panel-content {
     background: #303030;
   }
 
-  .handheld-view:after {
+  .phone-view:after {
     position: absolute;
     content: "";
     border: 1px solid #424242;
@@ -166,8 +166,6 @@
     margin: auto;
     box-shadow: 0 40px 150px -30px rgba(0, 0, 0, 0.9);
   }
-
-
 
   .content-wrapper {
     max-width: 1600px;
