@@ -3,6 +3,7 @@ package com.github.appreciated.demo.helper;
 import com.github.appreciated.demo.helper.view.ImageParagraphView;
 import com.github.appreciated.demo.helper.view.ParagraphView;
 import com.github.appreciated.demo.helper.view.StepView;
+import com.github.appreciated.demo.helper.view.design.HeaderView;
 import com.github.appreciated.demo.helper.view.devices.LaptopView;
 import com.github.appreciated.demo.helper.view.devices.PhoneView;
 import com.github.appreciated.demo.helper.view.devices.TabletAndPhoneView;
@@ -22,6 +23,26 @@ public class DemoHelperView extends Panel {
         contentHolder.setHeightUndefined();
         contentHolder.setSpacing(false);
         setContent(contentHolder);
+    }
+
+    public DemoHelperView withHeaderView(String header, Resource resource) {
+        contentHolder.addComponent(new HeaderView(header, null, resource));
+        return this;
+    }
+
+    public DemoHelperView withHeaderView(String header, String description) {
+        contentHolder.addComponent(new HeaderView(header, description, null));
+        return this;
+    }
+
+    public DemoHelperView withHeaderView(String header) {
+        contentHolder.addComponent(new HeaderView(header, null, null));
+        return this;
+    }
+
+    public DemoHelperView withHeaderView(String header, String description, Resource image) {
+        contentHolder.addComponent(new HeaderView(header, description, image));
+        return this;
     }
 
     public DemoHelperView withPhoneView(Component content) {

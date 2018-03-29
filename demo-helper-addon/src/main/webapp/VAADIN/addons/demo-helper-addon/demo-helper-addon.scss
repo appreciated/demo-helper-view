@@ -15,7 +15,10 @@
   }
 
   .code-example-text-area {
-    font-family: monospace;
+    font-family: monospace !important;
+    background: $v-background-color !important;
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.5) !important;
+    border: none !important;
   }
 
   .v-slot-step-view-wrapper + .v-spacing + .v-slot-step-view-wrapper .step-view, .v-slot-step-view-wrapper + .v-slot-step-view-wrapper .step-view {

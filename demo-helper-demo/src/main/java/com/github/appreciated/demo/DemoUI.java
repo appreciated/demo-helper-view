@@ -27,7 +27,7 @@ public class DemoUI extends UI {
 
         // Initialize our new UI component
         DemoHelperView demoView = new DemoHelperView()
-                .withParagraphView("I am a ParagraphView I display a header for the demo")
+                .withHeaderView("I am a HeaderView", "I display a header and an optional subtitle for the demo")
                 .withTabletAndPhoneView(
                         getLabel("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >"),
                         getLabel("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >")
