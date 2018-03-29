@@ -3,7 +3,7 @@ package com.github.appreciated.demo.helper;
 import com.github.appreciated.demo.helper.view.HeaderView;
 import com.github.appreciated.demo.helper.view.ImageContentView;
 import com.github.appreciated.demo.helper.view.StepView;
-import com.github.appreciated.demo.helper.view.TextContentView;
+import com.github.appreciated.demo.helper.view.ParagraphView;
 import com.github.appreciated.demo.helper.view.devices.HandheldView;
 import com.github.appreciated.demo.helper.view.devices.LaptopView;
 import com.github.appreciated.demo.helper.view.devices.TabletAndPhoneView;
@@ -11,7 +11,6 @@ import com.github.appreciated.demo.helper.view.devices.TabletView;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
 import com.vaadin.server.Resource;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.Image;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 
@@ -67,7 +66,7 @@ public class DemoHelperView extends Panel {
     }
 
     public DemoHelperView withTextContentView(String header, String description) {
-        contentHolder.addComponent(new TextContentView(header, description));
+        contentHolder.addComponent(new ParagraphView(header, description));
         return this;
     }
 

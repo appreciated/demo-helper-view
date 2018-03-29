@@ -35,14 +35,14 @@ public class DemoUI extends UI {
                         new CssLayout(new Label("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >")),
                         new CssLayout(new Label("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >"))
                 )
-                .withTextContentView("I am a TextContentView", "I can display a header and a description")
+                .withTextContentView("I am a ParagraphView", "I can display a header and a description")
                 .withPhoneView(
                         new CssLayout(new Label("< I belong to a PhoneView I display content inside a css rendered phone >")),
-                        "Also I can show an optional message beside the css rendered phone"
+                        "Also I can show a optional message beside the PhoneView"
                 )
                 .withImageContentView("I am a ImageContentView", "I can display a header, a description and an image", new ThemeResource("images/phone.png"))
                 .withTabletView(new CssLayout(new Label("< I belong to a TabletView I display content inside a css rendered tablet >")))
-                .withTextContentView("I am a TextContentView", "I display a header and a description")
+                .withTextContentView("I am a ParagraphView", "I display a header and a description")
                 .withLaptopView(new CssLayout(new Label("< I belong to a LaptopView I display content inside a css rendered laptop >")))
                 .withStepView("I am a StepView",
                         "I display a header step number (1,2,3,4,5) which is automatically generated, also a description and one or multiple code examples",
