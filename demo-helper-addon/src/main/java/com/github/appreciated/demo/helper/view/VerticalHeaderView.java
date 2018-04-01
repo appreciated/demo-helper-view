@@ -1,10 +1,11 @@
-package com.github.appreciated.demo.helper.view.design;
+package com.github.appreciated.demo.helper.view;
 
+import com.github.appreciated.demo.helper.view.design.VerticalHeaderDesign;
 import com.vaadin.server.Resource;
 
-public class HeaderView extends HeaderDesign {
+public class VerticalHeaderView extends VerticalHeaderDesign {
 
-    public HeaderView(String header, String description, Resource resource) {
+    public VerticalHeaderView(String header, String description, Resource resource) {
         this.header.setValue(header);
         if (description != null) {
             this.subtitle.setValue(description);

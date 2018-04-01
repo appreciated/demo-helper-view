@@ -8,7 +8,10 @@ import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.*;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.UI;
+import com.vaadin.ui.VerticalLayout;
 
 import javax.servlet.annotation.WebServlet;
 
@@ -27,7 +30,15 @@ public class DemoUI extends UI {
 
         // Initialize our new UI component
         DemoHelperView demoView = new DemoHelperView()
-                .withHeaderView("I am a HeaderView", "I can display a header and an optionally an image or a subtitle",  new ThemeResource("images/demo-helper-logo.png"))
+                .withVerticalHeaderView("VerticalHeaderView",
+                        "I can display a header and an optionally an image or a subtitle",
+                        new ThemeResource("images/demo-helper-logo.png")
+                )
+                .withHorizontalHeaderView("HorizontalHeaderView",
+                        "I can display a header and optionally an image or I am suited for longer description texts. Additionally I may contain Components which are display beneath the description that can be used to display f.e. links",
+                        new ThemeResource("images/demo-helper-logo.png"),
+                        new Button("Click Me!")
+                )
                 .withTabletAndPhoneView(
                         getLabel("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >"),
                         getLabel("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >")

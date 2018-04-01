@@ -1,6 +1,7 @@
 package com.github.appreciated.demo.helper.view;
 
 import com.github.appreciated.demo.helper.view.design.ParagraphDesign;
+import com.vaadin.ui.Component;
 
 public class ParagraphView extends ParagraphDesign {
 
@@ -14,6 +15,14 @@ public class ParagraphView extends ParagraphDesign {
     }
 
     public ParagraphView(String header) {
-        this(header, null);
+        this(header, (String) null);
+    }
+
+    public ParagraphView(String header, String description, Component[] components) {
+
+    }
+
+    public ParagraphView(String header, Component[] components) {
+
     }
 }
