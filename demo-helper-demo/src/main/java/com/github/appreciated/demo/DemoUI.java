@@ -16,7 +16,7 @@ import com.vaadin.ui.VerticalLayout;
 import javax.servlet.annotation.WebServlet;
 
 @Theme("demo")
-@Title("MyComponent Add-on Demo")
+@Title("DemoHelperView Add-on Demo")
 @SuppressWarnings("serial")
 public class DemoUI extends UI {
 
@@ -27,8 +27,6 @@ public class DemoUI extends UI {
 
     @Override
     protected void init(VaadinRequest request) {
-
-        // Initialize our new UI component
         DemoHelperView demoView = new DemoHelperView()
                 .withVerticalHeaderView("VerticalHeaderView",
                         "I can display a header and an optionally an image or a subtitle",
@@ -50,7 +48,13 @@ public class DemoUI extends UI {
                 )
                 .withImageParagraphView("I am a ImageParagraphView", "I can display a header, a description and an image", new ThemeResource("images/phone.png"))
                 .withTabletView(getLabel("< I belong to a TabletView I display content inside a css rendered tablet >"))
-                .withParagraphView("I am a ParagraphView", "I display a header and a description")
+                .withParagraphView("I am a ParagraphView",
+                        "I display a header and optionally a description. Also you can add components below the description",
+                        new Button("Click Me!")
+                )
+                .withParagraphView("I am a ParagraphView without description")
+                .withParagraphView("I am a ParagraphView without description")
+                .withParagraphView("I am a ParagraphView without description but with a Component", new Button("Click Me"))
                 .withLaptopView(getLabel("< I belong to a LaptopView I display content inside a css rendered laptop >"))
                 .withStepView("I am a StepView",
                         "I display a header step number (1,2,3,4,5) which is automatically generated, also a description and one or multiple code examples",
@@ -82,7 +86,6 @@ public class DemoUI extends UI {
                                 "        new VerticalLayout(new Button(\"Handheld\"))\n" +
                                 ");", "JAVA")
                 );
-
         demoView.setSizeFull();
         setContent(demoView);
     }
