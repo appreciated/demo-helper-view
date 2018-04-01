@@ -6,7 +6,7 @@
 	<artifactId>demo-helper-view</artifactId>
 	<packaging>jar</packaging>
 	<version>0.8.1</version>
-    <name>DemoHelperView Add-on</name>
+	<name>DemoHelperView</name>
 
 	<prerequisites>
 		<maven>3</maven>

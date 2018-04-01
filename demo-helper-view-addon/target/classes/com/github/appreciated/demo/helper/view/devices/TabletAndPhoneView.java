@@ -1,7 +1,6 @@
 package com.github.appreciated.demo.helper.view.devices;
 
 import com.github.appreciated.demo.helper.view.devices.design.TabletAndPhoneDesign;
-import com.vaadin.server.Sizeable;
 import com.vaadin.ui.Component;
 
 public class TabletAndPhoneView extends TabletAndPhoneDesign {

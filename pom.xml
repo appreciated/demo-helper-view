@@ -6,7 +6,7 @@
 	<artifactId>demo-helper-view-root</artifactId>
 	<packaging>pom</packaging>
 	<version>0.8.1</version>
-	<name>DemoHelperView Add-on Root Project</name>
+	<name>DemoHelperView Root Project</name>
 
 	<prerequisites>
 		<maven>3</maven>
