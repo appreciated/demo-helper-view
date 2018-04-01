@@ -117,6 +117,16 @@ public class DemoHelperView extends Panel {
         return this;
     }
 
+    public DemoHelperView withCounterStep(int c) {
+        counter = c;
+        return this;
+    }
+
+    public DemoHelperView resetCounterStep() {
+        counter = 1;
+        return this;
+    }
+
     public DemoHelperView withComponent(Component component) {
         contentHolder.addComponent(component);
         return this;

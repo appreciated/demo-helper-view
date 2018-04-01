@@ -61,7 +61,7 @@ public class DemoUI extends UI {
                         new CodeExample("<dependency>\n" +
                                 "\t<groupId>com.github.appreciated</groupId>\n" +
                                 "\t<artifactId>demo-helper</artifactId>\n" +
-                                "\t<version>0.8.1</version>\n" +
+                                "\t<version>0.8.2</version>\n" +
                                 "</dependency>", "Maven")
                 )
                 .withStepView("I am also a StepView",
