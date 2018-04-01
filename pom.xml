@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.appreciated</groupId>
-	<artifactId>demo-helper-root</artifactId>
+	<artifactId>demo-helper-view-root</artifactId>
 	<packaging>pom</packaging>
-	<version>0.8.0</version>
+	<version>0.8.1</version>
 	<name>DemoHelperView Add-on Root Project</name>
 
 	<prerequisites>
@@ -13,8 +13,8 @@
 	</prerequisites>
 
 	<modules>
-		<module>demo-helper-addon</module>
-		<module>demo-helper-demo</module>
+		<module>demo-helper-view-addon</module>
+		<module>demo-helper-view-demo</module>
 	</modules>
 
 	<profiles>

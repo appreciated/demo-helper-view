@@ -1,8 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
 *.iml
-/demo-helper-demo/src/main/webapp/VAADIN/themes/demo/styles.scss.cache
-/demo-helper-demo/src/main/webapp/VAADIN/themes/demo/styles.css
+/demo-helper-view-demo/src/main/webapp/VAADIN/themes/demo/styles.scss.cache
+/demo-helper-view-demo/src/main/webapp/VAADIN/themes/demo/styles.css
 /.designer/
 /.idea/
 /demo-helper-addon/target/
-/demo-helper-demo/target/
+/demo-helper-view-demo/target/
