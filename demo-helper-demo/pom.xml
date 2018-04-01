@@ -5,7 +5,7 @@
 	<groupId>com.github.appreciated</groupId>
 	<artifactId>demo-helper-demo</artifactId>
 	<packaging>war</packaging>
-	<version>0.8.3</version>
+	<version>0.8.0</version>
 	<name>DemoHelperView Add-on Demo</name>
 
 	<prerequisites>
