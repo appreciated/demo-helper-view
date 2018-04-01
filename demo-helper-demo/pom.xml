@@ -5,8 +5,8 @@
 	<groupId>com.github.appreciated</groupId>
 	<artifactId>demo-helper-demo</artifactId>
 	<packaging>war</packaging>
-	<version>0.7.2</version>
-	<name>MyComponent Add-on Demo</name>
+	<version>0.8.3</version>
+	<name>DemoHelperView Add-on Demo</name>
 
 	<prerequisites>
 		<maven>3</maven>

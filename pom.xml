@@ -5,8 +5,8 @@
 	<groupId>com.github.appreciated</groupId>
 	<artifactId>demo-helper-root</artifactId>
 	<packaging>pom</packaging>
-	<version>0.7.2</version>
-	<name>MyComponent Add-on Root Project</name>
+	<version>0.8.0</version>
+	<name>DemoHelperView Add-on Root Project</name>
 
 	<prerequisites>
 		<maven>3</maven>
