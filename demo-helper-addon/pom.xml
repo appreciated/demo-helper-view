@@ -5,7 +5,7 @@
 	<groupId>com.github.appreciated</groupId>
 	<artifactId>demo-helper</artifactId>
 	<packaging>jar</packaging>
-	<version>0.7.2</version>
+    <version>1.0.0</version>
 	<name>Demo Helper Add-on</name>
 
 	<prerequisites>

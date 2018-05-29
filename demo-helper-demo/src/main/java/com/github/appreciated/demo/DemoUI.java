@@ -4,23 +4,16 @@ import com.github.appreciated.demo.helper.DemoHelperView;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
-import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.*;
-
-import javax.servlet.annotation.WebServlet;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.UI;
+import com.vaadin.ui.VerticalLayout;
 
 @Theme("demo")
 @Title("MyComponent Add-on Demo")
 @SuppressWarnings("serial")
 public class DemoUI extends UI {
-
-    @WebServlet(value = "/*", asyncSupported = true)
-    @VaadinServletConfiguration(productionMode = false, ui = DemoUI.class)
-    public static class Servlet extends VaadinServlet {
-    }
 
     @Override
     protected void init(VaadinRequest request) {
