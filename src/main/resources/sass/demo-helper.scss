@@ -1,5 +1,12 @@
+:root {
+  --demo-helper-view-background-color: #{#ffffff};
+  --demo-helper-view-background-text-color: #{#000000};
+  --demo-helper-view-background-accent-color: #{#ffffff};
+  --demo-helper-view-background-accent-contrast-color: #{#ffffff};
+}
+
 .step-content-holder {
-  color: $v-focus-color !important;
+  color: var(--demo-helper-view-background-color) !important;
   line-height: 50px !important;
   font-size: 18px !important;
   text-transform: uppercase;
@@ -8,25 +15,25 @@
 
 .v-slot-code-type-label {
   .code-type-label {
-    color: $v-focus-color;
+    color: var(--demo-helper-view-background-accent-color);
     text-transform: uppercase;
   }
 }
 
 .code-example-text-area {
   font-family: monospace !important;
-  background: $v-background-color !important;
+  background: var(--demo-helper-view-background-color) !important;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.5) !important;
   border: none !important;
 }
 
 .v-slot-step-view-wrapper + .v-spacing + .v-slot-step-view-wrapper .step-view, .v-slot-step-view-wrapper + .v-slot-step-view-wrapper .step-view {
-  border-top: 1px solid valo-font-color($v-background-color, 0.2);
+  border-top: 1px solid var(--demo-helper-view-background-text-color);
 }
 
 .step-number {
-  background: $v-focus-color;
-  color: valo-font-color($v-focus-color) !important;
+  background: var(--demo-helper-view-background-accent-color);
+  color: var(--demo-helper-view-background-accent-contrast-color) !important;
   border-radius: 100%;
   text-align: center;
   line-height: 50px !important;
@@ -61,18 +68,18 @@
   padding: 50px 10px 54px 10px !important;
   border: 2px solid lightgray !important;
   border-radius: 20px !important;
-  background: valo-font-color($v-background-color, 0.8) !important;
+  background: var(--demo-helper-view-background-color) !important;
   box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.6) !important;
 }
 
 .phone-view > .v-panel-content {
-  background: $v-background-color;
+  background: var(--demo-helper-view-background-color);
 }
 
 .phone-view:after {
   position: absolute;
   content: "";
-  border: 1px solid valo-font-color(valo-font-color($v-background-color, 0.8));
+  border: 1px solid var(--demo-helper-view-background-color);
   border-radius: 100%;
   width: 3vw;
   height: 3vw;
@@ -97,18 +104,18 @@
   padding: 20px 70px 20px 70px !important;
   border: 3px solid lightgray !important;
   border-radius: 20px !important;
-  background: valo-font-color($v-background-color, 0.8) !important;
+  background: var(--demo-helper-view-background-text-color) !important;
   box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.9) !important;
 }
 
 .tablet-view > .v-panel-content {
-  background: $v-background-color;
+  background: var(--demo-helper-view-background-color);
 }
 
 .tablet-view:after {
   position: absolute;
   content: "";
-  border: 1px solid valo-font-color(valo-font-color($v-background-color, 0.8));
+  border: 1px solid var(--demo-helper-view-background-color);
   border-radius: 100%;
   width: 3vw;
   height: 3vw;
@@ -142,7 +149,7 @@
 }
 
 .laptop-view > .v-panel-content {
-  background: $v-background-color;
+  background: var(--demo-helper-view-background-color);
 }
 
 .laptop-view:after {
@@ -152,7 +159,7 @@
   max-height: 30px;
   min-width: 967px;
   min-height: 19px;
-  @include linear-gradient(to bottom, #dadada 0%, #dadada 50%, #aaabac 50%, #626365 100%);
+  background: linear-gradient(to bottom, #dadada 0%, #dadada 50%, #aaabac 50%, #626365 100%);
   position: absolute;
   content: "";
   border: 0px solid transparent;
