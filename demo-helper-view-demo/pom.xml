@@ -5,7 +5,6 @@
 	<groupId>com.github.appreciated</groupId>
 	<artifactId>demo-helper-view-demo</artifactId>
 	<packaging>war</packaging>
-	<version>0.8.2</version>
 	<name>DemoHelperView Demo</name>
 	<version>1.0.0</version>
 
@@ -69,7 +68,7 @@
 	<dependencies>
 <dependency>
 	<groupId>com.github.appreciated</groupId>
-	<artifactId>demo-helper</artifactId>
+	<artifactId>demo-helper-view</artifactId>
 	<version>${project.version}</version>
 </dependency>
 		<dependency>

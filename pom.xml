@@ -13,8 +13,8 @@
 	</prerequisites>
 
 	<modules>
-		<module>demo-helper-addon</module>
-		<module>demo-helper-demo</module>
+		<module>demo-helper-view-addon</module>
+		<module>demo-helper-view-demo</module>
 	</modules>
 
 	<profiles>
