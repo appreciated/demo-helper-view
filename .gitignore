@@ -6,3 +6,4 @@
 /.idea/
 /demo-helper-addon/target/
 /demo-helper-view-demo/target/
+*.scssc

@@ -1,8 +1,0 @@
-@import "addons.scss";
-@import "demo.scss";
-
-.demo {
-	@include addons;
-	@include demo;
-}
-

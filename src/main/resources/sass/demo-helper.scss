@@ -1,0 +1,176 @@
+.step-content-holder {
+  color: $v-focus-color !important;
+  line-height: 50px !important;
+  font-size: 18px !important;
+  text-transform: uppercase;
+  font-weight: 400 !important;
+}
+
+.v-slot-code-type-label {
+  .code-type-label {
+    color: $v-focus-color;
+    text-transform: uppercase;
+  }
+}
+
+.code-example-text-area {
+  font-family: monospace !important;
+  background: $v-background-color !important;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.5) !important;
+  border: none !important;
+}
+
+.v-slot-step-view-wrapper + .v-spacing + .v-slot-step-view-wrapper .step-view, .v-slot-step-view-wrapper + .v-slot-step-view-wrapper .step-view {
+  border-top: 1px solid valo-font-color($v-background-color, 0.2);
+}
+
+.step-number {
+  background: $v-focus-color;
+  color: valo-font-color($v-focus-color) !important;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 50px !important;
+  box-shadow: 0px 11px 25px -7px rgba(0, 0, 0, 0.35);
+}
+
+.device-wrapper {
+  display: flex !important;
+  flex-flow: row wrap;
+}
+
+.device-wrapper > * {
+  margin: 30px;
+}
+
+.device-wrapper.align-end > * {
+  align-self: flex-end;
+}
+
+.device-wrapper.align-center > * {
+  align-self: center;
+}
+
+.phone-view {
+  position: relative;
+  width: 15vw !important;
+  height: 30vw !important;
+  max-width: 261px;
+  max-height: 523px;
+  min-width: 200px;
+  min-height: 400px;
+  padding: 50px 10px 54px 10px !important;
+  border: 2px solid lightgray !important;
+  border-radius: 20px !important;
+  background: valo-font-color($v-background-color, 0.8) !important;
+  box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.6) !important;
+}
+
+.phone-view > .v-panel-content {
+  background: $v-background-color;
+}
+
+.phone-view:after {
+  position: absolute;
+  content: "";
+  border: 1px solid valo-font-color(valo-font-color($v-background-color, 0.8));
+  border-radius: 100%;
+  width: 3vw;
+  height: 3vw;
+  max-width: 40px !important;
+  max-height: 40px !important;
+  min-width: 33px !important;
+  min-height: 33px !important;
+  bottom: 6px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  margin: auto;
+}
+
+.tablet-view {
+  position: relative;
+  width: 63vw !important;
+  height: 45vw !important;
+  max-width: 1100px;
+  max-height: 785px;
+  min-width: 840px;
+  min-height: 600px;
+  padding: 20px 70px 20px 70px !important;
+  border: 3px solid lightgray !important;
+  border-radius: 20px !important;
+  background: valo-font-color($v-background-color, 0.8) !important;
+  box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.9) !important;
+}
+
+.tablet-view > .v-panel-content {
+  background: $v-background-color;
+}
+
+.tablet-view:after {
+  position: absolute;
+  content: "";
+  border: 1px solid valo-font-color(valo-font-color($v-background-color, 0.8));
+  border-radius: 100%;
+  width: 3vw;
+  height: 3vw;
+  max-width: 45px !important;
+  max-height: 45px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  right: 10px;
+  top: 50%;
+  transform: translate(0%, 0%);
+  margin: auto;
+}
+
+.laptop-view { // width / height = 1.6
+  width: 72vw !important;
+  height: 45vw !important;
+  max-width: 1300px;
+  max-height: 812px;
+  min-width: 840px;
+  min-height: 600px;
+  padding: 40px 40px 40px 40px !important;
+  padding: 40px 40px 40px 40px !important;
+  border-left: 3px solid lightgray !important;
+  border-top: 3px solid lightgray !important;
+  border-right: 3px solid lightgray !important;
+  border-bottom: 0px solid lightgray !important;
+  border-radius: 20px !important;
+  background: #272727 !important;
+  position: relative;
+  box-shadow: 0 1.5vw 5vw -1vw rgba(0, 0, 0, 0.9) !important;
+}
+
+.laptop-view > .v-panel-content {
+  background: $v-background-color;
+}
+
+.laptop-view:after {
+  width: 82vw;
+  height: 1.5vw;
+  max-width: 1500px;
+  max-height: 30px;
+  min-width: 967px;
+  min-height: 19px;
+  @include linear-gradient(to bottom, #dadada 0%, #dadada 50%, #aaabac 50%, #626365 100%);
+  position: absolute;
+  content: "";
+  border: 0px solid transparent;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  bottom: -2.5%;
+  left: -8%;
+  transform: translate(0%, 0%);
+  margin: auto;
+  box-shadow: 0 40px 150px -30px rgba(0, 0, 0, 0.9);
+}
+
+.content-wrapper {
+  max-width: 1600px;
+}
+
+.content-wrapper-small {
+  max-width: 1260px;
+}
