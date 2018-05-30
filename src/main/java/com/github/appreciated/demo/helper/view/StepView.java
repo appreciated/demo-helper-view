@@ -15,19 +15,17 @@ public class StepView extends StepDesign {
      * @param codeExamples
      */
     public StepView(int stepNumber, String title, String description, CodeExample... codeExamples) {
-        this.getStepNumber().setValue(String.valueOf(stepNumber));
-        this.getStepHeader().setValue(title);
-        this.getStepDescription().setValue(description);
+        this.getStepNumber().setText(String.valueOf(stepNumber));
+        this.getStepHeader().setText(title);
+        this.getStepDescription().setText(description);
         Arrays.stream(codeExamples).forEach(codeExample -> {
-            CodeDesign codeDesign = new CodeDesign();
-            codeDesign.getStepCode().setValue(codeExample.getCode());
-            codeDesign.getStepCode().setRows(countLines(codeExample.getCode()));
+            CodeDesign codeDesign = new CodeDesign(codeExample.getCode(), codeExample.getCodeType());
             if (codeExample.getCodeType() == null) {
                 codeDesign.getCodeTypeLabel().setVisible(false);
             } else {
-                codeDesign.getCodeTypeLabel().setValue(codeExample.getCodeType());
+                codeDesign.getCodeTypeLabel().setText(codeExample.getCodeType());
             }
-            getCodeExampleHolder().addComponent(codeDesign);
+            getCodeExampleHolder().add(codeDesign);
         });
     }
 

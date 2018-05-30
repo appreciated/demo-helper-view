@@ -1,15 +1,21 @@
 package com.github.appreciated.demo.helper.view.design;
 
 
+import com.github.appreciated.prism.element.PrismHighlighter;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.textfield.TextArea;
 
 public class CodeDesign extends VerticalLayout {
-    private TextArea stepCode;
+    private PrismHighlighter stepCode;
     private Label codeTypeLabel;
 
-    public TextArea getStepCode() {
+    public CodeDesign(String code, String lang) {
+        stepCode = new PrismHighlighter(code, lang);
+        codeTypeLabel = new Label(lang);
+        add(stepCode, codeTypeLabel);
+    }
+
+    public PrismHighlighter getStepCode() {
         return stepCode;
     }
 

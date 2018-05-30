@@ -7,11 +7,33 @@ import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 
 public class HorizontalHeaderDesign extends HorizontalLayout {
-    protected Image image;
-    protected Label header;
-    protected HorizontalLayout descriptionWrapper;
-    protected Label subtitle;
-    protected HorizontalLayout componentWrapper;
-    protected Div componentHolder;
+    protected Image image = new Image();
+    protected Label header = new Label();
+    protected Label subtitle = new Label();
+    protected Div componentHolder = new Div();
+    protected HorizontalLayout descriptionWrapper = new HorizontalLayout(header, subtitle, componentHolder);
 
+    public HorizontalHeaderDesign() {
+        add(image, descriptionWrapper);
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public Label getHeader() {
+        return header;
+    }
+
+    public HorizontalLayout getDescriptionWrapper() {
+        return descriptionWrapper;
+    }
+
+    public Label getSubtitle() {
+        return subtitle;
+    }
+
+    public Div getComponentHolder() {
+        return componentHolder;
+    }
 }

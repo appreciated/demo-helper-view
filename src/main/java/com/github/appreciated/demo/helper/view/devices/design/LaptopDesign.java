@@ -4,16 +4,19 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 public class LaptopDesign extends VerticalLayout {
-    private Div deviceWrapper;
-    private VerticalLayout tabletContent;
+    private VerticalLayout laptopContent = new VerticalLayout();
+    private Div deviceWrapper = new Div(laptopContent);
 
+    public LaptopDesign() {
+        deviceWrapper.getElement().getClassList().add("laptop-view");
+    }
 
     public Div getDeviceWrapper() {
         return deviceWrapper;
     }
 
-    public VerticalLayout getTabletContent() {
-        return tabletContent;
+    public VerticalLayout getLaptopContent() {
+        return laptopContent;
     }
 
 }

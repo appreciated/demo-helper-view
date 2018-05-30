@@ -5,9 +5,12 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 public class TabletAndPhoneDesign extends VerticalLayout {
-    private Div deviceWrapper;
-    private VerticalLayout tabletContent;
-    private VerticalLayout phoneContent;
+    private VerticalLayout tabletContent = new VerticalLayout();
+    private VerticalLayout phoneContent = new VerticalLayout();
+    private Div deviceWrapper = new Div(tabletContent, phoneContent);
+
+    public TabletAndPhoneDesign() {
+    }
 
     public Div getDeviceWrapper() {
         return deviceWrapper;

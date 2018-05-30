@@ -7,10 +7,15 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 public class PhoneDesign extends VerticalLayout {
-    private Div deviceWrapper;
-    private VerticalLayout phoneContent;
-    private HorizontalLayout labelHolder;
-    private Label label;
+    private VerticalLayout phoneContent = new VerticalLayout();
+    private Div deviceWrapper = new Div(phoneContent);
+    private Label label = new Label();
+    private HorizontalLayout labelHolder = new HorizontalLayout(label);
+
+    public PhoneDesign() {
+        deviceWrapper.getElement().getClassList().add("phone-view");
+        add(deviceWrapper, labelHolder);
+    }
 
     public Div getDeviceWrapper() {
         return deviceWrapper;

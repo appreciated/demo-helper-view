@@ -5,7 +5,7 @@ import com.vaadin.flow.component.Component;
 
 public class LaptopView extends LaptopDesign {
     public LaptopView(Component content) {
-        getTabletContent().add(content);
+        getLaptopContent().add(content);
     }
 
     public LaptopView() {

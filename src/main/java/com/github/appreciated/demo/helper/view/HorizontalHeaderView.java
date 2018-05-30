@@ -24,7 +24,7 @@ public class HorizontalHeaderView extends HorizontalHeaderDesign {
     public HorizontalHeaderView(String header, String description, String image, Component[] components) {
         this(header, description, image);
         if (components != null && components.length > 0) {
-            componentWrapper.setVisible(true);
+            setVisible(true);
             Arrays.stream(components).forEach(componentHolder::add);
         }
     }

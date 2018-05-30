@@ -1,17 +1,16 @@
 package com.github.appreciated.demo.helper;
 
-import com.github.appreciated.demo.helper.view.HorizontalHeaderView;
-import com.github.appreciated.demo.helper.view.ImageParagraphView;
-import com.github.appreciated.demo.helper.view.ParagraphView;
-import com.github.appreciated.demo.helper.view.StepView;
+import com.github.appreciated.demo.helper.view.*;
 import com.github.appreciated.demo.helper.view.devices.LaptopView;
 import com.github.appreciated.demo.helper.view.devices.PhoneView;
 import com.github.appreciated.demo.helper.view.devices.TabletAndPhoneView;
 import com.github.appreciated.demo.helper.view.devices.TabletView;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
+@StyleSheet("com/github/appreciated/demo-helper/demo-helper.css")
 public class DemoHelperView extends VerticalLayout {
 
     private int counter = 1;
@@ -20,15 +19,14 @@ public class DemoHelperView extends VerticalLayout {
 
     }
 
-    public DemoHelperView withVerticalHeaderView(String header, String description, String resource) {
-        return withVerticalHeaderView(header, description, resource);
+    public DemoHelperView withVerticalHeaderView(String header, String description, String image) {
+        add(new VerticalHeaderView(header, description, image));
+        return this;
     }
-
 
     public DemoHelperView withVerticalHeaderView(String header) {
         return withVerticalHeaderView(header, null, null);
     }
-
 
     public DemoHelperView withHorizontalHeaderView(String header, String description) {
         return withHorizontalHeaderView(header, description, null);
@@ -42,7 +40,6 @@ public class DemoHelperView extends VerticalLayout {
         add(new HorizontalHeaderView(header, description, image));
         return this;
     }
-
 
     public DemoHelperView withHorizontalHeaderView(String header, String description, String image, Component... components) {
         add(new HorizontalHeaderView(header, description, image, components));

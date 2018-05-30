@@ -5,10 +5,14 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 public class StepDesign extends HorizontalLayout {
-    private Label stepNumber;
-    private Label stepHeader;
-    private Label stepDescription;
-    private VerticalLayout codeExampleHolder;
+    private Label stepNumber = new Label();
+    private Label stepHeader = new Label();
+    private Label stepDescription = new Label();
+    private VerticalLayout codeExampleHolder = new VerticalLayout(stepNumber, stepHeader, stepDescription);
+
+    public StepDesign() {
+
+    }
 
     public Label getStepNumber() {
         return stepNumber;

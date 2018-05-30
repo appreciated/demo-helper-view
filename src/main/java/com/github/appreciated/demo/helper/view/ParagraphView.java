@@ -12,7 +12,7 @@ public class ParagraphView extends ParagraphDesign {
         if (description != null) {
             getDescriptionLabel().setText(description);
         } else {
-            getDescriptionWrapper().setVisible(false);
+            setVisible(false);
         }
     }
 

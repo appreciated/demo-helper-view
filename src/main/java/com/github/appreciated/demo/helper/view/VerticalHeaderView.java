@@ -5,17 +5,16 @@ import com.github.appreciated.demo.helper.view.design.VerticalHeaderDesign;
 public class VerticalHeaderView extends VerticalHeaderDesign {
 
     public VerticalHeaderView(String header, String description, String resource) {
-        this.header.setText(header);
+        this.getHeader().setText(header);
         if (description != null) {
-            this.subtitle.setText(description);
+            this.getSubtitle().setText(description);
         } else {
-            this.subtitle.setVisible(false);
+            this.getSubtitle().setVisible(false);
         }
         if (resource != null) {
-            image.setSrc(resource);
+            getImage().setSrc(resource);
         } else {
-            image.setVisible(false);
+            getImage().setVisible(false);
         }
-
     }
 }
