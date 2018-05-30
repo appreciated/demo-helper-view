@@ -7,3 +7,4 @@
 /demo-helper-addon/target/
 /demo-helper-view-demo/target/
 *.scssc
+/src/main/resources/META-INF/resources/frontend/com/github/appreciated/demo-helper/demo-helper.css.map
