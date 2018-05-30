@@ -3,13 +3,13 @@ package com.github.appreciated.demo.helper.view.paragraph;
 import com.github.appreciated.demo.helper.view.devices.PhoneView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 public class PhoneParagraphView extends Div {
     private PhoneView phoneContent = new PhoneView();
-    private Label label = new Label();
+    private H3 label = new H3();
     private HorizontalLayout labelHolder = new HorizontalLayout(label);
 
     public PhoneParagraphView(Component content) {
@@ -45,7 +45,7 @@ public class PhoneParagraphView extends Div {
         return labelHolder;
     }
 
-    public Label getLabel() {
+    public H3 getLabel() {
         return label;
     }
 

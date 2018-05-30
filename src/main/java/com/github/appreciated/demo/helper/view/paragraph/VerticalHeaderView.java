@@ -1,12 +1,13 @@
 package com.github.appreciated.demo.helper.view.paragraph;
 
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 public class VerticalHeaderView extends VerticalLayout {
     private Image image = new Image();
-    private Label headerLabel = new Label();
+    private H1 headerLabel = new H1();
     private Label subtitleLabel = new Label();
 
     public VerticalHeaderView(String header, String description, String resource) {
@@ -22,6 +23,8 @@ public class VerticalHeaderView extends VerticalLayout {
             getImage().setVisible(false);
         }
         add(image, headerLabel, subtitleLabel);
+        image.setWidth("256px");
+        image.setHeight("256px");
         setAlignItems(Alignment.CENTER);
         setSizeFull();
     }
@@ -30,7 +33,7 @@ public class VerticalHeaderView extends VerticalLayout {
         return image;
     }
 
-    public Label getHeaderLabel() {
+    H1 getHeaderLabel() {
         return headerLabel;
     }
 

@@ -6,6 +6,10 @@
     --demo-helper-view-background-accent-contrast-color: #ffffff;
 }
 
+h1, h2, h3 {
+    font-weight: 300;
+}
+
 .step-content-holder {
     color: var(--demo-helper-view-accent-color) !important;
     line-height: 50px !important;

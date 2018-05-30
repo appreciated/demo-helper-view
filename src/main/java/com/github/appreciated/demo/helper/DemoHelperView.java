@@ -16,6 +16,7 @@ public class DemoHelperView extends VerticalLayout {
         setMargin(false);
         setPadding(false);
         setAlignItems(Alignment.CENTER);
+        getElement().setAttribute("theme", "spacing-xl");
     }
 
     public DemoHelperView withVerticalHeader(String header, String description, String image) {
@@ -61,7 +62,7 @@ public class DemoHelperView extends VerticalLayout {
     }
 
     public DemoHelperView withTabletAndPhoneView(Component tabletContent, Component phoneContent) {
-        add(new TabletAndPhoneParagraphView(tabletContent, phoneContent));
+        addLargeParagraph(new TabletAndPhoneParagraphView(tabletContent, phoneContent));
         return this;
     }
 
@@ -103,6 +104,11 @@ public class DemoHelperView extends VerticalLayout {
     private void addParagraph(Component component) {
         add(component);
         component.getElement().getClassList().add("content-wrapper-small");
+    }
+
+    private void addLargeParagraph(Component component) {
+        add(component);
+        component.getElement().getClassList().add("content-wrapper");
     }
 
     public DemoHelperView withCounterStep(int c) {

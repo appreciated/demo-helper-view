@@ -4,6 +4,11 @@
   --demo-helper-view-background-text-color: #{#000000};
   --demo-helper-view-accent-color: #{#49ccff};
   --demo-helper-view-background-accent-contrast-color: #{#ffffff};
+  --lumo-space-m: #{1rem};
+}
+
+h1, h2, h3 {
+  font-weight: 300;
 }
 
 .step-content-holder {

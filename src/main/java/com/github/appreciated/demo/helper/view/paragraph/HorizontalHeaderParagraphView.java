@@ -2,6 +2,7 @@ package com.github.appreciated.demo.helper.view.paragraph;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -11,7 +12,8 @@ import java.util.Arrays;
 
 public class HorizontalHeaderParagraphView extends HorizontalLayout {
     protected Image image = new Image();
-    protected Label header = new Label();
+    protected HorizontalLayout imageWrapper = new HorizontalLayout(image);
+    protected H1 header = new H1();
     protected Label subtitle = new Label();
     protected Div componentHolder = new Div();
     protected VerticalLayout descriptionWrapper = new VerticalLayout(header, subtitle, componentHolder);
@@ -29,8 +31,11 @@ public class HorizontalHeaderParagraphView extends HorizontalLayout {
         } else {
             image.setVisible(false);
         }
-        add(image, descriptionWrapper);
-        image.setWidth("100%");
+        add(imageWrapper, descriptionWrapper);
+        imageWrapper.setWidth("100%");
+        image.setWidth("300px");
+        image.setHeight("300px");
+        imageWrapper.setJustifyContentMode(JustifyContentMode.END);
         descriptionWrapper.setWidth("100%");
     }
 
@@ -46,7 +51,7 @@ public class HorizontalHeaderParagraphView extends HorizontalLayout {
         return image;
     }
 
-    public Label getHeader() {
+    public H1 getHeader() {
         return header;
     }
 

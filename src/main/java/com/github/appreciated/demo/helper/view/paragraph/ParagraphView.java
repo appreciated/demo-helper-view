@@ -1,16 +1,15 @@
 package com.github.appreciated.demo.helper.view.paragraph;
 
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 public class ParagraphView extends VerticalLayout {
-    private Label headerLabel;
-    private Label descriptionLabel;
+    private H2 headerLabel = new H2();
+    private Label descriptionLabel = new Label();
 
     public ParagraphView() {
-        headerLabel = new Label();
-        descriptionLabel = new Label();
         add(headerLabel, descriptionLabel);
     }
 
@@ -30,7 +29,7 @@ public class ParagraphView extends VerticalLayout {
         add(components);
     }
 
-    public Label getHeaderLabel() {
+    public H2 getHeaderLabel() {
         return headerLabel;
     }
 

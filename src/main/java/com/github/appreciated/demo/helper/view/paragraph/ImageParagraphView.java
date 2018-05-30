@@ -1,5 +1,6 @@
 package com.github.appreciated.demo.helper.view.paragraph;
 
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -8,7 +9,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 public class ImageParagraphView extends HorizontalLayout {
 
     private VerticalLayout textWrapper = new VerticalLayout();
-    private Label headerLabel = new Label();
+    private H2 headerLabel = new H2();
     private Label descriptionLabel = new Label();
     private Image image = new Image();
 
@@ -26,7 +27,7 @@ public class ImageParagraphView extends HorizontalLayout {
         image.setSrc(resource);
     }
 
-    public Label getHeaderLabel() {
+    public H2 getHeaderLabel() {
         return headerLabel;
     }
 
