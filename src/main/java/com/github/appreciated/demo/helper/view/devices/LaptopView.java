@@ -1,14 +1,16 @@
 package com.github.appreciated.demo.helper.view.devices;
 
-import com.github.appreciated.demo.helper.view.devices.design.LaptopDesign;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
-public class LaptopView extends LaptopDesign {
+public class LaptopView extends VerticalLayout {
     public LaptopView(Component content) {
-        getLaptopContent().add(content);
+        this();
+        add(content);
     }
 
     public LaptopView() {
+        getElement().getClassList().add("laptop-view");
     }
-
 }
+

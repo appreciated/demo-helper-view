@@ -10,6 +10,7 @@ public class CodeDesign extends VerticalLayout {
     private Label codeTypeLabel;
 
     public CodeDesign(String code, String lang) {
+        getElement().getClassList().add("code-example-text-area");
         stepCode = new PrismHighlighter(code, lang);
         codeTypeLabel = new Label(lang);
         add(stepCode, codeTypeLabel);

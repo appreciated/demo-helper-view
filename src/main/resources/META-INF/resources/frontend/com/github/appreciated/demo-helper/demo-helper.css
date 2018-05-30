@@ -1,20 +1,22 @@
 :root {
     --demo-helper-view-background-color: #ffffff;
+    --demo-helper-device-background-color: #171717;
     --demo-helper-view-background-text-color: #000000;
-    --demo-helper-view-background-accent-color: #ffffff;
+    --demo-helper-view-accent-color: #49ccff;
     --demo-helper-view-background-accent-contrast-color: #ffffff;
 }
 
 .step-content-holder {
-    color: var(--demo-helper-view-background-color) !important;
+    color: var(--demo-helper-view-accent-color) !important;
     line-height: 50px !important;
     font-size: 18px !important;
     text-transform: uppercase;
     font-weight: 400 !important;
+    margin-top: 10px;
 }
 
 .v-slot-code-type-label .code-type-label {
-    color: var(--demo-helper-view-background-accent-color);
+    color: var(--demo-helper-view-accent-color);
     text-transform: uppercase;
 }
 
@@ -30,11 +32,13 @@
 }
 
 .step-number {
-    background: var(--demo-helper-view-background-accent-color);
+    background: var(--demo-helper-view-accent-color);
     color: var(--demo-helper-view-background-accent-contrast-color) !important;
     border-radius: 100%;
     text-align: center;
-    line-height: 50px !important;
+    line-height: 60px !important;
+    width: 60px !important;
+    height: 60px !important;
     box-shadow: 0px 11px 25px -7px rgba(0, 0, 0, 0.35);
 }
 
@@ -66,7 +70,7 @@
     padding: 50px 10px 54px 10px !important;
     border: 2px solid lightgray !important;
     border-radius: 20px !important;
-    background: var(--demo-helper-view-background-color) !important;
+    background: var(--demo-helper-device-background-color) !important;
     box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.6) !important;
 }
 
@@ -102,7 +106,7 @@
     padding: 20px 70px 20px 70px !important;
     border: 3px solid lightgray !important;
     border-radius: 20px !important;
-    background: var(--demo-helper-view-background-text-color) !important;
+    background: var(--demo-helper-device-background-color) !important;
     box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.9) !important;
 }
 
@@ -141,7 +145,7 @@
     border-right: 3px solid lightgray !important;
     border-bottom: 0px solid lightgray !important;
     border-radius: 20px !important;
-    background: #272727 !important;
+    background: var(--demo-helper-device-background-color) !important;
     position: relative;
     box-shadow: 0 1.5vw 5vw -1vw rgba(0, 0, 0, 0.9) !important;
 }

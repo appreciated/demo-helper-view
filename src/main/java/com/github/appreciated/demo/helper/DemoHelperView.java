@@ -1,11 +1,8 @@
 package com.github.appreciated.demo.helper;
 
-import com.github.appreciated.demo.helper.view.*;
-import com.github.appreciated.demo.helper.view.devices.LaptopView;
 import com.github.appreciated.demo.helper.view.devices.PhoneView;
-import com.github.appreciated.demo.helper.view.devices.TabletAndPhoneView;
-import com.github.appreciated.demo.helper.view.devices.TabletView;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
+import com.github.appreciated.demo.helper.view.paragraph.*;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -16,89 +13,96 @@ public class DemoHelperView extends VerticalLayout {
     private int counter = 1;
 
     public DemoHelperView() {
-
+        setMargin(false);
+        setPadding(false);
+        setAlignItems(Alignment.CENTER);
     }
 
-    public DemoHelperView withVerticalHeaderView(String header, String description, String image) {
-        add(new VerticalHeaderView(header, description, image));
+    public DemoHelperView withVerticalHeader(String header, String description, String image) {
+        addParagraph(new VerticalHeaderView(header, description, image));
         return this;
     }
 
-    public DemoHelperView withVerticalHeaderView(String header) {
-        return withVerticalHeaderView(header, null, null);
+    public DemoHelperView withVerticalHeader(String header) {
+        return withVerticalHeader(header, null, null);
     }
 
-    public DemoHelperView withHorizontalHeaderView(String header, String description) {
-        return withHorizontalHeaderView(header, description, null);
+    public DemoHelperView withHorizontalHeader(String header, String description) {
+        return withHorizontalHeader(header, description, null);
     }
 
-    public DemoHelperView withHorizontalHeaderView(String header) {
-        return withHorizontalHeaderView(header, null, null);
+    public DemoHelperView withHorizontalHeader(String header) {
+        return withHorizontalHeader(header, null, null);
     }
 
-    public DemoHelperView withHorizontalHeaderView(String header, String description, String image) {
-        add(new HorizontalHeaderView(header, description, image));
+    public DemoHelperView withHorizontalHeader(String header, String description, String image) {
+        addParagraph(new HorizontalHeaderParagraphView(header, description, image));
         return this;
     }
 
-    public DemoHelperView withHorizontalHeaderView(String header, String description, String image, Component... components) {
-        add(new HorizontalHeaderView(header, description, image, components));
+    public DemoHelperView withHorizontalHeader(String header, String description, String image, Component... components) {
+        addParagraph(new HorizontalHeaderParagraphView(header, description, image, components));
         return this;
     }
 
-    public DemoHelperView withPhoneView(Component content) {
+    public DemoHelperView withPhone(Component content) {
         add(new PhoneView(content));
         return this;
     }
 
-    public DemoHelperView withPhoneView(Component content, String description) {
-        add(new PhoneView(content, description));
+    public DemoHelperView withPhone(Component content, String description) {
+        add(new PhoneParagraphView(content, description));
         return this;
     }
 
-    public DemoHelperView withTabletView(Component content) {
-        add(new TabletView(content));
+    public DemoHelperView withTablet(Component content) {
+        add(new TabletParagraphView(content));
         return this;
     }
 
     public DemoHelperView withTabletAndPhoneView(Component tabletContent, Component phoneContent) {
-        add(new TabletAndPhoneView(tabletContent, phoneContent));
+        add(new TabletAndPhoneParagraphView(tabletContent, phoneContent));
         return this;
     }
 
     public DemoHelperView withLaptopView(Component content) {
-        add(new LaptopView(content));
+        add(new LaptopParagraphView(content));
         return this;
     }
 
-    public DemoHelperView withParagraphView(String header) {
-        add(new ParagraphView(header));
+    public DemoHelperView withParagraph(String header) {
+        addParagraph(new ParagraphView(header));
         return this;
     }
 
-    public DemoHelperView withParagraphView(String header, Component... components) {
-        add(new ParagraphView(header, components));
+    public DemoHelperView withParagraph(String header, Component... components) {
+        addParagraph(new ParagraphView(header, components));
         return this;
     }
 
-    public DemoHelperView withParagraphView(String header, String description) {
-        add(new ParagraphView(header, description));
+    public DemoHelperView withParagraph(String header, String description) {
+        addParagraph(new ParagraphView(header, description));
         return this;
     }
 
-    public DemoHelperView withParagraphView(String header, String description, Component... components) {
-        add(new ParagraphView(header, description, components));
+    public DemoHelperView withParagraph(String header, String description, Component... components) {
+        addParagraph(new ParagraphView(header, description, components));
         return this;
     }
 
-    public DemoHelperView withImageParagraphView(String header, String description, String resource) {
-        add(new ImageParagraphView(header, description, resource));
+    public DemoHelperView withImage(String header, String description, String resource) {
+        addParagraph(new ImageParagraphView(header, description, resource));
         return this;
     }
 
-    public DemoHelperView withStepView(String title, String description, CodeExample... codeExamples) {
-        add(new StepView(counter++, title, description, codeExamples));
+    public DemoHelperView withStep(String title, String description, CodeExample... codeExamples) {
+        addParagraph(new StepView(counter++, title, description, codeExamples));
         return this;
+    }
+
+    private void addParagraph(Component component) {
+        add(component);
+        component.getElement().getClassList().add("content-wrapper-small");
     }
 
     public DemoHelperView withCounterStep(int c) {
