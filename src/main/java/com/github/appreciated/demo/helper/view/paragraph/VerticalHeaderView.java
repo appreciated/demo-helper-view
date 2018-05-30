@@ -19,12 +19,13 @@ public class VerticalHeaderView extends VerticalLayout {
         }
         if (resource != null) {
             getImage().setSrc(resource);
+            image.setWidth("256px");
+            image.setHeight("256px");
+            image.getElement().getClassList().add("onload-animated");
         } else {
             getImage().setVisible(false);
         }
         add(image, headerLabel, subtitleLabel);
-        image.setWidth("256px");
-        image.setHeight("256px");
         setAlignItems(Alignment.CENTER);
         setSizeFull();
     }

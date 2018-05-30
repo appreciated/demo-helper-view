@@ -28,6 +28,7 @@ public class HorizontalHeaderParagraphView extends HorizontalLayout {
         }
         if (resource != null) {
             image.setSrc(resource);
+            image.getElement().getClassList().add("onload-animated");
         } else {
             image.setVisible(false);
         }

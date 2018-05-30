@@ -11,6 +11,23 @@ h1, h2, h3 {
   font-weight: 300;
 }
 
+.onload-animated {
+  animation: animationFrames ease 0.7s;
+  animation-iteration-count: 1;
+  transform-origin: 50% 50%;
+}
+
+@keyframes animationFrames {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.90) scaleY(0.90);
+  }
+  100% {
+    opacity: 1.00;
+    transform: scaleX(1.00) scaleY(1.00);
+  }
+}
+
 .step-content-holder {
   color: var(--demo-helper-view-accent-color) !important;
   line-height: 50px !important;
