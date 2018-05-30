@@ -12,12 +12,15 @@ public class StepView extends HorizontalLayout {
     private Label stepNumber = new Label();
     private Label stepHeader = new Label();
     private Label stepDescription = new Label();
-    HorizontalLayout descriptionHolder = new HorizontalLayout(stepNumber, new VerticalLayout(stepHeader, stepDescription));
+    HorizontalLayout descriptionHolder = new HorizontalLayout(new HorizontalLayout(stepNumber), new VerticalLayout(stepHeader, stepDescription));
     private VerticalLayout codeExampleHolder = new VerticalLayout();
 
     public StepView() {
         add(descriptionHolder, codeExampleHolder);
         stepNumber.getElement().getClassList().add("step-number");
+        stepNumber.setWidth("55px");
+        stepNumber.setHeight("55px");
+
         stepHeader.getElement().getClassList().add("step-content-holder");
         descriptionHolder.setWidth("100%");
         codeExampleHolder.setWidth("100%");

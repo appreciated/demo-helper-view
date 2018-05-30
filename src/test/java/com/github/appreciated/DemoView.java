@@ -23,16 +23,16 @@ public class DemoView extends Div {
                         new Button("Click Me!")
                 )
                 .withTabletAndPhoneView(
-                        getLabel("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >"),
-                        getLabel("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >")
+                        getDeviceContent("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >"),
+                        getDeviceContent("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >")
                 )
                 .withParagraph("I am a ParagraphView", "I can display a header and a description")
                 .withPhone(
-                        getLabel("< I belong to a PhoneView I display content inside a css rendered phone >"),
+                        getDeviceContent("< I belong to a PhoneView I display content inside a css rendered phone >"),
                         "Also I can show a optional message beside the PhoneView"
                 )
                 .withImage("I am a ImageParagraphView", "I can display a header, a description and an image", "images/phone.png")
-                .withTablet(getLabel("< I belong to a TabletView I display content inside a css rendered tablet >"))
+                .withTablet(getDeviceContent("< I belong to a TabletView I display content inside a css rendered tablet >"))
                 .withParagraph("I am a ParagraphView",
                         "I display a header and optionally a description. Also you can add components below the description",
                         new Button("Click Me!")
@@ -40,7 +40,7 @@ public class DemoView extends Div {
                 .withParagraph("I am a ParagraphView without description")
                 .withParagraph("I am a ParagraphView without description")
                 .withParagraph("I am a ParagraphView without description but with a Component", new Button("Click Me"))
-                .withLaptopView(getLabel("< I belong to a LaptopView I display content inside a css rendered laptop >"))
+                .withLaptopView(getDeviceContent("< I belong to a LaptopView I display content inside a css rendered laptop >"))
                 .withStep("I am a StepView",
                         "I display a header step number (1,2,3,4,5) which is automatically generated, also a description and one or multiple code examples",
                         new CodeExample("<dependency>\n" +
@@ -75,10 +75,13 @@ public class DemoView extends Div {
         add(demoView);
     }
 
-    VerticalLayout getLabel(String text) {
+    VerticalLayout getDeviceContent(String text) {
         Label label = new Label(text);
         label.setSizeFull();
-        return new VerticalLayout(label);
+        VerticalLayout contentHolder = new VerticalLayout(label);
+        contentHolder.setSizeFull();
+        contentHolder.getElement().getStyle().set("background", "white");
+        return contentHolder;
     }
 
 }

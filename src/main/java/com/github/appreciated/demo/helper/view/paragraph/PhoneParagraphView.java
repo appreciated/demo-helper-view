@@ -8,13 +8,13 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 public class PhoneParagraphView extends Div {
-    private PhoneView phoneContent = new PhoneView();
+    private PhoneView phoneView = new PhoneView();
     private H3 label = new H3();
     private HorizontalLayout labelHolder = new HorizontalLayout(label);
 
     public PhoneParagraphView(Component content) {
         this();
-        getPhoneContent().add(content);
+        getPhoneView().add(content);
         getLabel().setVisible(true);
     }
 
@@ -28,7 +28,7 @@ public class PhoneParagraphView extends Div {
     }
 
     public PhoneParagraphView() {
-        add(phoneContent, labelHolder);
+        add(phoneView, labelHolder);
         getElement().getStyle()
                 .set("display", "flex")
                 .set("justify-content", "space-around")
@@ -37,8 +37,8 @@ public class PhoneParagraphView extends Div {
         setWidth("100%");
     }
 
-    public VerticalLayout getPhoneContent() {
-        return phoneContent;
+    public VerticalLayout getPhoneView() {
+        return phoneView;
     }
 
     public HorizontalLayout getLabelHolder() {
