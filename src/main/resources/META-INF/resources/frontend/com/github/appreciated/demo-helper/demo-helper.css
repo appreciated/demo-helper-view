@@ -1,9 +1,10 @@
 :root {
     --demo-helper-view-background-color: #ffffff;
-    --demo-helper-device-background-color: #171717;
+    --demo-helper-view-device-background-color: #171717;
     --demo-helper-view-background-text-color: #000000;
     --demo-helper-view-accent-color: #49ccff;
     --demo-helper-view-background-accent-contrast-color: #ffffff;
+    --demo-helper-view-border-radius: 3px;
     --lumo-space-m: 1rem;
 }
 
@@ -46,6 +47,7 @@ h1, h2, h3 {
     background: var(--demo-helper-view-background-color) !important;
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.5) !important;
     border: none !important;
+    border-radius: var(--demo-helper-view-border-radius);
 }
 
 .v-slot-step-view-wrapper + .v-spacing + .v-slot-step-view-wrapper .step-view, .v-slot-step-view-wrapper + .v-slot-step-view-wrapper .step-view {
@@ -89,7 +91,7 @@ h1, h2, h3 {
     padding: 50px 10px 54px 10px !important;
     border: 2px solid lightgray !important;
     border-radius: 20px !important;
-    background: var(--demo-helper-device-background-color) !important;
+    background: var(--demo-helper-view-device-background-color) !important;
     box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.6) !important;
 }
 
@@ -125,7 +127,7 @@ h1, h2, h3 {
     padding: 20px 70px 20px 70px !important;
     border: 3px solid lightgray !important;
     border-radius: 20px !important;
-    background: var(--demo-helper-device-background-color) !important;
+    background: var(--demo-helper-view-device-background-color) !important;
     box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.9) !important;
 }
 
@@ -164,7 +166,7 @@ h1, h2, h3 {
     border-right: 3px solid lightgray !important;
     border-bottom: 0px solid lightgray !important;
     border-radius: 20px !important;
-    background: var(--demo-helper-device-background-color) !important;
+    background: var(--demo-helper-view-device-background-color) !important;
     position: relative;
     box-shadow: 0 1.5vw 5vw -1vw rgba(0, 0, 0, 0.9) !important;
 }
