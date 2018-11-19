@@ -16,6 +16,8 @@ public class PhoneParagraphView extends Div {
         this();
         getPhoneView().add(content);
         getLabel().setVisible(true);
+        getPhoneView().getStyle().set("margin", "40px");
+        getLabel().getStyle().set("margin", "40px");
     }
 
     public PhoneParagraphView(Component content, String description) {
@@ -31,7 +33,7 @@ public class PhoneParagraphView extends Div {
         add(phoneView, labelHolder);
         getElement().getStyle()
                 .set("display", "flex")
-                .set("justify-content", "space-around")
+                .set("justify-content", "center")
                 .set("align-items", "center")
                 .set("flex-wrap", "wrap");
         setWidth("100%");

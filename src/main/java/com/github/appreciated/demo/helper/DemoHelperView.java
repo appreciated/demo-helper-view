@@ -17,6 +17,7 @@ public class DemoHelperView extends VerticalLayout {
         setPadding(false);
         setAlignItems(Alignment.CENTER);
         getElement().setAttribute("theme", "spacing-xl");
+        getElement().getStyle().set("--lumo-space-xl", "6rem");
     }
 
     public DemoHelperView withVerticalHeader(String header, String description, String image) {

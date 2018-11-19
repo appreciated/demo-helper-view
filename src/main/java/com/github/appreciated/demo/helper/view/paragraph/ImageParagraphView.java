@@ -17,7 +17,6 @@ public class ImageParagraphView extends HorizontalLayout {
         textWrapper.add(headerLabel, descriptionLabel);
         add(textWrapper, image);
         setAlignItems(Alignment.CENTER);
-        setSizeFull();
     }
 
     public ImageParagraphView(String header, String description, String resource) {

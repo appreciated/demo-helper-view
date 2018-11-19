@@ -25,6 +25,7 @@ public class StepView extends HorizontalLayout {
         descriptionHolder.setWidth("100%");
         codeExampleHolder.setWidth("100%");
         setWidth("100%");
+        getStyle().set("padding", "0 20px");
     }
 
     /**

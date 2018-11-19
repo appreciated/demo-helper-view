@@ -22,6 +22,9 @@ public class TabletAndPhoneParagraphView extends Div {
                 .set("align-items", "flex-end")
                 .set("flex-wrap", "wrap");
         setWidth("100%");
+
+        phoneView.getStyle().set("margin-top", "40px").set("margin-left", "20px").set("margin-right", "20px");
+        tabletView.getStyle().set("margin-left", "20px").set("margin-right", "20px");
     }
 
     public TabletAndPhoneParagraphView() {
