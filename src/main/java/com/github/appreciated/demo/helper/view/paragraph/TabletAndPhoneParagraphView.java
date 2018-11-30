@@ -25,6 +25,8 @@ public class TabletAndPhoneParagraphView extends Div {
 
         phoneView.getStyle().set("margin-top", "40px").set("margin-left", "20px").set("margin-right", "20px");
         tabletView.getStyle().set("margin-left", "20px").set("margin-right", "20px");
+        add();
+
     }
 
     public TabletAndPhoneParagraphView() {

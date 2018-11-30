@@ -73,6 +73,11 @@
             <artifactId>prism-element</artifactId>
             <version>0.5</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.appreciated</groupId>
+            <artifactId>vaadin-paper-menu-button</artifactId>
+            <version>0.5.0</version>
+        </dependency>
     </dependencies>
 
     <build>
