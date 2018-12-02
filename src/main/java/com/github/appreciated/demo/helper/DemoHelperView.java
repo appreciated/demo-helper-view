@@ -2,6 +2,7 @@ package com.github.appreciated.demo.helper;
 
 import com.github.appreciated.demo.helper.view.devices.PhoneView;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
+import com.github.appreciated.demo.helper.view.entity.CssVariable;
 import com.github.appreciated.demo.helper.view.paragraph.*;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dependency.StyleSheet;
@@ -57,8 +58,18 @@ public class DemoHelperView extends VerticalLayout {
         return this;
     }
 
+    public DemoHelperView withStylablePhone(Component content, CssVariable... cssVariables) {
+        add(new StyleView(new PhoneView(content), new CssVariableView(cssVariables)));
+        return this;
+    }
+
     public DemoHelperView withTablet(Component content) {
         add(new TabletParagraphView(content));
+        return this;
+    }
+
+    public DemoHelperView withStylableTablet(Component content, CssVariable... cssVariables) {
+        add(new StyleView(new TabletParagraphView(content), new CssVariableView(cssVariables)));
         return this;
     }
 

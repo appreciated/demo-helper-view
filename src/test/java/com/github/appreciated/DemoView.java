@@ -1,11 +1,8 @@
 package com.github.appreciated;
 
 import com.github.appreciated.demo.helper.DemoHelperView;
-import com.github.appreciated.demo.helper.view.devices.PhoneView;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
 import com.github.appreciated.demo.helper.view.entity.CssVariable;
-import com.github.appreciated.demo.helper.view.paragraph.CssVariableView;
-import com.github.appreciated.demo.helper.view.paragraph.StyleView;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
@@ -31,13 +28,13 @@ public class DemoView extends Div {
                         getDeviceContent("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >")
                 )
                 .withParagraph("I am a ParagraphView", "I can display a header and a description")
-                .withComponent(new StyleView(new PhoneView(getDeviceContent("< I belong to a PhoneView I display content inside a css rendered phone >")), new CssVariableView(new CssVariable("--lumo-primary-text-color"))
-                ).withHorizontalMargin("15px").withVerticalMargin("55px"))
+                .withStylablePhone(getDeviceContent("< I belong to a PhoneView I display content inside a css rendered phone >"), new CssVariable("--lumo-primary-text-color"))
                 .withPhone(
                         getDeviceContent("< I belong to a PhoneView I display content inside a css rendered phone >"),
                         "Also I can show a optional message beside the PhoneView"
                 )
                 .withImage("I am a ImageParagraphView", "I can display a header, a description and an image", "images/phone.png")
+                .withStylableTablet(getDeviceContent("< I belong to a TabletView I display content inside a css rendered tablet >"), new CssVariable("--lumo-primary-text-color"))
                 .withTablet(getDeviceContent("< I belong to a TabletView I display content inside a css rendered tablet >"))
                 .withParagraph("I am a ParagraphView",
                         "I display a header and optionally a description. Also you can add components below the description",

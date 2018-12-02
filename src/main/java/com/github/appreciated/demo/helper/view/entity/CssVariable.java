@@ -14,7 +14,7 @@ public class CssVariable {
         this.value = value;
     }
 
-    public String getVariable() {
+    public String getName() {
         return variable;
     }
 
