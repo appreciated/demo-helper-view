@@ -4,15 +4,21 @@ import com.github.appreciated.demo.helper.DemoHelperView;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
 import com.github.appreciated.demo.helper.view.entity.CssVariable;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.page.Viewport;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.theme.Theme;
+import com.vaadin.flow.theme.lumo.Lumo;
 
 @Route("")
-public class DemoView extends Div {
+@Viewport("width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no")
+@Theme(value = Lumo.class, variant = Lumo.DARK)
+public class DemoView extends VerticalLayout {
 
     public DemoView() {
+
+
         DemoHelperView demoView = new DemoHelperView()
                 .withVerticalHeader("VerticalHeaderView",
                         "I can display a header and an optionally an image or a subtitle",
@@ -28,7 +34,7 @@ public class DemoView extends Div {
                         getDeviceContent("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >")
                 )
                 .withParagraph("I am a ParagraphView", "I can display a header and a description")
-                .withStylablePhone(getDeviceContent("< I belong to a PhoneView I display content inside a css rendered phone >"), new CssVariable("--lumo-primary-text-color"))
+                .withStylablePhone(getDeviceContent("< I'm a StylablePhoneView I display content and my css variables can be edited beside me >"), new CssVariable("--lumo-primary-text-color"), new CssVariable("--lumo-primary-color"))
                 .withPhone(
                         getDeviceContent("< I belong to a PhoneView I display content inside a css rendered phone >"),
                         "Also I can show a optional message beside the PhoneView"
@@ -74,8 +80,8 @@ public class DemoView extends Div {
                                 "        new VerticalLayout(new Button(\"Handheld\"))\n" +
                                 ");", "java", "Java")
                 );
-        demoView.setSizeFull();
         add(demoView);
+        setSizeFull();
     }
 
     VerticalLayout getDeviceContent(String text) {

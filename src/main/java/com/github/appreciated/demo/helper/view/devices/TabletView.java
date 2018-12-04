@@ -11,6 +11,7 @@ public class TabletView extends VerticalLayout {
 
     public TabletView(Component component) {
         this();
+        setSizeUndefined();
         add(component);
     }
 

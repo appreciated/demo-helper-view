@@ -15,6 +15,7 @@ public class TabletParagraphView extends VerticalLayout {
     public TabletParagraphView(Component content) {
         this();
         tabletView.add(content);
+        setSizeUndefined();
     }
 
     public TabletView getTabletView() {

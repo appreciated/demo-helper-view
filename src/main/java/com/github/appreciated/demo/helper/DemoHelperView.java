@@ -19,6 +19,8 @@ public class DemoHelperView extends VerticalLayout {
         setAlignItems(Alignment.CENTER);
         getElement().setAttribute("theme", "spacing-xl");
         getElement().getStyle().set("--lumo-space-xl", "6rem");
+        setSizeUndefined();
+        setWidth("100%");
     }
 
     public DemoHelperView withVerticalHeader(String header, String description, String image) {
@@ -69,7 +71,7 @@ public class DemoHelperView extends VerticalLayout {
     }
 
     public DemoHelperView withStylableTablet(Component content, CssVariable... cssVariables) {
-        add(new StyleView(new TabletParagraphView(content), new CssVariableView(cssVariables)));
+        add(new StyleView(new VerticalTabletParagraphView(content), new CssVariableView(cssVariables)));
         return this;
     }
 

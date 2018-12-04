@@ -13,6 +13,13 @@ public class CodeDesign extends VerticalLayout {
         getElement().getClassList().add("code-example-text-area");
         stepCode = new PrismHighlighter(code, lang);
         codeTypeLabel = new Label(lang);
+        codeTypeLabel.getStyle()
+                .set("background", "var(--lumo-primary-color)")
+                .set("padding", "0 12px")
+                .set("border-radius", "10px")
+                .set("color", "var(--lumo-primary-contrast-color)")
+                .set("box-shadow", "var(--lumo-box-shadow-s)");
+
         add(stepCode, codeTypeLabel);
     }
 
