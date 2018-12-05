@@ -5,6 +5,7 @@ import com.github.appreciated.demo.helper.view.entity.CssVariableChangeListener;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -28,8 +29,9 @@ public class CssVariableView extends HorizontalLayout {
                 .set("box-shadow", "var(--lumo-box-shadow-s)");
         this.variables = variables;
         grid.setHeight((56 + variables.length * 52 + 2 + 1) + "px");
-        grid.getStyle()
-                .set("border", "none");
+        grid.setThemeName(GridVariant.LUMO_NO_BORDER.getVariantName());
+        grid.setThemeName(GridVariant.LUMO_NO_ROW_BORDERS.getVariantName());
+        grid.setThemeName(GridVariant.LUMO_ROW_STRIPES.getVariantName());
         grid.setWidth("500px");
         grid.setItems(variables);
         grid.addColumn(CssVariable::getName).setHeader("Variable");

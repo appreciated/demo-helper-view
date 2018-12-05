@@ -10,8 +10,7 @@
     <description>DemoHelperView for Vaadin 10</description>
 
     <properties>
-        <vaadin.version>11.0.3</vaadin.version>
-
+        <vaadin.version>12.0.0</vaadin.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -44,6 +43,7 @@
             <id>Vaadin Directory</id>
             <url>http://maven.vaadin.com/vaadin-addons</url>
         </repository>
+        <!-- Repository needed for prerelease versions of Vaadin -->
         <repository>
             <id>Vaadin prereleases</id>
             <url>http://maven.vaadin.com/vaadin-prereleases</url>
@@ -78,14 +78,9 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <version>2.5</version>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
+                <version>3.1.0</version>
                 <configuration>
                     <archive>
                         <index>true</index>
@@ -103,39 +98,20 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.3.7.v20160115</version>
+                <version>9.4.11.v20180605</version>
                 <configuration>
                     <scanIntervalSeconds>-1</scanIntervalSeconds>
-                    <!-- Use test scope because the UI/demo classes are in 
+                    <!-- Use test scope because the UI/demo classes are in
                         the test package. -->
                     <useTestScope>true</useTestScope>
-                    <webApp>
-                        <resourceBases>
-                            <resourceBase>${project.basedir}/src/main/resources/META-INF/resources</resourceBase>
-                            <resourceBase>src/test/resources</resourceBase>
-                        </resourceBases>
-                    </webApp>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>nl.geodienstencentrum.maven</groupId>
-                <artifactId>sass-maven-plugin</artifactId>
-                <version>3.5.3</version>
-                <configuration>
-                    <buildDirectory>${basedir}/src/main/resources/sass/</buildDirectory>
-                    <resources>
-                        <resource>
-                            <source>
-                                <directory>${basedir}/src/main/resources/sass/</directory>
-                                <includes>
-                                    <include>demo-helper.scss</include>
-                                </includes>
-                            </source>
-                            <destination>
-                                ${basedir}/src/main/resources/META-INF/resources/frontend/com/github/appreciated/demo-helper/
-                            </destination>
-                        </resource>
-                    </resources>
+                    <supportedPackagings>
+                        <supportedPackaging>jar</supportedPackaging>
+                    </supportedPackagings>
+                    <webAppConfig>
+                        <!-- This is only needed to be able to unzip webjars
+                            directly into src/test/webjar-debug and modify them for testing -->
+                        <resourceBase>src/test/webjar-debug/META-INF/resources</resourceBase>
+                    </webAppConfig>
                 </configuration>
             </plugin>
         </plugins>
@@ -149,7 +125,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-assembly-plugin</artifactId>
-                        <version>2.6</version>
+                        <version>3.1.0</version>
                         <configuration>
                             <appendAssemblyId>false</appendAssemblyId>
                             <descriptors>
@@ -182,7 +158,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.10.4</version>
+                        <version>3.0.1</version>
                         <executions>
                             <execution>
                                 <id>attach-javadocs</id>
@@ -202,5 +178,3 @@
         </profile>
     </profiles>
 </project>
-
-
