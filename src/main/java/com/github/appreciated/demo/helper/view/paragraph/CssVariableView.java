@@ -64,6 +64,7 @@ public class CssVariableView extends HorizontalLayout {
         button.addClickListener(buttonClickEvent -> {
 
         });
+        grid.getStyle().set("border", "none");
         add(grid, button);
     }
 
