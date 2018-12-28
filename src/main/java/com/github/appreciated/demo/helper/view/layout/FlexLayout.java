@@ -15,6 +15,7 @@ public class FlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayo
 
     public FlexLayout(Component... children) {
         super(children);
+        getStyle().set("--flex-layout-space", "var(--lumo-space-m)");
     }
 
 
@@ -22,7 +23,9 @@ public class FlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayo
     public void add(Component... components) {
         super.add(components);
         if (hasSpacing) {
-            Arrays.stream(components).forEach(component -> getStyle().set("margin", "calc(var(--lumo-space-m) / 2)"));
+            for (Component component : components) {
+                component.getElement().getStyle().set("margin", "calc(var(--flex-layout-space) / 2)");
+            }
         }
     }
 
@@ -30,7 +33,7 @@ public class FlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayo
         if (this.hasMargin != hasMargin) {
             this.hasMargin = hasMargin;
             if (hasMargin) {
-                getStyle().set("margin", "var(--lumo-space-m)");
+                getStyle().set("margin", "var(--flex-layout-space)");
             } else {
                 getStyle().remove("margin");
             }
@@ -42,15 +45,14 @@ public class FlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayo
         if (this.hasPadding != hasPadding) {
             if (hasPadding) {
                 if (hasSpacing) {
-                    getStyle().set("padding", "calc(var(--lumo-space-m) / 2)");
+                    getStyle().set("padding", "calc(var(--flex-layout-space) / 2)");
                 } else {
-                    getStyle().set("padding", "var(--lumo-space-m)");
+                    getStyle().set("padding", "var(--flex-layout-space)");
                 }
                 setPadding(hasPadding);
             } else {
                 getStyle().remove("padding");
             }
-
         }
     }
 
@@ -59,9 +61,9 @@ public class FlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayo
             this.hasSpacing = hasSpacing;
             getChildren().forEach(component -> {
                 if (hasPadding) {
-                    getStyle().set("margin", "calc(var(--lumo-space-m) / 2)");
+                    component.getElement().getStyle().set("margin", "calc(var(--flex-layout-space) / 2)");
                 } else {
-                    getStyle().remove("margin");
+                    component.getElement().getStyle().remove("margin");
                 }
             });
             setPadding(hasPadding);

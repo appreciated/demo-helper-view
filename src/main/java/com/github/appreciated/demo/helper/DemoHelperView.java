@@ -20,7 +20,7 @@ public class DemoHelperView extends FlexLayout {
         setAlignItems(Alignment.CENTER);
         setFlexDirection(FlexDirection.COLUMN);
         getElement().setAttribute("theme", "spacing-xl");
-        getElement().getStyle().set("--lumo-space-xl", "6rem").set("flex-shrink", "0");
+        getElement().getStyle().set("--flex-layout-space", "6rem").set("flex-shrink", "0");
         setSizeUndefined();
         setWidth("100%");
     }
