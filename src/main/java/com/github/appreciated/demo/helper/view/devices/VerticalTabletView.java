@@ -6,7 +6,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 public class VerticalTabletView extends VerticalLayout {
 
     public VerticalTabletView() {
-        getElement().getClassList().add("vertical-tablet-view");
+
     }
 
     public VerticalTabletView(Component component) {

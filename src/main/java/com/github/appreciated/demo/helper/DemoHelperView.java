@@ -1,24 +1,26 @@
 package com.github.appreciated.demo.helper;
 
-import com.github.appreciated.demo.helper.view.devices.PhoneView;
+import com.github.appreciated.demo.helper.view.devices.DeviceView;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
 import com.github.appreciated.demo.helper.view.entity.CssVariable;
+import com.github.appreciated.demo.helper.view.layout.FlexLayout;
 import com.github.appreciated.demo.helper.view.paragraph.*;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dependency.StyleSheet;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 @StyleSheet("com/github/appreciated/demo-helper/demo-helper.css")
-public class DemoHelperView extends VerticalLayout {
+public class DemoHelperView extends FlexLayout {
 
     private int counter = 1;
 
     public DemoHelperView() {
-        setMargin(false);
+        setMargin(true);
         setPadding(false);
+        setSpacing(true);
         setAlignItems(Alignment.CENTER);
+        setFlexDirection(FlexDirection.COLUMN);
         getElement().setAttribute("theme", "spacing-xl");
-        getElement().getStyle().set("--lumo-space-xl", "6rem");
+        getElement().getStyle().set("--lumo-space-xl", "6rem").set("flex-shrink", "0");
         setSizeUndefined();
         setWidth("100%");
     }
@@ -50,38 +52,22 @@ public class DemoHelperView extends VerticalLayout {
         return this;
     }
 
-    public DemoHelperView withPhone(Component content) {
-        add(new PhoneView(content));
+    public DemoHelperView withDeviceParagraph(DeviceView phoneView, String s) {
+        addParagraph(new DeviceParagraphView(phoneView, s));
         return this;
     }
 
-    public DemoHelperView withPhone(Component content, String description) {
-        add(new PhoneParagraphView(content, description));
+    public DemoHelperView withDevice(DeviceView tabletView) {
         return this;
     }
 
-    public DemoHelperView withStylablePhone(Component content, CssVariable... cssVariables) {
-        add(new StyleView(new PhoneView(content), new CssVariableView(cssVariables)));
+    public DemoHelperView withStylableDevice(DeviceView content, CssVariable... cssVariables) {
+        add(new StyleView(content, new CssVariableView(cssVariables)));
         return this;
     }
 
-    public DemoHelperView withTablet(Component content) {
-        add(new TabletParagraphView(content));
-        return this;
-    }
-
-    public DemoHelperView withStylableTablet(Component content, CssVariable... cssVariables) {
-        add(new StyleView(new VerticalTabletParagraphView(content), new CssVariableView(cssVariables)));
-        return this;
-    }
-
-    public DemoHelperView withTabletAndPhoneView(Component tabletContent, Component phoneContent) {
-        addLargeParagraph(new TabletAndPhoneParagraphView(tabletContent, phoneContent));
-        return this;
-    }
-
-    public DemoHelperView withLaptopView(Component content) {
-        add(new LaptopParagraphView(content));
+    public DemoHelperView withDevices(DeviceView tabletContent, DeviceView phoneContent) {
+        addLargeParagraph(new DevicesParagraphView(tabletContent, phoneContent));
         return this;
     }
 
@@ -139,5 +125,4 @@ public class DemoHelperView extends VerticalLayout {
         add(component);
         return this;
     }
-
 }

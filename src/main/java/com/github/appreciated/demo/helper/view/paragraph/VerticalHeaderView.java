@@ -27,7 +27,6 @@ public class VerticalHeaderView extends VerticalLayout {
         }
         add(image, headerLabel, subtitleLabel);
         setAlignItems(Alignment.CENTER);
-        setSizeFull();
     }
 
     public Image getImage() {

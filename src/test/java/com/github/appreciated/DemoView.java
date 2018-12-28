@@ -1,24 +1,22 @@
 package com.github.appreciated;
 
 import com.github.appreciated.demo.helper.DemoHelperView;
+import com.github.appreciated.demo.helper.view.devices.LaptopView;
+import com.github.appreciated.demo.helper.view.devices.PhoneView;
+import com.github.appreciated.demo.helper.view.devices.TabletView;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
 import com.github.appreciated.demo.helper.view.entity.CssVariable;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.page.Viewport;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.theme.Theme;
-import com.vaadin.flow.theme.lumo.Lumo;
 
 @Route("")
-@Viewport("width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no")
-@Theme(value = Lumo.class, variant = Lumo.DARK)
+//@Viewport("width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no")
+//@Theme(value = Lumo.class, variant = Lumo.DARK)
 public class DemoView extends VerticalLayout {
 
     public DemoView() {
-
-
         DemoHelperView demoView = new DemoHelperView()
                 .withVerticalHeader("VerticalHeaderView",
                         "I can display a header and an optionally an image or a subtitle",
@@ -29,19 +27,19 @@ public class DemoView extends VerticalLayout {
                         "images/demo-helper-logo.png",
                         new Button("Click Me!")
                 )
-                .withTabletAndPhoneView(
-                        getDeviceContent("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >"),
-                        getDeviceContent("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >")
+                .withDevices(
+                        new TabletView(getDeviceContent("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >")),
+                        new PhoneView(getDeviceContent("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >"))
                 )
                 .withParagraph("I am a ParagraphView", "I can display a header and a description")
-                .withStylablePhone(getDeviceContent("< I'm a StylablePhoneView I display content and my css variables can be edited beside me >"), new CssVariable("--lumo-primary-text-color"), new CssVariable("--lumo-primary-color"))
-                .withPhone(
-                        getDeviceContent("< I belong to a PhoneView I display content inside a css rendered phone >"),
+                .withStylableDevice(new PhoneView(getDeviceContent("< I'm a StylablePhoneView I display content and my css variables can be edited beside me >")), new CssVariable("--lumo-primary-text-color"), new CssVariable("--lumo-primary-color"))
+                .withDeviceParagraph(new PhoneView(
+                                getDeviceContent("< I belong to a PhoneView I display content inside a css rendered phone >")),
                         "Also I can show a optional message beside the PhoneView"
                 )
                 .withImage("I am a ImageParagraphView", "I can display a header, a description and an image", "images/phone.png")
-                .withStylableTablet(getDeviceContent("< I belong to a TabletView I display content inside a css rendered tablet >"), new CssVariable("--lumo-primary-text-color"))
-                .withTablet(getDeviceContent("< I belong to a TabletView I display content inside a css rendered tablet >"))
+                .withStylableDevice(new TabletView(getDeviceContent("< I belong to a TabletView I display content inside a css rendered tablet >")), new CssVariable("--lumo-primary-text-color"))
+                .withDevice(new TabletView(getDeviceContent("< I belong to a TabletView I display content inside a css rendered tablet >")))
                 .withParagraph("I am a ParagraphView",
                         "I display a header and optionally a description. Also you can add components below the description",
                         new Button("Click Me!")
@@ -49,7 +47,7 @@ public class DemoView extends VerticalLayout {
                 .withParagraph("I am a ParagraphView without description")
                 .withParagraph("I am a ParagraphView without description")
                 .withParagraph("I am a ParagraphView without description but with a Component", new Button("Click Me"))
-                .withLaptopView(getDeviceContent("< I belong to a LaptopView I display content inside a css rendered laptop >"))
+                .withDevice(new LaptopView(getDeviceContent("< I belong to a LaptopView I display content inside a css rendered laptop >")))
                 .withStep("I am a StepView",
                         "I display a header step number (1,2,3,4,5) which is automatically generated, also a description and one or multiple code examples",
                         new CodeExample("<dependency>\n" +

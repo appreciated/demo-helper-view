@@ -3,7 +3,7 @@ package com.github.appreciated.demo.helper.view.devices;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
-public class PhoneView extends VerticalLayout {
+public class PhoneView extends VerticalLayout implements DeviceView {
 
     public PhoneView(Component content) {
         this();
