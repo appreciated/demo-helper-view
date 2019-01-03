@@ -4,23 +4,26 @@ import com.github.appreciated.demo.helper.view.devices.DeviceView;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
 import com.github.appreciated.demo.helper.view.entity.CssVariable;
 import com.github.appreciated.demo.helper.view.layout.FlexLayout;
+import com.github.appreciated.demo.helper.view.other.CssVariableView;
 import com.github.appreciated.demo.helper.view.paragraph.*;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.dependency.StyleSheet;
 
 @StyleSheet("com/github/appreciated/demo-helper/demo-helper.css")
+@HtmlImport("com/github/appreciated/demo-helper/dialog-full-size.html")
 public class DemoHelperView extends FlexLayout {
 
     private int counter = 1;
 
     public DemoHelperView() {
-        setMargin(true);
+        setMargin(false);
         setPadding(false);
         setSpacing(true);
         setAlignItems(Alignment.CENTER);
         setFlexDirection(FlexDirection.COLUMN);
         getElement().setAttribute("theme", "spacing-xl");
-        getElement().getStyle().set("--flex-layout-space", "6rem").set("flex-shrink", "0");
+        getElement().getStyle().set("--flex-layout-space", "3rem").set("flex-shrink", "0");
         setSizeUndefined();
         setWidth("100%");
     }
@@ -62,7 +65,7 @@ public class DemoHelperView extends FlexLayout {
     }
 
     public DemoHelperView withStylableDevice(DeviceView content, CssVariable... cssVariables) {
-        add(new StyleView(content, new CssVariableView(cssVariables)));
+        add(new DemoParagraphView(content, new CssVariableView(cssVariables)));
         return this;
     }
 

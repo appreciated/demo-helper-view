@@ -9,6 +9,7 @@ public class FlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayo
     private boolean hasPadding;
     private boolean hasMargin;
     private boolean hasSpacing;
+    private FlexDirection direction;
 
     public FlexLayout() {
     }
@@ -18,14 +19,12 @@ public class FlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayo
         getStyle().set("--flex-layout-space", "var(--lumo-space-m)");
     }
 
-
     @Override
     public void add(Component... components) {
         super.add(components);
         if (hasSpacing) {
-            for (Component component : components) {
-                component.getElement().getStyle().set("margin", "calc(var(--flex-layout-space) / 2)");
-            }
+            hasSpacing = false;
+            setSpacing(true);
         }
     }
 
@@ -38,6 +37,18 @@ public class FlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayo
                 getStyle().remove("margin");
             }
         }
+    }
+
+    private String getSpacingString() {
+        if (direction == FlexDirection.ROW || direction == FlexDirection.ROW_REVERSE) {
+            return "0 " + getSpacingValue() + " 0 " + getSpacingValue();
+        } else {
+            return getSpacingValue() + " 0 " + getSpacingValue() + " 0";
+        }
+    }
+
+    private String getSpacingValue() {
+        return hasPadding ? "calc(var(--flex-layout-space) / 2)" : "var(--flex-layout-space)";
     }
 
     public void setPadding(boolean hasPadding) {
@@ -59,19 +70,16 @@ public class FlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayo
     public void setSpacing(boolean hasSpacing) {
         if (this.hasSpacing != hasSpacing) {
             this.hasSpacing = hasSpacing;
-            getChildren().forEach(component -> {
-                if (hasPadding) {
-                    component.getElement().getStyle().set("margin", "calc(var(--flex-layout-space) / 2)");
-                } else {
-                    component.getElement().getStyle().remove("margin");
-                }
-            });
+            String value = getSpacingString();
+            getChildren().forEach(component -> component.getElement().getStyle().set("margin", value));
             setPadding(hasPadding);
         }
     }
 
     public void setFlexDirection(FlexDirection direction) {
+        this.direction = direction;
         getStyle().set(FlexDirection.styleName, direction.flexValue);
+        setSpacing(this.hasSpacing);
     }
 
     public static enum FlexDirection {
@@ -84,7 +92,7 @@ public class FlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayo
         public static final String styleName = "flex-direction";
         private final String flexValue;
 
-        private FlexDirection(String flexValue) {
+        FlexDirection(String flexValue) {
             this.flexValue = flexValue;
         }
 

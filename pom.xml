@@ -73,6 +73,26 @@
             <artifactId>prism-element</artifactId>
             <version>0.5</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.appreciated</groupId>
+            <artifactId>iron-collapse</artifactId>
+            <version>0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.appreciated</groupId>
+            <artifactId>calculated-color-helper</artifactId>
+            <version>0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.vaadin.olli</groupId>
+            <artifactId>clipboardhelper</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.appreciated</groupId>
+            <artifactId>paper-ripple</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <build>

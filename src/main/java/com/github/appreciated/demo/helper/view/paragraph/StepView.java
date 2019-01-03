@@ -1,7 +1,7 @@
 package com.github.appreciated.demo.helper.view.paragraph;
 
-import com.github.appreciated.demo.helper.view.design.CodeDesign;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
+import com.github.appreciated.demo.helper.view.other.CodeExampleView;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -26,6 +26,10 @@ public class StepView extends HorizontalLayout {
         codeExampleHolder.setWidth("100%");
         setWidth("100%");
         getStyle().set("padding", "0 20px");
+        setSpacing(false);
+        setMargin(false);
+        codeExampleHolder.setMargin(false);
+        codeExampleHolder.setPadding(false);
     }
 
     /**
@@ -40,13 +44,8 @@ public class StepView extends HorizontalLayout {
         stepHeader.setText(title);
         stepDescription.setText(description);
         Arrays.stream(codeExamples).forEach(codeExample -> {
-            CodeDesign codeDesign = new CodeDesign(codeExample.getCode(), codeExample.getHighlightingType());
-            if (codeExample.getCodeType() == null) {
-                codeDesign.getCodeTypeLabel().setVisible(false);
-            } else {
-                codeDesign.getCodeTypeLabel().setText(codeExample.getCodeType());
-            }
-            getCodeExampleHolder().add(codeDesign);
+            CodeExampleView codeExampleView = new CodeExampleView(codeExample);
+            getCodeExampleHolder().add(codeExampleView);
         });
     }
 

@@ -1,5 +1,6 @@
-package com.github.appreciated.demo.helper.view.paragraph;
+package com.github.appreciated.demo.helper.view.other;
 
+import com.github.appreciated.calc.color.helper.CalculatedColorHelper;
 import com.github.appreciated.demo.helper.view.entity.CssVariable;
 import com.github.appreciated.demo.helper.view.entity.CssVariableChangeListener;
 import com.vaadin.flow.component.Component;
@@ -11,7 +12,6 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 
-import java.util.Arrays;
 import java.util.Optional;
 
 public class CssVariableView extends HorizontalLayout {
@@ -20,13 +20,14 @@ public class CssVariableView extends HorizontalLayout {
 
     private Optional<CssVariableChangeListener> listener = Optional.empty();
     private CssVariable[] variables;
+    private CalculatedColorHelper helper;
 
     public CssVariableView(CssVariable... variables) {
         getStyle()
                 .set("overflow", "hidden")
-                .set("position", "relative")
-                .set("border-radius", "20px")
-                .set("box-shadow", "var(--lumo-box-shadow-s)");
+                .set("position", "relative");
+        //.set("border-radius", "20px")
+        //.set("box-shadow", "var(--lumo-box-shadow-s)")
         this.variables = variables;
         grid.setHeight((56 + variables.length * 52 + 2 + 1) + "px");
         grid.setThemeName(GridVariant.LUMO_NO_BORDER.getVariantName());
@@ -73,11 +74,10 @@ public class CssVariableView extends HorizontalLayout {
     }
 
     public void setStyledComponent(Component component) {
-        Arrays.stream(variables)
-                .filter(cssVariable -> cssVariable.getValue() == null)
-                .forEach(cssVariable -> {
-                    //cssVariable.
-                });
         setValueChangeListener((variable, value) -> component.getElement().getStyle().set(variable, value));
+    }
+
+    public void setCalculatedColorHelper(CalculatedColorHelper helper) {
+        this.helper = helper;
     }
 }
