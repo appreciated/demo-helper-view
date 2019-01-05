@@ -16,8 +16,9 @@ public class CodeExampleView extends ClipboardHelper implements HasSize {
         setWidth("100%");
         getElement().addEventListener("click", domEvent -> {
             HorizontalLayout hl = new HorizontalLayout(new Label("Code has been copied to clipboard"));
+            hl.setMargin(true);
             Notification notification = new Notification(hl);
-            notification.setDuration(-1);
+            notification.setDuration(3000);
             notification.setPosition(Notification.Position.BOTTOM_END);
             notification.getElement().getStyle().set("background", "red");
             notification.setOpened(true);
