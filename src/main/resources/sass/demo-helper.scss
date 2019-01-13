@@ -60,14 +60,3 @@ h1, h2, h3 {
   line-height: 55px !important;
   box-shadow: var(--lumo-box-shadow-m);
 }
-
-.selectable-element {
-  transition: box-shadow 0.7s ease;
-  box-shadow: var(--lumo-box-shadow-m);
-  border-radius: var(--lumo-border-radius);
-}
-
-.selectable-element:hover {
-  box-shadow: var(--lumo-box-shadow-m);
-  border-radius: var(--lumo-border-radius);
-}

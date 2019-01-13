@@ -13,7 +13,6 @@ public class CodeExampleView extends ClipboardHelper implements HasSize {
 
     public CodeExampleView(CodeExample example) {
         super(example.getCode(), new CodeExampleViewContent(example));
-        getElement().getClassList().add("selectable-element");
         setWidth("100%");
     }
 
