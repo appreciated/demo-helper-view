@@ -3,10 +3,16 @@ package com.github.appreciated.demo.helper.view.other;
 
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
 import com.github.appreciated.prism.element.PrismHighlighter;
-import com.github.appreciated.ripple.PaperRipple;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
+/**
+ * https://codepen.io/v4ku1a/pen/WxLxgb
+ * or
+ * https://www.webcomponents.org/element/ryersonlibrary/rula-expandable-card/demo/demo/index.html
+ * and
+ * https://material.io/design/motion/understanding-motion.html#usage
+ */
 public class CodeExampleViewContent extends VerticalLayout {
     private PrismHighlighter stepCode;
     private Label codeTypeLabel;
@@ -26,16 +32,12 @@ public class CodeExampleViewContent extends VerticalLayout {
             codeTypeLabel.getStyle()
                     .set("background", "var(--lumo-primary-color)")
                     .set("padding", "0 12px")
-                    .set("border-radius", "10px")
+                    .set("border-radius", "var(--lumo-border-radius)")
                     .set("color", "var(--lumo-primary-contrast-color)")
                     .set("box-shadow", "var(--lumo-box-shadow-s)")
                     .set("pointer-events", "none");
             add(codeTypeLabel);
         }
-        PaperRipple ripple = new PaperRipple();
-        ripple.getElement().getStyle().set("margin", "unset");
-        getElement().getStyle().set("position", "relative");
-        add(ripple);
     }
 
     public PrismHighlighter getStepCode() {

@@ -13,16 +13,17 @@ public class CodeExampleView extends ClipboardHelper implements HasSize {
 
     public CodeExampleView(CodeExample example) {
         super(example.getCode(), new CodeExampleViewContent(example));
-        getElement().getClassList().add("code-example-text-area");
+        getElement().getClassList().add("selectable-element");
         setWidth("100%");
-        getElement().addEventListener("click", domEvent -> {
-            HorizontalLayout hl = new HorizontalLayout(VaadinIcon.INFO.create(), new Label("Code has been copied to clipboard"));
-            Notification notification = new Notification(hl);
-            notification.setDuration(3000);
-            notification.setPosition(Notification.Position.BOTTOM_END);
-            notification.getElement().getStyle().set("background", "red");
-            notification.setOpened(true);
-        });
+    }
+
+    public void onClick() {
+        HorizontalLayout hl = new HorizontalLayout(VaadinIcon.INFO.create(), new Label("Code has been copied to clipboard"));
+        Notification notification = new Notification(hl);
+        notification.setDuration(3000);
+        notification.setPosition(Notification.Position.BOTTOM_END);
+        notification.getElement().getStyle().set("background", "red");
+        notification.setOpened(true);
     }
 
 }

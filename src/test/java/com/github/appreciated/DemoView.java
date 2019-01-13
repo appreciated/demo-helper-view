@@ -9,10 +9,11 @@ import com.github.appreciated.demo.helper.view.entity.CssVariable;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.page.BodySize;
 import com.vaadin.flow.router.Route;
 
 @Route("")
-//@Viewport("width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no")
+@BodySize(height = "100%", width = "100%")
 //@Theme(value = Lumo.class, variant = Lumo.DARK)
 public class DemoView extends VerticalLayout {
 

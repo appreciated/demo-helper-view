@@ -1,5 +1,6 @@
 package com.github.appreciated.demo.helper.view.paragraph;
 
+import com.github.appreciated.card.RippleClickableCard;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
 import com.github.appreciated.demo.helper.view.other.CodeExampleView;
 import com.vaadin.flow.component.html.Label;
@@ -45,7 +46,8 @@ public class StepView extends HorizontalLayout {
         stepDescription.setText(description);
         Arrays.stream(codeExamples).forEach(codeExample -> {
             CodeExampleView codeExampleView = new CodeExampleView(codeExample);
-            getCodeExampleHolder().add(codeExampleView);
+            RippleClickableCard card = new RippleClickableCard(componentEvent -> codeExampleView.onClick(), codeExampleView);
+            getCodeExampleHolder().add(card);
         });
     }
 
