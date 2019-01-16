@@ -22,6 +22,7 @@ public class DeviceSwitchView extends Div implements HasOrientation {
         deviceMap = new HashMap<>();
         getClassNames().add("device-wrapper");
         device = new Device(content);
+        device.getStyle().set("margin-left", "104px");
         device.withFloatingButton(VaadinIcon.ROTATE_RIGHT.create(), event -> device.toggleOrientation());
         actions.setWidth("undefined");
         Tabs tabs = new Tabs();
