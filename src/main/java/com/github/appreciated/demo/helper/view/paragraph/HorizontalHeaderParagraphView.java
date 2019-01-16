@@ -1,16 +1,18 @@
 package com.github.appreciated.demo.helper.view.paragraph;
 
+import com.github.appreciated.demo.helper.view.layout.FlexLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import java.util.Arrays;
 
-public class HorizontalHeaderParagraphView extends HorizontalLayout {
+public class HorizontalHeaderParagraphView extends FlexLayout {
     protected Image image = new Image();
     protected HorizontalLayout imageWrapper = new HorizontalLayout(image);
     protected H1 header = new H1();
@@ -33,11 +35,14 @@ public class HorizontalHeaderParagraphView extends HorizontalLayout {
             image.setVisible(false);
         }
         add(imageWrapper, descriptionWrapper);
-        imageWrapper.setWidth("100%");
         image.setWidth("300px");
         image.setHeight("300px");
-        imageWrapper.setJustifyContentMode(JustifyContentMode.END);
+        imageWrapper.setJustifyContentMode(FlexComponent.JustifyContentMode.END);
         descriptionWrapper.setWidth("100%");
+        descriptionWrapper.getStyle().set("max-width", "300px");
+        setJustifyContentMode(JustifyContentMode.CENTER);
+        setFlexWrap(FlexWrap.WRAP);
+        setWidth("100%");
     }
 
     public HorizontalHeaderParagraphView(String header, String description, String image, Component[] components) {

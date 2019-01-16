@@ -10,6 +10,7 @@ public class FlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayo
     private boolean hasMargin;
     private boolean hasSpacing;
     private FlexDirection direction;
+    private FlexWrap flexWrap;
 
     public FlexLayout() {
     }
@@ -78,8 +79,17 @@ public class FlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayo
 
     public void setFlexDirection(FlexDirection direction) {
         this.direction = direction;
-        getStyle().set(FlexDirection.styleName, direction.flexValue);
+        getStyle().set(FlexDirection.styleName, direction.getFlexValue());
         setSpacing(this.hasSpacing);
+    }
+
+    public FlexWrap getFlexWrap() {
+        return flexWrap;
+    }
+
+    public void setFlexWrap(FlexWrap flexWrap) {
+        this.flexWrap = flexWrap;
+        getStyle().set(FlexWrap.styleName, flexWrap.getWrapValue());
     }
 
     public static enum FlexDirection {
@@ -96,6 +106,10 @@ public class FlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayo
             this.flexValue = flexValue;
         }
 
+        static FlexDirection toFlexDirection(String flexValue) {
+            return toFlexDirection(flexValue, ROW);
+        }
+
         static FlexDirection toFlexDirection(String flexValue, FlexDirection defaultValue) {
             return Arrays.stream(values()).filter((alignment) -> alignment.getFlexValue().equals(flexValue)).findFirst().orElse(defaultValue);
         }
@@ -104,5 +118,32 @@ public class FlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayo
             return this.flexValue;
         }
     }
+
+    public static enum FlexWrap {
+        NO_WRAP("no-wrap"),
+        WRAP("wrap"),
+        WRAP_REVERSE("wrap-reverse");
+
+        public static final String styleName = "flex-wrap";
+        private final String wrapValue;
+
+        private FlexWrap(String wrapValue) {
+            this.wrapValue = wrapValue;
+        }
+
+        static FlexWrap toFlexDirection(String flexValue) {
+            return toFlexDirection(flexValue, NO_WRAP);
+        }
+
+        static FlexWrap toFlexDirection(String flexValue, FlexWrap defaultValue) {
+            return Arrays.stream(values()).filter((alignment) -> alignment.getWrapValue().equals(flexValue)).findFirst().orElse(defaultValue);
+        }
+
+        String getWrapValue() {
+            return this.wrapValue;
+        }
+
+    }
+
 
 }
