@@ -23,6 +23,10 @@ public class HorizontalHeaderParagraphView extends FlexLayout {
 
     public HorizontalHeaderParagraphView(String header, String description, String resource) {
         this.header.setText(header);
+        this.header.setWidth("100%");
+        this.header.getStyle()
+                .set("overflow", "hidden")
+                .set("text-overflow", "ellipsis");
         if (description != null) {
             this.subtitle.setText(description);
         } else {
@@ -39,7 +43,7 @@ public class HorizontalHeaderParagraphView extends FlexLayout {
         image.setHeight("300px");
         imageWrapper.setJustifyContentMode(FlexComponent.JustifyContentMode.END);
         descriptionWrapper.setWidth("100%");
-        descriptionWrapper.getStyle().set("max-width", "300px");
+        descriptionWrapper.getStyle().set("max-width", "630px");
         setJustifyContentMode(JustifyContentMode.CENTER);
         setFlexWrap(FlexWrap.WRAP);
         setWidth("100%");

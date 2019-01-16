@@ -11,7 +11,12 @@ public class VerticalHeaderView extends VerticalLayout {
     private Label subtitleLabel = new Label();
 
     public VerticalHeaderView(String header, String description, String resource) {
-        this.getHeaderLabel().setText(header);
+        this.headerLabel.setText(header);
+        this.headerLabel.setWidth("100%");
+        this.headerLabel.getStyle()
+                .set("text-align", "center")
+                .set("overflow", "hidden")
+                .set("text-overflow", "ellipsis");
         if (description != null) {
             this.getSubtitleLabel().setText(description);
         } else {
