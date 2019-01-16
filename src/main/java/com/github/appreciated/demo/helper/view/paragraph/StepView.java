@@ -24,7 +24,9 @@ public class StepView extends HorizontalLayout {
 
         stepHeader.getElement().getClassList().add("step-content-holder");
         descriptionHolder.setWidth("100%");
-        codeExampleHolder.setWidth("100%");
+        codeExampleHolder.setWidth("50%");
+        codeExampleHolder.getStyle().set("flex-shrink", "0");
+        descriptionHolder.getStyle().set("user-select", "none");
         setWidth("100%");
         getStyle().set("padding", "0 20px");
         setSpacing(false);
@@ -47,6 +49,8 @@ public class StepView extends HorizontalLayout {
         Arrays.stream(codeExamples).forEach(codeExample -> {
             CodeExampleView codeExampleView = new CodeExampleView(codeExample);
             RippleClickableCard card = new RippleClickableCard(componentEvent -> codeExampleView.onClick(), codeExampleView);
+            card.setWidth("100%");
+            card.getStyle().set("user-select", "none");
             getCodeExampleHolder().add(card);
         });
     }

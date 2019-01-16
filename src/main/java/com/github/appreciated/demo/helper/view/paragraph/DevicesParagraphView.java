@@ -1,12 +1,12 @@
 package com.github.appreciated.demo.helper.view.paragraph;
 
-import com.github.appreciated.demo.helper.view.devices.DeviceView;
+import com.github.appreciated.demo.helper.view.devices.Device;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
 
 public class DevicesParagraphView extends Div {
 
-    public DevicesParagraphView(DeviceView largeDevice, DeviceView smallDevice) {
+    public DevicesParagraphView(Device largeDevice, Device smallDevice) {
         add((Component) largeDevice);
         add((Component) smallDevice);
         getElement().getStyle()

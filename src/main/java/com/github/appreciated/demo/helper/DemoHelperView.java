@@ -1,6 +1,6 @@
 package com.github.appreciated.demo.helper;
 
-import com.github.appreciated.demo.helper.view.devices.DeviceView;
+import com.github.appreciated.demo.helper.view.devices.Device;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
 import com.github.appreciated.demo.helper.view.entity.CssVariable;
 import com.github.appreciated.demo.helper.view.layout.FlexLayout;
@@ -55,21 +55,21 @@ public class DemoHelperView extends FlexLayout {
         return this;
     }
 
-    public DemoHelperView withDeviceParagraph(DeviceView phoneView, String s) {
+    public DemoHelperView withDeviceParagraph(Device phoneView, String s) {
         addParagraph(new DeviceParagraphView(phoneView, s));
         return this;
     }
 
-    public DemoHelperView withDevice(DeviceView tabletView) {
+    public DemoHelperView withDevice(Device tabletView) {
         return this;
     }
 
-    public DemoHelperView withStylableDevice(DeviceView content, CssVariable... cssVariables) {
+    public DemoHelperView withStylableDevice(Device content, CssVariable... cssVariables) {
         add(new DemoParagraphView(content, new CssVariableView(cssVariables)));
         return this;
     }
 
-    public DemoHelperView withDevices(DeviceView tabletContent, DeviceView phoneContent) {
+    public DemoHelperView withDevices(Device tabletContent, Device phoneContent) {
         addLargeParagraph(new DevicesParagraphView(tabletContent, phoneContent));
         return this;
     }

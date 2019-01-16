@@ -25,7 +25,6 @@ public class CodeExampleViewContent extends VerticalLayout {
     public CodeExampleViewContent(String code, String lang) {
         getStyle().set("position", "relative");
         stepCode = new PrismHighlighter(code, lang);
-
         add(stepCode);
         if (lang != null) {
             codeTypeLabel = new Label(lang);

@@ -1,17 +1,17 @@
 package com.github.appreciated.demo.helper.view.paragraph;
 
-import com.github.appreciated.demo.helper.view.devices.DeviceView;
+import com.github.appreciated.demo.helper.view.devices.Device;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 
 public class DeviceParagraphView extends Div {
-    private DeviceView deviceView;
+    private Device deviceView;
     private H3 label = new H3();
     private HorizontalLayout labelHolder = new HorizontalLayout(label);
 
-    public DeviceParagraphView(DeviceView content) {
+    public DeviceParagraphView(Device content) {
         deviceView = content;
         add((Component) deviceView, labelHolder);
         getElement().getStyle()
@@ -25,7 +25,7 @@ public class DeviceParagraphView extends Div {
         getLabel().getStyle().set("margin", "40px");
     }
 
-    public DeviceParagraphView(DeviceView content, String description) {
+    public DeviceParagraphView(Device content, String description) {
         this(content);
         if (description == null) {
             getLabel().setVisible(true);
@@ -34,7 +34,7 @@ public class DeviceParagraphView extends Div {
         }
     }
 
-    public DeviceView getDeviceView() {
+    public Device getDeviceView() {
         return deviceView;
     }
 

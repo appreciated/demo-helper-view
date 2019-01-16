@@ -1,6 +1,7 @@
 package com.github.appreciated;
 
 import com.github.appreciated.demo.helper.DemoHelperView;
+import com.github.appreciated.demo.helper.view.devices.DeviceSwitchView;
 import com.github.appreciated.demo.helper.view.devices.LaptopView;
 import com.github.appreciated.demo.helper.view.devices.PhoneView;
 import com.github.appreciated.demo.helper.view.devices.TabletView;
@@ -28,6 +29,7 @@ public class DemoView extends VerticalLayout {
                         "images/demo-helper-logo.png",
                         new Button("Click Me!")
                 )
+                .withComponent(new DeviceSwitchView(getDeviceContent("Yay")))
                 .withDevices(
                         new TabletView(getDeviceContent("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >")),
                         new PhoneView(getDeviceContent("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >"))

@@ -1,17 +1,12 @@
 package com.github.appreciated.demo.helper.view.devices;
 
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
-public class PhoneView extends VerticalLayout implements DeviceView {
+public class PhoneView extends Device {
 
-    public PhoneView(Component content) {
-        this();
-        add(content);
-    }
-
-    public PhoneView() {
-        getElement().getClassList().add("phone-view");
+    public PhoneView(Component component) {
+        super(component);
+        changeToPhone();
     }
 
 }
