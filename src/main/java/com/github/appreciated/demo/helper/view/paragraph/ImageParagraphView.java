@@ -1,12 +1,12 @@
 package com.github.appreciated.demo.helper.view.paragraph;
 
+import com.github.appreciated.demo.helper.view.layout.FlexLayout;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
-public class ImageParagraphView extends HorizontalLayout {
+public class ImageParagraphView extends FlexLayout {
 
     private VerticalLayout textWrapper = new VerticalLayout();
     private H2 headerLabel = new H2();
@@ -15,8 +15,13 @@ public class ImageParagraphView extends HorizontalLayout {
 
     public ImageParagraphView() {
         textWrapper.add(headerLabel, descriptionLabel);
+        textWrapper.setAlignItems(Alignment.CENTER);
+        textWrapper.getStyle().set("max-width", "630px");
         add(textWrapper, image);
         setAlignItems(Alignment.CENTER);
+        setJustifyContentMode(JustifyContentMode.CENTER);
+        setFlexWrap(FlexWrap.WRAP);
+        setWidth("100%");
     }
 
     public ImageParagraphView(String header, String description, String resource) {
