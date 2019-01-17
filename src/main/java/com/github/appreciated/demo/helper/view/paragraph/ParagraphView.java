@@ -16,8 +16,10 @@ public class ParagraphView extends VerticalLayout {
     public ParagraphView(String header, String description) {
         this();
         getHeaderLabel().setText(header);
+        add(headerLabel);
         if (description != null) {
             getDescriptionLabel().setText(description);
+            add(descriptionLabel);
         } else {
             setVisible(false);
         }

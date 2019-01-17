@@ -53,12 +53,13 @@ public class DemoHelperView extends CssFlexLayout {
         return this;
     }
 
-    public DemoHelperView withDeviceParagraph(Device phoneView, String s) {
-        addParagraph(new DeviceParagraphView(phoneView, s));
+    public DemoHelperView withDeviceParagraph(Device device, String s) {
+        addParagraph(new DeviceParagraphView(device, s));
         return this;
     }
 
-    public DemoHelperView withDevice(Device tabletView) {
+    public DemoHelperView withDevice(Device device) {
+        add(new DeviceParagraphView(device));
         return this;
     }
 
@@ -67,8 +68,8 @@ public class DemoHelperView extends CssFlexLayout {
         return this;
     }
 
-    public DemoHelperView withDevices(Device tabletContent, Device phoneContent) {
-        addLargeParagraph(new DevicesParagraphView(tabletContent, phoneContent));
+    public DemoHelperView withDevices(Device device1, Device device2) {
+        addLargeParagraph(new DevicesParagraphView(device1, device2));
         return this;
     }
 
