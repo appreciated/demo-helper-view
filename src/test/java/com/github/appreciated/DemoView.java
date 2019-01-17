@@ -83,6 +83,8 @@ public class DemoView extends VerticalLayout {
                 );
         add(demoView);
         setSizeFull();
+        setPadding(false);
+        setMargin(false);
     }
 
     VerticalLayout getDeviceContent(String text) {

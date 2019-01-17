@@ -2,6 +2,7 @@ package com.github.appreciated.demo.helper.view.paragraph;
 
 import com.github.appreciated.card.RippleClickableCard;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
+import com.github.appreciated.demo.helper.view.layout.CssFlexLayout;
 import com.github.appreciated.demo.helper.view.other.CodeExampleView;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -9,7 +10,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import java.util.Arrays;
 
-public class StepView extends HorizontalLayout {
+public class StepView extends CssFlexLayout {
     private Label stepNumber = new Label();
     private Label stepHeader = new Label();
     private Label stepDescription = new Label();
@@ -24,15 +25,17 @@ public class StepView extends HorizontalLayout {
 
         stepHeader.getElement().getClassList().add("step-content-holder");
         descriptionHolder.setWidth("100%");
-        codeExampleHolder.setWidth("50%");
-        codeExampleHolder.getStyle().set("flex-shrink", "0");
-        descriptionHolder.getStyle().set("user-select", "none");
+        descriptionHolder.getStyle().set("max-width", "610px");
+        codeExampleHolder.setWidth("100%");
+        codeExampleHolder.getStyle().set("max-width", "610px").set("flex-shrink", "0").set("user-select", "none");
         setWidth("100%");
-        getStyle().set("padding", "0 20px");
         setSpacing(false);
-        setMargin(false);
+        setPadding(true);
         codeExampleHolder.setMargin(false);
         codeExampleHolder.setPadding(false);
+        setFlexWrap(FlexWrap.WRAP);
+        setJustifyContentMode(JustifyContentMode.CENTER);
+        setBoxSizing(BoxSizing.BORDER_BOX);
     }
 
     /**

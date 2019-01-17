@@ -68,6 +68,8 @@ h1, h2, h3 {
     text-align: center;
     line-height: 55px !important;
     box-shadow: var(--lumo-box-shadow-m);
+    font-weight: 600;
+    font-size: var(--lumo-font-size-l);
 }
 
 .device-wrapper {
@@ -91,7 +93,7 @@ h1, h2, h3 {
 
 
 .device {
-    transition: all 0.3s ease;
+    transition: all 0.5s;
     overflow: hidden;
     background: #808080;
 }
