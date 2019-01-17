@@ -21,8 +21,9 @@ import java.util.HashMap;
 public class DeviceSwitchView extends Div implements HasOrientation {
     private final Device device;
     private final VerticalLayout actions = new VerticalLayout();
-    private final HashMap<Component, String[]> deviceMap;
+    private final HashMap<Tab, DeviceType> deviceMap;
     private final VerticalLayout contentHolder;
+    private final Tabs tabs;
 
     public DeviceSwitchView(Component content) {
         super();
@@ -32,20 +33,20 @@ public class DeviceSwitchView extends Div implements HasOrientation {
         device.getStyle().set("margin-left", "104px");
 
         actions.setWidth("undefined");
-        Tabs tabs = new Tabs();
+        tabs = new Tabs();
         Tab tab1 = new Tab(VaadinIcon.MOBILE.create());
         Tab tab2 = new Tab(getRotatedIcon(VaadinIcon.MOBILE, 90));
         Tab tab3 = new Tab(getRotatedIcon(VaadinIcon.TABLET, 90));
         Tab tab4 = new Tab(VaadinIcon.TABLET.create());
         Tab tab5 = new Tab(VaadinIcon.LAPTOP.create());
-        deviceMap.put(tab1, new String[]{"phone"});
-        deviceMap.put(tab2, new String[]{"phone", "landscape"});
-        deviceMap.put(tab3, new String[]{"tablet"});
-        deviceMap.put(tab4, new String[]{"tablet", "landscape"});
-        deviceMap.put(tab5, new String[]{"laptop"});
+        deviceMap.put(tab1, DeviceType.PHONE);
+        deviceMap.put(tab2, DeviceType.PHONE_LANDSCAPE);
+        deviceMap.put(tab3, DeviceType.TABLET);
+        deviceMap.put(tab4, DeviceType.TABLET_LANDSCAPE);
+        deviceMap.put(tab5, DeviceType.LAPTOP);
         tabs.add(tab1, tab2, tab3, tab4, tab5);
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
-        tabs.addSelectedChangeListener(event -> device.changeTo(deviceMap.get(tabs.getSelectedTab())));
+        tabs.addSelectedChangeListener(event -> device.changeTo(deviceMap.get(tabs.getSelectedTab()).getClassNames()));
         tabs.setSelectedTab(tab1);
         actions.add(tabs);
         HorizontalLayout deviceWrapper = new HorizontalLayout(device, actions);
@@ -69,5 +70,13 @@ public class DeviceSwitchView extends Div implements HasOrientation {
         Icon i = icon.create();
         i.getStyle().set("transform", "rotate(" + degree + "deg)");
         return i;
+    }
+
+    public void setDeviceType(DeviceType type) {
+        deviceMap.forEach((tab, deviceType) -> {
+            if (deviceType == type) {
+                tabs.setSelectedTab(tab);
+            }
+        });
     }
 }
