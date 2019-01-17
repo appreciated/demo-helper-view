@@ -4,18 +4,19 @@ import com.vaadin.flow.component.Component;
 
 import java.util.Arrays;
 
-public class FlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayout {
+public class CssFlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayout {
 
     private boolean hasPadding;
     private boolean hasMargin;
     private boolean hasSpacing;
     private FlexDirection direction;
     private FlexWrap flexWrap;
+    private BoxSizing boxSizing;
 
-    public FlexLayout() {
+    public CssFlexLayout() {
     }
 
-    public FlexLayout(Component... children) {
+    public CssFlexLayout(Component... children) {
         super(children);
         getStyle().set("--flex-layout-space", "var(--lumo-space-m)");
     }
@@ -92,6 +93,16 @@ public class FlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayo
         getStyle().set(FlexWrap.styleName, flexWrap.getWrapValue());
     }
 
+    public BoxSizing getBoxSizing() {
+        return boxSizing;
+    }
+
+    public void setBoxSizing(BoxSizing boxSizing) {
+        this.boxSizing = boxSizing;
+        getStyle().set("box-sizing", boxSizing.getBoxSizingValue());
+    }
+
+
     public static enum FlexDirection {
 
         ROW("row"),
@@ -145,5 +156,30 @@ public class FlexLayout extends com.vaadin.flow.component.orderedlayout.FlexLayo
 
     }
 
+    public static enum BoxSizing {
+        UNDEFINED("unset"),
+        CONTENT_BOX("content-box"),
+        BORDER_BOX("border-box");
+
+        public static final String styleName = "box-sizing";
+        private final String boxSizingValue;
+
+        private BoxSizing(String boxSizingValue) {
+            this.boxSizingValue = boxSizingValue;
+        }
+
+        static BoxSizing toFlexDirection(String boxSizingValue) {
+            return toFlexDirection(boxSizingValue, UNDEFINED);
+        }
+
+        static BoxSizing toFlexDirection(String boxSizingValue, BoxSizing defaultValue) {
+            return Arrays.stream(values()).filter((alignment) -> alignment.getBoxSizingValue().equals(boxSizingValue)).findFirst().orElse(defaultValue);
+        }
+
+        String getBoxSizingValue() {
+            return this.boxSizingValue;
+        }
+
+    }
 
 }

@@ -1,12 +1,12 @@
 package com.github.appreciated.demo.helper.view.paragraph;
 
-import com.github.appreciated.demo.helper.view.layout.FlexLayout;
+import com.github.appreciated.demo.helper.view.layout.CssFlexLayout;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
-public class ImageParagraphView extends FlexLayout {
+public class ImageParagraphView extends CssFlexLayout {
 
     private VerticalLayout textWrapper = new VerticalLayout();
     private H2 headerLabel = new H2();
