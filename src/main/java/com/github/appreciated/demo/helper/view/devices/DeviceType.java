@@ -2,9 +2,9 @@ package com.github.appreciated.demo.helper.view.devices;
 
 public enum DeviceType {
     PHONE("phone"),
-    PHONE_LANDSCAPE("phone", "ladscape"),
+    PHONE_LANDSCAPE("phone", "landscape"),
     TABLET("tablet"),
-    TABLET_LANDSCAPE("tablet"),
+    TABLET_LANDSCAPE("tablet", "landscape"),
     LAPTOP("laptop");
 
     private String[] classNames;
