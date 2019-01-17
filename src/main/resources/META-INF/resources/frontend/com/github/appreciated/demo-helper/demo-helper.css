@@ -99,7 +99,7 @@ h1, h2, h3 {
 }
 
 .phone {
-    --button-padding: 4px;
+    --button-padding: 9px;
     --button-opacity: 1;
     width: 15vw;
     height: 30vw;
@@ -123,7 +123,7 @@ h1, h2, h3 {
 }
 
 .tablet {
-    --button-padding: 4px;
+    --button-padding: 15px;
     --button-opacity: 1;
     width: 53.333vw;
     height: 40vw;
@@ -146,7 +146,7 @@ h1, h2, h3 {
 }
 
 .laptop {
-    --button-padding: 10px;
+    --button-padding: 25px;
     --button-opacity: 0;
     width: 80vw;
     height: 45vw;
