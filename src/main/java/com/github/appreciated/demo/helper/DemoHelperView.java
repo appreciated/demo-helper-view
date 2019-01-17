@@ -2,9 +2,9 @@ package com.github.appreciated.demo.helper;
 
 import com.github.appreciated.demo.helper.view.components.layout.CssFlexLayout;
 import com.github.appreciated.demo.helper.view.devices.Device;
+import com.github.appreciated.demo.helper.view.devices.DeviceSwitchView;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
 import com.github.appreciated.demo.helper.view.entity.CssVariable;
-import com.github.appreciated.demo.helper.view.other.CssVariableView;
 import com.github.appreciated.demo.helper.view.paragraph.*;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dependency.StyleSheet;
@@ -53,7 +53,7 @@ public class DemoHelperView extends CssFlexLayout {
         return this;
     }
 
-    public DemoHelperView withDeviceParagraph(Device device, String s) {
+    public DemoHelperView withDevice(Device device, String s) {
         addParagraph(new DeviceParagraphView(device, s));
         return this;
     }
@@ -63,8 +63,8 @@ public class DemoHelperView extends CssFlexLayout {
         return this;
     }
 
-    public DemoHelperView withStylableDevice(Device content, CssVariable... cssVariables) {
-        add(new DemoParagraphView(content, new CssVariableView(cssVariables)));
+    public DemoHelperView withStylableDevice(Component content, CssVariable... cssVariables) {
+        add(new DeviceSwitchView(content).withStyleableVariables(cssVariables));
         return this;
     }
 

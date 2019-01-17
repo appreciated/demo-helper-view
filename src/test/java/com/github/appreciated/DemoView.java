@@ -37,13 +37,13 @@ public class DemoView extends VerticalLayout {
                         new PhoneView(getDeviceContent("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >"))
                 )
                 .withParagraph("I am a ParagraphView", "I can display a header and a description")
-                .withStylableDevice(new PhoneView(getDeviceContent("< I'm a StylablePhoneView I display content and my css variables can be edited beside me >")), new CssVariable("--lumo-primary-text-color"), new CssVariable("--lumo-primary-color"))
-                .withDeviceParagraph(new PhoneView(
+                .withStylableDevice(getDeviceContent("< I'm a StylablePhoneView I display content and my css variables can be edited beside me >"), new CssVariable("--lumo-primary-text-color"), new CssVariable("--lumo-primary-color"))
+                .withDevice(new PhoneView(
                                 getDeviceContent("< I belong to a PhoneView I display content inside a css rendered phone >")),
                         "Also I can show a optional message beside the PhoneView"
                 )
                 .withImage("I am a ImageParagraphView", "I can display a header, a description and an image", "images/phone.png")
-                .withStylableDevice(new TabletView(getDeviceContent("< I belong to a TabletView I display content inside a css rendered tablet >")), new CssVariable("--lumo-primary-text-color"))
+                .withStylableDevice(getDeviceContent("< I belong to a TabletView I display content inside a css rendered tablet >"), new CssVariable("--lumo-primary-text-color"))
                 .withDevice(new TabletView(getDeviceContent("< I belong to a TabletView I display content inside a css rendered tablet >")))
                 .withParagraph("I am a ParagraphView",
                         "I display a header and optionally a description. Also you can add components below the description",
