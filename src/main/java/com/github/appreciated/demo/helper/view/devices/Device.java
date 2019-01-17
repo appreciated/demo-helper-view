@@ -32,9 +32,11 @@ public class Device extends Div implements HasOrientation {
         changeTo("laptop");
     }
 
-    public void changeTo(String className) {
-        getClassNames().removeAll(Arrays.asList("phone", "tablet", "laptop"));
-        getClassNames().add(className);
+    public void changeTo(String... classNames) {
+        getClassNames().removeAll(Arrays.asList("phone", "tablet", "laptop", "landscape"));
+        for (String className : classNames) {
+            getClassNames().add(className);
+        }
     }
 
     public void withFloatingButton(Component icon, ComponentEventListener<ClickEvent<Button>> listner) {

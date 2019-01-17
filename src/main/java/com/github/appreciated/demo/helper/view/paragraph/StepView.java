@@ -1,8 +1,8 @@
 package com.github.appreciated.demo.helper.view.paragraph;
 
 import com.github.appreciated.card.RippleClickableCard;
+import com.github.appreciated.demo.helper.view.components.layout.CssFlexLayout;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
-import com.github.appreciated.demo.helper.view.layout.CssFlexLayout;
 import com.github.appreciated.demo.helper.view.other.CodeExampleView;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;

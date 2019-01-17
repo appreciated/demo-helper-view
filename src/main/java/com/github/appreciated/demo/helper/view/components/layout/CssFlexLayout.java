@@ -1,4 +1,4 @@
-package com.github.appreciated.demo.helper.view.layout;
+package com.github.appreciated.demo.helper.view.components.layout;
 
 import com.vaadin.flow.component.Component;
 

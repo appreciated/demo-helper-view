@@ -125,24 +125,24 @@ h1, h2, h3 {
 .tablet {
     --button-padding: 15px;
     --button-opacity: 1;
-    width: 53.333vw;
-    height: 40vw;
-    max-width: 24cm;
-    max-height: 17cm;
-    min-width: 12cm;
-    min-height: 8.5cm;
-    border: 4px solid black;
-    border-radius: 2vw;
-    box-shadow: var(--lumo-box-shadow-xl);
-}
-
-.tablet.landscape {
     width: 40vw;
     height: 53.333vw;
     max-width: 17cm;
     max-height: 24cm;
     min-width: 8.5cm;
     min-height: 12cm;
+    border: 4px solid black;
+    border-radius: 2vw;
+    box-shadow: var(--lumo-box-shadow-xl);
+}
+
+.tablet.landscape {
+    width: 53.333vw;
+    height: 40vw;
+    max-width: 24cm;
+    max-height: 17cm;
+    min-width: 14.8cm;
+    min-height: 10.5cm;
 }
 
 .laptop {
@@ -152,11 +152,10 @@ h1, h2, h3 {
     height: 45vw;
     max-width: 33.2cm;
     max-height: 18.7cm;
-    min-width: 16.6cm;
-    min-height: 9.35cm;
-    border: 4px solid lightgray;
+    min-width: 19.2cm;
+    min-height: 10.8cm;
+    border: 5px solid black;
     border-radius: 2vw;
-    padding: 2vw;
     box-shadow: var(--lumo-box-shadow-xl);
 }
 

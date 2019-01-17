@@ -1,9 +1,9 @@
 package com.github.appreciated.demo.helper;
 
+import com.github.appreciated.demo.helper.view.components.layout.CssFlexLayout;
 import com.github.appreciated.demo.helper.view.devices.Device;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
 import com.github.appreciated.demo.helper.view.entity.CssVariable;
-import com.github.appreciated.demo.helper.view.layout.CssFlexLayout;
 import com.github.appreciated.demo.helper.view.other.CssVariableView;
 import com.github.appreciated.demo.helper.view.paragraph.*;
 import com.vaadin.flow.component.Component;
