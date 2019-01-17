@@ -100,7 +100,6 @@ h1, h2, h3 {
 
 .phone {
     --button-padding: 9px;
-    --button-opacity: 1;
     width: 15vw;
     height: 30vw;
     max-width: 7cm;
@@ -124,7 +123,6 @@ h1, h2, h3 {
 
 .tablet {
     --button-padding: 15px;
-    --button-opacity: 1;
     width: 40vw;
     height: 53.333vw;
     max-width: 17cm;
@@ -147,7 +145,6 @@ h1, h2, h3 {
 
 .laptop {
     --button-padding: 25px;
-    --button-opacity: 0;
     width: 80vw;
     height: 45vw;
     max-width: 33.2cm;
@@ -170,7 +167,6 @@ h1, h2, h3 {
 
     .laptop {
         border-radius: 1cm;
-        padding: 1cm;
     }
 }
 

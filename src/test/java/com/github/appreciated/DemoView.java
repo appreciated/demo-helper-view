@@ -11,6 +11,7 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.page.BodySize;
+import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.router.Route;
 
 @Route("")
@@ -19,6 +20,7 @@ import com.vaadin.flow.router.Route;
 public class DemoView extends VerticalLayout {
 
     public DemoView() {
+        add();
         DemoHelperView demoView = new DemoHelperView()
                 .withVerticalHeader("VerticalHeaderView",
                         "I can display a header and an optionally an image or a subtitle",
@@ -29,7 +31,7 @@ public class DemoView extends VerticalLayout {
                         "images/demo-helper-logo.png",
                         new Button("Click Me!")
                 )
-                .withComponent(new DeviceSwitchView(getDeviceContent("Yay")))
+                .withComponent(new DeviceSwitchView(getDeviceContent("Yay")).withStyleableVariables(new CssVariable("--lumo-primary-text-color"), new CssVariable("--lumo-primary-color")))
                 .withDevices(
                         new TabletView(getDeviceContent("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >")),
                         new PhoneView(getDeviceContent("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >"))
@@ -81,20 +83,27 @@ public class DemoView extends VerticalLayout {
                                 "        new VerticalLayout(new Button(\"Handheld\"))\n" +
                                 ");", "java", "Java")
                 );
+
         add(demoView);
+
         setSizeFull();
+
         setPadding(false);
+
         setMargin(false);
+
     }
 
     VerticalLayout getDeviceContent(String text) {
         Label label = new Label(text);
         label.setSizeFull();
-        VerticalLayout contentHolder = new VerticalLayout(label);
-        contentHolder.add(new Button("Test"));
-        contentHolder.setSizeFull();
-        contentHolder.getElement().getStyle().set("background", "white");
-        return contentHolder;
+        VerticalLayout content = new VerticalLayout(label);
+        RadioButtonGroup<String> group = new RadioButtonGroup<String>();
+        group.setItems("Test");
+        content.add(new Button("Test"), group);
+        content.setSizeFull();
+        content.getElement().getStyle().set("background", "white");
+        return content;
     }
 
 }

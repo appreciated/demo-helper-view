@@ -11,7 +11,7 @@ public class DevicesParagraphView extends Div {
         add((Component) smallDevice);
         getElement().getStyle()
                 .set("display", "flex")
-                .set("justify-content", "space-around")
+                .set("justify-content", "space-evenly")
                 .set("align-items", "flex-end")
                 .set("flex-wrap", "wrap");
         setWidth("100%");

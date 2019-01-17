@@ -7,11 +7,9 @@ import com.github.appreciated.demo.helper.view.entity.CssVariable;
 import com.github.appreciated.demo.helper.view.other.CssVariableView;
 import com.github.appreciated.demo.helper.view.paragraph.*;
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.dependency.StyleSheet;
 
 @StyleSheet("com/github/appreciated/demo-helper/demo-helper.css")
-@HtmlImport("com/github/appreciated/demo-helper/dialog-full-size.html")
 public class DemoHelperView extends CssFlexLayout {
 
     private int counter = 1;

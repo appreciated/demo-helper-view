@@ -36,6 +36,7 @@ public class StepView extends CssFlexLayout {
         setFlexWrap(FlexWrap.WRAP);
         setJustifyContentMode(JustifyContentMode.CENTER);
         setBoxSizing(BoxSizing.BORDER_BOX);
+        getStyle().set("padding", "var(--lumo-space-s)");
     }
 
     /**
