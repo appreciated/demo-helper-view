@@ -10,22 +10,17 @@ import com.github.appreciated.demo.helper.view.entity.CssVariable;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.page.BodySize;
 import com.vaadin.flow.component.radiobutton.RadioButtonGroup;
 import com.vaadin.flow.router.Route;
 
 @Route("")
-@BodySize(height = "100%", width = "100%")
 //@Theme(value = Lumo.class, variant = Lumo.DARK)
-public class DemoView extends VerticalLayout {
+public class DemoView extends DemoHelperView {
 
     public DemoView() {
-        add();
-        DemoHelperView demoView = new DemoHelperView()
-                .withVerticalHeader("VerticalHeaderView",
-                        "I can display a header and an optionally an image or a subtitle",
-                        "images/demo-helper-logo.png"
-                )
+        withVerticalHeader("VerticalHeaderView",
+                "I can display a header and an optionally an image or a subtitle",
+                "images/demo-helper-logo.png")
                 .withHorizontalHeader("HorizontalHeaderView",
                         "I can display a header and optionally an image or I am suited for longer description texts. Additionally I may contain Components which are display beneath the description that can be used to display f.e. links",
                         "images/demo-helper-logo.png",
@@ -84,15 +79,6 @@ public class DemoView extends VerticalLayout {
                                 "        new VerticalLayout(new Button(\"Handheld\"))\n" +
                                 ");", "java", "Java")
                 );
-
-        add(demoView);
-
-        setSizeFull();
-
-        setPadding(false);
-
-        setMargin(false);
-
     }
 
     VerticalLayout getDeviceContent(String text) {

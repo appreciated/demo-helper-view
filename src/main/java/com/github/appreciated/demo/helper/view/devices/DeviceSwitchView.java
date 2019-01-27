@@ -59,7 +59,7 @@ public class DeviceSwitchView extends Div implements HasOrientation {
     public DeviceSwitchView withStyleableVariables(CssVariable... variables) {
         CalculatedColorHelper helper = new CalculatedColorHelper();
         IronCollapse collapse = new IronCollapse(new CssVariableView(helper, variables));
-        device.withFloatingButton(VaadinIcon.PAINTBRUSH.create(), event -> collapse.toggle())
+        device.withButton(VaadinIcon.PAINTBRUSH.create(), event -> collapse.toggle())
                 .withCalculatedColorHelper(helper);
         contentHolder.add(collapse);
         collapse.setWidth("500px");

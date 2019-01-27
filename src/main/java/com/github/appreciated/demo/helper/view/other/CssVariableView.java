@@ -8,18 +8,23 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.binder.Binder;
 
 import java.util.Optional;
 
-public class CssVariableView extends HorizontalLayout {
-    private final Button button = new Button(VaadinIcon.DOWNLOAD.create());
+public class CssVariableView extends VerticalLayout {
+    private final Button button = new Button("Download", VaadinIcon.DOWNLOAD.create());
     private Grid<CssVariable> grid = new Grid<>();
 
     private Optional<CssVariableChangeListener> listener = Optional.empty();
     private CssVariable[] variables;
     private CalculatedColorHelper helper;
+
+    public CssVariableView(CalculatedColorHelper helper, CssVariable... variables) {
+        this(variables);
+        setCalculatedColorHelper(helper);
+    }
 
     public CssVariableView(CssVariable... variables) {
         getStyle()
@@ -32,7 +37,7 @@ public class CssVariableView extends HorizontalLayout {
         grid.setThemeName(GridVariant.LUMO_NO_BORDER.getVariantName());
         grid.setThemeName(GridVariant.LUMO_NO_ROW_BORDERS.getVariantName());
         grid.setThemeName(GridVariant.LUMO_ROW_STRIPES.getVariantName());
-        grid.setWidth("400px");
+        grid.setWidth("100%");
         grid.setItems(variables);
         grid.addColumn(CssVariable::getName).setHeader("Variable");
         grid.addComponentColumn(cssVariable -> {
@@ -48,38 +53,22 @@ public class CssVariableView extends HorizontalLayout {
         }).setHeader("Value");
 
         button.setVisible(false);
-        button.getStyle()
-                .set("background", "var(--lumo-primary-color)")
-                .set("color", "var(--lumo-tint)")
-                .set("border-radius", "100%")
-                .set("box-shadow", "var(--lumo-box-shadow-m)")
-                .set("width", "55px")
-                .set("height", "55px")
-                .set("margin", "0");
-
-        button.getStyle()
-                .set("position", "absolute")
-                .set("right", "15px")
-                .set("bottom", "15px");
         button.addClickListener(buttonClickEvent -> {
 
         });
         grid.getStyle().set("border", "none");
         add(grid, button);
         getStyle().set("max-width", "800px").set("margin-top", "50px");
-    }
-
-    public CssVariableView(CalculatedColorHelper helper, CssVariable... variables) {
-        this(variables);
-        setCalculatedColorHelper(helper);
-    }
-
-    public void setValueChangeListener(CssVariableChangeListener listener) {
-        this.listener = Optional.ofNullable(listener);
+        setMargin(false);
+        setPadding(false);
     }
 
     public void setCalculatedColorHelper(CalculatedColorHelper helper) {
         this.helper = helper;
         setValueChangeListener((variable) -> helper.setCalculatedColor(variable.getName(), variable.getValue()));
+    }
+
+    public void setValueChangeListener(CssVariableChangeListener listener) {
+        this.listener = Optional.ofNullable(listener);
     }
 }

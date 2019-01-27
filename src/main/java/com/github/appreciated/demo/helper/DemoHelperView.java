@@ -1,6 +1,6 @@
 package com.github.appreciated.demo.helper;
 
-import com.github.appreciated.demo.helper.view.components.layout.CssFlexLayout;
+import com.github.appreciated.demo.helper.view.components.layout.SinglePageLayout;
 import com.github.appreciated.demo.helper.view.devices.Device;
 import com.github.appreciated.demo.helper.view.devices.DeviceSwitchView;
 import com.github.appreciated.demo.helper.view.devices.DeviceType;
@@ -10,34 +10,43 @@ import com.github.appreciated.demo.helper.view.paragraph.*;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dependency.StyleSheet;
 
+import java.util.Arrays;
+
 @StyleSheet("com/github/appreciated/demo-helper/demo-helper.css")
-public class DemoHelperView extends CssFlexLayout {
+public class DemoHelperView extends SinglePageLayout {
 
     private int counter = 1;
 
     public DemoHelperView() {
-        setMargin(false);
-        setPadding(false);
-        setSpacing(true);
-        setAlignItems(Alignment.CENTER);
-        setFlexDirection(FlexDirection.COLUMN);
         getElement().setAttribute("theme", "spacing-xl");
-        getElement().getStyle().set("--flex-layout-space", "3rem").set("flex-shrink", "0");
-        setSizeUndefined();
-        setWidth("100%");
-    }
-
-    public DemoHelperView withVerticalHeader(String header, String description, String image) {
-        addParagraph(new VerticalHeaderView(header, description, image));
-        return this;
+        getElement().getStyle().set("--flex-layout-space", "3rem");
     }
 
     public DemoHelperView withVerticalHeader(String header) {
         return withVerticalHeader(header, null, null);
     }
 
+    public DemoHelperView withVerticalHeader(String header, String description, String image) {
+        addHeader(new VerticalHeaderView(header, description, image));
+        return this;
+    }
+
+    private void addHeader(Component component) {
+        Component page = getComponentAsPage(component);
+        add(page);
+        page.getElement().getClassList().add("content-wrapper-small");
+    }
+
     public DemoHelperView withHorizontalHeader(String header, String description) {
         return withHorizontalHeader(header, description, null);
+    }
+
+    @Override
+    public void add(Component... components) {
+        super.add(components);
+        Arrays.stream(components).forEach(component -> {
+            component.getElement().getStyle().set("flex-shrink", "0");
+        });
     }
 
     public DemoHelperView withHorizontalHeader(String header) {
@@ -45,17 +54,17 @@ public class DemoHelperView extends CssFlexLayout {
     }
 
     public DemoHelperView withHorizontalHeader(String header, String description, String image) {
-        addParagraph(new HorizontalHeaderParagraphView(header, description, image));
-        return this;
-    }
-
-    public DemoHelperView withHorizontalHeader(String header, String description, String image, Component... components) {
-        addParagraph(new HorizontalHeaderParagraphView(header, description, image, components));
+        addHeader(new HorizontalHeaderParagraphView(header, description, image));
         return this;
     }
 
     public DemoHelperView withDevice(Device device, String s) {
         addParagraph(new DeviceParagraphView(device, s));
+        return this;
+    }
+
+    public DemoHelperView withHorizontalHeader(String header, String description, String image, Component... components) {
+        addHeader(new HorizontalHeaderParagraphView(header, description, image, components));
         return this;
     }
 
@@ -82,6 +91,11 @@ public class DemoHelperView extends CssFlexLayout {
     public DemoHelperView withDevices(Device device1, Device device2) {
         addLargeParagraph(new DevicesParagraphView(device1, device2));
         return this;
+    }
+
+    private void addParagraph(Component component) {
+        add(component);
+        component.getElement().getClassList().add("content-wrapper-small");
     }
 
     public DemoHelperView withParagraph(String header) {
@@ -114,16 +128,6 @@ public class DemoHelperView extends CssFlexLayout {
         return this;
     }
 
-    private void addParagraph(Component component) {
-        add(component);
-        component.getElement().getClassList().add("content-wrapper-small");
-    }
-
-    private void addLargeParagraph(Component component) {
-        add(component);
-        component.getElement().getClassList().add("content-wrapper");
-    }
-
     public DemoHelperView withCounterStep(int c) {
         counter = c;
         return this;
@@ -137,5 +141,10 @@ public class DemoHelperView extends CssFlexLayout {
     public DemoHelperView withComponent(Component component) {
         add(component);
         return this;
+    }
+
+    private void addLargeParagraph(Component component) {
+        add(component);
+        component.getElement().getClassList().add("content-wrapper");
     }
 }

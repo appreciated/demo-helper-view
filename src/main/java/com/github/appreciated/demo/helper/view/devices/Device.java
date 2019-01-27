@@ -10,19 +10,26 @@ import com.vaadin.flow.component.html.Div;
 import java.util.Arrays;
 
 public class Device extends Div implements HasOrientation {
+    public Device(Component component) {
+        this();
+        add(component);
+    }
+
     public Device() {
         getClassNames().add("device");
         changeToPhone();
         getStyle().set("position", "relative");
     }
 
-    public Device(Component component) {
-        this();
-        add(component);
-    }
-
     public void changeToPhone() {
         changeTo("phone");
+    }
+
+    public void changeTo(String... classNames) {
+        getClassNames().removeAll(Arrays.asList("phone", "tablet", "laptop", "landscape"));
+        for (String className : classNames) {
+            getClassNames().add(className);
+        }
     }
 
     public void changeToTablet() {
@@ -33,14 +40,7 @@ public class Device extends Div implements HasOrientation {
         changeTo("laptop");
     }
 
-    public void changeTo(String... classNames) {
-        getClassNames().removeAll(Arrays.asList("phone", "tablet", "laptop", "landscape"));
-        for (String className : classNames) {
-            getClassNames().add(className);
-        }
-    }
-
-    public Device withFloatingButton(Component icon, ComponentEventListener<ClickEvent<Button>> listner) {
+    public Device withButton(Component icon, ComponentEventListener<ClickEvent<Button>> listner) {
         Button button = new Button(icon, listner);
         button.getStyle()
                 .set("position", "absolute")
