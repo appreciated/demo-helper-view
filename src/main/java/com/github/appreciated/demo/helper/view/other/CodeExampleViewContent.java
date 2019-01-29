@@ -23,7 +23,7 @@ public class CodeExampleViewContent extends VerticalLayout {
     }
 
     public CodeExampleViewContent(String code, String lang) {
-        getStyle().set("position", "relative");
+        getStyle().set("position", "relative").set("overflow", "auto");
         stepCode = new PrismHighlighter(code, lang);
         add(stepCode);
         if (lang != null) {
