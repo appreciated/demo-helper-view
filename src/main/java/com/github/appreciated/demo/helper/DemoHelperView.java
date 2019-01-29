@@ -32,13 +32,30 @@ public class DemoHelperView extends SinglePageLayout {
     }
 
     private void addHeader(Component component) {
-        Component page = getComponentAsPage(component);
-        add(page);
-        page.getElement().getClassList().add("content-wrapper-small");
+        addFullHeightComponent(component).getElement().getClassList().add("content-wrapper-small");
     }
 
     public DemoHelperView withHorizontalHeader(String header, String description) {
         return withHorizontalHeader(header, description, null);
+    }
+
+    public DemoHelperView withHorizontalHeader(String header, String description, String image) {
+        addHeader(new HorizontalHeaderParagraphView(header, description, image));
+        return this;
+    }
+
+    public DemoHelperView withHorizontalHeader(String header) {
+        return withHorizontalHeader(header, null, null);
+    }
+
+    public DemoHelperView withDevice(Device device, String s) {
+        addParagraph(new DeviceParagraphView(device, s));
+        return this;
+    }
+
+    private void addParagraph(Component component) {
+        add(component);
+        component.getElement().getClassList().add("content-wrapper-small");
     }
 
     @Override
@@ -47,20 +64,6 @@ public class DemoHelperView extends SinglePageLayout {
         Arrays.stream(components).forEach(component -> {
             component.getElement().getStyle().set("flex-shrink", "0");
         });
-    }
-
-    public DemoHelperView withHorizontalHeader(String header) {
-        return withHorizontalHeader(header, null, null);
-    }
-
-    public DemoHelperView withHorizontalHeader(String header, String description, String image) {
-        addHeader(new HorizontalHeaderParagraphView(header, description, image));
-        return this;
-    }
-
-    public DemoHelperView withDevice(Device device, String s) {
-        addParagraph(new DeviceParagraphView(device, s));
-        return this;
     }
 
     public DemoHelperView withHorizontalHeader(String header, String description, String image, Component... components) {
@@ -93,9 +96,9 @@ public class DemoHelperView extends SinglePageLayout {
         return this;
     }
 
-    private void addParagraph(Component component) {
+    private void addLargeParagraph(Component component) {
         add(component);
-        component.getElement().getClassList().add("content-wrapper-small");
+        component.getElement().getClassList().add("content-wrapper");
     }
 
     public DemoHelperView withParagraph(String header) {
@@ -141,10 +144,5 @@ public class DemoHelperView extends SinglePageLayout {
     public DemoHelperView withComponent(Component component) {
         add(component);
         return this;
-    }
-
-    private void addLargeParagraph(Component component) {
-        add(component);
-        component.getElement().getClassList().add("content-wrapper");
     }
 }

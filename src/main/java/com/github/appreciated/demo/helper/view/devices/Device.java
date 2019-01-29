@@ -9,7 +9,7 @@ import com.vaadin.flow.component.html.Div;
 
 import java.util.Arrays;
 
-public class Device extends Div implements HasOrientation {
+public class Device<T> extends Div implements HasOrientation<T> {
     public Device(Component component) {
         this();
         add(component);

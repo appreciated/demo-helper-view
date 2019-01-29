@@ -17,28 +17,6 @@ public class StepView extends CssFlexLayout {
     HorizontalLayout descriptionHolder = new HorizontalLayout(new HorizontalLayout(stepNumber), new VerticalLayout(stepHeader, stepDescription));
     private VerticalLayout codeExampleHolder = new VerticalLayout();
 
-    public StepView() {
-        add(descriptionHolder, codeExampleHolder);
-        stepNumber.getElement().getClassList().add("step-number");
-        stepNumber.setWidth("55px");
-        stepNumber.setHeight("55px");
-
-        stepHeader.getElement().getClassList().add("step-content-holder");
-        descriptionHolder.setWidth("100%");
-        descriptionHolder.getStyle().set("max-width", "610px");
-        codeExampleHolder.setWidth("100%");
-        codeExampleHolder.getStyle().set("max-width", "610px").set("flex-shrink", "0").set("user-select", "none");
-        setWidth("100%");
-        setSpacing(false);
-        setPadding(true);
-        codeExampleHolder.setMargin(false);
-        codeExampleHolder.setPadding(false);
-        setFlexWrap(FlexWrap.WRAP);
-        setJustifyContentMode(JustifyContentMode.CENTER);
-        setBoxSizing(BoxSizing.BORDER_BOX);
-        getStyle().set("padding", "var(--lumo-space-s)");
-    }
-
     /**
      * @param stepNumber
      * @param title
@@ -59,6 +37,32 @@ public class StepView extends CssFlexLayout {
         });
     }
 
+    public StepView() {
+        add(descriptionHolder, codeExampleHolder);
+        stepNumber.getElement().getClassList().add("step-number");
+        stepNumber.setWidth("55px");
+        stepNumber.setHeight("55px");
+
+        stepHeader.getElement().getClassList().add("step-content-holder");
+        descriptionHolder.setWidth("100%");
+        descriptionHolder.getStyle().set("max-width", "790px").set("flex", "1 1 600px");
+        codeExampleHolder.setWidth("100%");
+        codeExampleHolder.getStyle().set("max-width", "790px").set("flex", "1 1 600px").set("user-select", "none");
+        setWidth("100%");
+        setSpacing(false);
+        setPadding(true);
+        codeExampleHolder.setMargin(false);
+        codeExampleHolder.setPadding(false);
+        setFlexWrap(FlexWrap.WRAP);
+        setJustifyContentMode(JustifyContentMode.CENTER);
+        setBoxSizing(BoxSizing.BORDER_BOX);
+        getStyle().set("padding", "var(--lumo-space-s)");
+    }
+
+    public VerticalLayout getCodeExampleHolder() {
+        return codeExampleHolder;
+    }
+
     public Label getStepNumber() {
         return stepNumber;
     }
@@ -69,10 +73,6 @@ public class StepView extends CssFlexLayout {
 
     public Label getStepDescription() {
         return stepDescription;
-    }
-
-    public VerticalLayout getCodeExampleHolder() {
-        return codeExampleHolder;
     }
 
     private int countLines(String str) {

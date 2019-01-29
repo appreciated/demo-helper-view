@@ -1,10 +1,7 @@
 package com.github.appreciated;
 
 import com.github.appreciated.demo.helper.DemoHelperView;
-import com.github.appreciated.demo.helper.view.devices.DeviceType;
-import com.github.appreciated.demo.helper.view.devices.LaptopView;
-import com.github.appreciated.demo.helper.view.devices.PhoneView;
-import com.github.appreciated.demo.helper.view.devices.TabletView;
+import com.github.appreciated.demo.helper.view.devices.*;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
 import com.github.appreciated.demo.helper.view.entity.CssVariable;
 import com.vaadin.flow.component.button.Button;
@@ -29,7 +26,7 @@ public class DemoView extends DemoHelperView {
                 .withStylableDevice(getDeviceContent("Yay"), new CssVariable("--lumo-primary-text-color"), new CssVariable("--lumo-primary-color"))
                 .withStylableDevice(getDeviceContent("Yay"), DeviceType.TABLET_LANDSCAPE)
                 .withDevices(
-                        new TabletView(getDeviceContent("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >")),
+                        new TabletView(getDeviceContent("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >")).withOrientation(Orientation.LANDSCAPE),
                         new PhoneView(getDeviceContent("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >"))
                 )
                 .withParagraph("I am a ParagraphView", "I can display a header and a description")

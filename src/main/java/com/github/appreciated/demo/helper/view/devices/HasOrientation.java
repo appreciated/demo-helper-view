@@ -5,7 +5,11 @@ import com.vaadin.flow.component.HasStyle;
 import static com.github.appreciated.demo.helper.view.devices.Orientation.LANDSCAPE;
 import static com.github.appreciated.demo.helper.view.devices.Orientation.PORTRAIT;
 
-public interface HasOrientation extends HasStyle {
+public interface HasOrientation<T> extends HasStyle {
+    default void toggleOrientation() {
+        setOrientation(getOrientation() == Orientation.LANDSCAPE ? PORTRAIT : LANDSCAPE);
+    }
+
     default Orientation getOrientation() {
         return getClassNames().contains(Orientation.LANDSCAPE.getCssClassName()) ? LANDSCAPE : PORTRAIT;
     }
@@ -18,7 +22,8 @@ public interface HasOrientation extends HasStyle {
         }
     }
 
-    default void toggleOrientation() {
-        setOrientation(getOrientation() == Orientation.LANDSCAPE ? PORTRAIT : LANDSCAPE);
+    default T withOrientation(Orientation orientation) {
+        setOrientation(orientation);
+        return (T) this;
     }
 }

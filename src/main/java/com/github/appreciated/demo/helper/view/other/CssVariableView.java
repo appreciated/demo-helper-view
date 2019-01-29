@@ -58,7 +58,7 @@ public class CssVariableView extends VerticalLayout {
         });
         grid.getStyle().set("border", "none");
         add(grid, button);
-        getStyle().set("max-width", "800px").set("margin-top", "50px");
+        getStyle().set("max-width", "790px").set("margin-top", "50px");
         setMargin(false);
         setPadding(false);
     }

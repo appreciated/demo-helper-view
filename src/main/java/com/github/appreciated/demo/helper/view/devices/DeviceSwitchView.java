@@ -36,9 +36,12 @@ public class DeviceSwitchView extends Div implements HasOrientation {
         tabs = new Tabs();
         Tab tab1 = new Tab(VaadinIcon.MOBILE.create());
         Tab tab2 = new Tab(getRotatedIcon(VaadinIcon.MOBILE, 90));
+        tab2.addClassName("size-s");
         Tab tab3 = new Tab(getRotatedIcon(VaadinIcon.TABLET, 90));
         Tab tab4 = new Tab(VaadinIcon.TABLET.create());
+        tab4.addClassName("size-m");
         Tab tab5 = new Tab(VaadinIcon.LAPTOP.create());
+        tab5.addClassName("size-l");
         deviceMap.put(tab1, DeviceType.PHONE);
         deviceMap.put(tab2, DeviceType.PHONE_LANDSCAPE);
         deviceMap.put(tab3, DeviceType.TABLET);
@@ -56,6 +59,12 @@ public class DeviceSwitchView extends Div implements HasOrientation {
         setWidth("100%");
     }
 
+    Icon getRotatedIcon(VaadinIcon icon, int degree) {
+        Icon i = icon.create();
+        i.getStyle().set("transform", "rotate(" + degree + "deg)");
+        return i;
+    }
+
     public DeviceSwitchView withStyleableVariables(CssVariable... variables) {
         CalculatedColorHelper helper = new CalculatedColorHelper();
         IronCollapse collapse = new IronCollapse(new CssVariableView(helper, variables));
@@ -64,12 +73,6 @@ public class DeviceSwitchView extends Div implements HasOrientation {
         contentHolder.add(collapse);
         collapse.setWidth("500px");
         return this;
-    }
-
-    Icon getRotatedIcon(VaadinIcon icon, int degree) {
-        Icon i = icon.create();
-        i.getStyle().set("transform", "rotate(" + degree + "deg)");
-        return i;
     }
 
     public void setDeviceType(DeviceType type) {
