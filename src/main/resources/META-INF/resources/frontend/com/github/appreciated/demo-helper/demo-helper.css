@@ -1,11 +1,12 @@
-:root {
+html {
     --demo-helper-view-background-color: var(--lumo-base-color);
     --demo-helper-view-device-background-color: #171717;
     --demo-helper-view-background-text-color: var(--lumo-font-color);
     --demo-helper-view-accent-color: var(--lumo-primary-color);
     --demo-helper-view-background-accent-contrast-color: var(--lumo-primary-contrast-color);
     --demo-helper-view-border-radius: 3px;
-
+    --demo-helper-box-shadow-small: 0px 30px 60px -15px rgba(0, 0, 0, 0.7);
+    --demo-helper-box-shadow: 0px 80px 80px -60px rgba(0, 0, 0, 0.7);
     --demo-helper-phone-size: 0.3;
     --demo-helper-tablet-size: 0.3;
     --demo-helper-laptop-size: 0.3;
@@ -109,7 +110,7 @@ h1, h2, h3 {
     border: 4px solid black;
     border-radius: 1.5vw;
     background: #ffffff;
-    box-shadow: var(--lumo-box-shadow-xl);
+    box-shadow: var(--demo-helper-box-shadow-small);
 }
 
 .phone.landscape {
@@ -131,7 +132,7 @@ h1, h2, h3 {
     min-height: 14.11cm;
     border: 4px solid black;
     border-radius: 2vw;
-    box-shadow: var(--lumo-box-shadow-xl);
+    box-shadow: var(--demo-helper-box-shadow);
 }
 
 .tablet.landscape {
@@ -153,7 +154,7 @@ h1, h2, h3 {
     min-height: 10.8cm;
     border: 5px solid black;
     border-radius: 2vw;
-    box-shadow: var(--lumo-box-shadow-xl);
+    box-shadow: var(--demo-helper-box-shadow);
 }
 
 @media screen and (min-width: 2000px) {
