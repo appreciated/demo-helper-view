@@ -30,7 +30,7 @@ public class DeviceSwitchView extends Div implements HasOrientation {
         deviceMap = new HashMap<>();
         getClassNames().add("device-wrapper");
         device = new Device(content);
-        device.getStyle().set("margin-left", "104px");
+        device.getStyle().set("margin-left", "calc(104px + 1em)");
 
         actions.setWidth("undefined");
         tabs = new Tabs();
