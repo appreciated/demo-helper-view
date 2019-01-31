@@ -103,6 +103,11 @@
             <artifactId>paper-color</artifactId>
             <version>0.7</version>
         </dependency>
+        <dependency>
+            <groupId>org.vaadin.addons</groupId>
+            <artifactId>paper-toggle-button</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

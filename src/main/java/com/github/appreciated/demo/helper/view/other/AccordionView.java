@@ -43,8 +43,7 @@ public class AccordionView extends Composite<VerticalLayout> {
         wrapper.getStyle()
                 .set("box-shadow", shadows[getContent().getComponentCount()])
                 .set("border-bottom-right-radius", "20px")
-                .set("border-bottom-left-radius", "20px")
-                .set("background", "white");
+                .set("border-bottom-left-radius", "20px");
         if (getContent().getComponentCount() > 0) {
             wrapper.getStyle()
                     .set("margin-top", "-20px")

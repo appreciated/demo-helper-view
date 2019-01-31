@@ -23,7 +23,8 @@ public class DemoView extends DemoHelperView {
                         "images/demo-helper-logo.png",
                         new Button("Click Me!")
                 )
-                .withStylableDevice(getDeviceContent("Yay"), new CssVariable("--lumo-primary-text-color"), new CssVariable("--lumo-primary-color"))
+                .withStylableDevice(getDeviceContent("< I am a stylable device, meaning that you can edit the css variables of this view by clicking on the brush button below) >"), new CssVariable("--lumo-primary-text-color"), new CssVariable("--lumo-primary-color"))
+                .withThemeableAndStylableDevice(getDeviceContent("< I am also a stylable device as above and also themeable meaning that the theme (Lumo.Dark and Lumo.Light) can be switched between by clicking on the switch above) >"), new CssVariable("--lumo-primary-text-color"), new CssVariable("--lumo-primary-color"))
                 .withStylableDevice(getDeviceContent("Yay"), DeviceType.TABLET_LANDSCAPE)
                 .withDevices(
                         new TabletView(getDeviceContent("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >")).withOrientation(Orientation.LANDSCAPE),
@@ -86,7 +87,6 @@ public class DemoView extends DemoHelperView {
         group.setItems("Test");
         content.add(new Button("Test"), group);
         content.setSizeFull();
-        content.getElement().getStyle().set("background", "white");
         return content;
     }
 

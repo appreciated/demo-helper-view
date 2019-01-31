@@ -92,11 +92,10 @@ h1, h2, h3 {
     align-self: center;
 }
 
-
 .device {
-    transition: all 0.5s;
+    transition: all 0.5s, color 0s;
     overflow: hidden;
-    background: #808080;
+    background: var(--lumo-base-color);
 }
 
 .phone {
@@ -109,7 +108,6 @@ h1, h2, h3 {
     min-height: 12cm;
     border: 4px solid black;
     border-radius: 1.5vw;
-    background: #ffffff;
     box-shadow: var(--demo-helper-box-shadow-small);
 }
 
@@ -168,6 +166,30 @@ h1, h2, h3 {
 
     .laptop {
         border-radius: 1cm;
+    }
+}
+
+.ripple-animation-dark:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    border-radius: 50%;
+    animation: ripples 0.5s;
+    transform: scale(0);
+    background: var(--lumo-base-color);
+}
+
+@keyframes ripples {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
     }
 }
 

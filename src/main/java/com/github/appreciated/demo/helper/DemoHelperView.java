@@ -6,6 +6,7 @@ import com.github.appreciated.demo.helper.view.devices.DeviceSwitchView;
 import com.github.appreciated.demo.helper.view.devices.DeviceType;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
 import com.github.appreciated.demo.helper.view.entity.CssVariable;
+import com.github.appreciated.demo.helper.view.other.ThemeSwitchView;
 import com.github.appreciated.demo.helper.view.paragraph.*;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.dependency.StyleSheet;
@@ -77,8 +78,7 @@ public class DemoHelperView extends SinglePageLayout {
     }
 
     public DemoHelperView withStylableDevice(Component content, CssVariable... cssVariables) {
-        withStylableDevice(content, DeviceType.PHONE, cssVariables);
-        return this;
+        return withStylableDevice(content, DeviceType.PHONE, cssVariables);
     }
 
     public DemoHelperView withStylableDevice(Component content, DeviceType type, CssVariable... cssVariables) {
@@ -88,6 +88,20 @@ public class DemoHelperView extends SinglePageLayout {
         }
         view.setDeviceType(type);
         add(view);
+        return this;
+    }
+
+    public DemoHelperView withThemeableAndStylableDevice(Component content, CssVariable... cssVariables) {
+        return withThemeableAndStylableDevice(content, DeviceType.PHONE, cssVariables);
+    }
+
+    public DemoHelperView withThemeableAndStylableDevice(Component content, DeviceType type, CssVariable... cssVariables) {
+        DeviceSwitchView view = new DeviceSwitchView(content);
+        if (cssVariables.length > 0) {
+            view.withStyleableVariables(cssVariables);
+        }
+        view.setDeviceType(type);
+        add(new ThemeSwitchView(view));
         return this;
     }
 
