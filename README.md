@@ -4,7 +4,7 @@ demo-helper is a UI component add-on for Vaadin 12 to assist you in creating vis
 
 ## Online demo
 
-[Try the add-on demo](https://vaadin-demo-helper-addon.herokuapp.com/)
+[Try the add-on demo](https://appreciated-collection.herokuapp.com/demo-helper/)
 
 ## Download release
 
