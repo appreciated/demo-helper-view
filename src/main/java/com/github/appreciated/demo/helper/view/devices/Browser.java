@@ -22,7 +22,7 @@ public class Browser extends VerticalLayout {
         browserWindow = new IFrame(route);
         browserWindow.setSizeFull();
         navigationBar = new TextField();
-        navigationBar.setWidth("100%");
+        navigationBar.getStyle().set("flex", "1 1");
         navigationBar.setValue(UI.getCurrent().getRouter().getUrl(route));
         navigationBar.addKeyPressListener(Key.ENTER, event -> browserWindow.setSrc(navigationBar.getValue()));
         HorizontalLayout wrapper = new HorizontalLayout(
@@ -31,6 +31,8 @@ public class Browser extends VerticalLayout {
                 new Button(VaadinIcon.REFRESH.create(), event -> browserWindow.reload()),
                 navigationBar
         );
+        wrapper.getChildren().forEach(component -> component.getElement().getStyle().set("flex-shrink", "0"));
+        wrapper.setAlignItems(Alignment.CENTER);
         wrapper.setWidth("100%");
         add(wrapper);
         add(browserWindow);
