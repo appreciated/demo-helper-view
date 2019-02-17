@@ -155,7 +155,7 @@ public class DemoHelperView extends SinglePageLayout {
         return this;
     }
 
-    public DemoHelperView withComponent(Component component) {
+    public DemoHelperView with(Component component) {
         add(component);
         return this;
     }

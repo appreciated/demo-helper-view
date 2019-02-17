@@ -1,9 +1,7 @@
 package com.github.appreciated;
 
 import com.github.appreciated.demo.helper.DemoHelperView;
-import com.github.appreciated.demo.helper.view.devices.*;
-import com.github.appreciated.demo.helper.view.entity.CodeExample;
-import com.github.appreciated.demo.helper.view.entity.CssVariable;
+import com.github.appreciated.demo.helper.view.devices.Browser;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -15,7 +13,17 @@ import com.vaadin.flow.router.Route;
 public class DemoView extends DemoHelperView {
 
     public DemoView() {
-        withVerticalHeader("VerticalHeaderView",
+
+        Browser frame = new Browser(OtherContent.class);
+        frame.setWidth("500px");
+        frame.setHeight("500px");
+        this.getStyle().set("--lumo-primary-color", "hsl(122, 90%, 52%)");
+        this.getStyle().set("--lumo-primary-text-color", "hsl(122, 90%, 52%)");
+        frame.setOnLoadListener(event -> frame.setInnerStyle(this.getStyle()));
+
+        with(frame);
+
+  /*      withVerticalHeader("VerticalHeaderView",
                 "I can display a header and an optionally an image or a subtitle",
                 "images/demo-helper-logo.png")
                 .withHorizontalHeader("HorizontalHeaderView",
@@ -53,31 +61,70 @@ public class DemoView extends DemoHelperView {
                                 "\t<groupId>com.github.appreciated</groupId>\n" +
                                 "\t<artifactId>demo-helper</artifactId>\n" +
                                 "\t<version>0.8.2</version>\n" +
-                                "</dependency>", "xml", "Maven")
+                                "</dependency>", Language.markup, "Maven")
                 )
                 .withStep("I am also a StepView",
                         "And I contain a single code example",
-                        new CodeExample("clean install", "xml", "Maven")
+                        new CodeExample("clean install", Language.markup, "Maven")
                 )
-                .withStep("I am also a StepView", "And I contain multiple code examples",
-                        new CodeExample("// Initialize our new UI component\n" +
-                                "DemoView demoView = new DemoView(\"DemoView Demo\", \n" +
-                                "        \"https://github.com/appreciated/vaadin-app-layout\", \n" +
-                                "        new VerticalLayout(new Button(\"Tablet\")), \n" +
-                                "        new VerticalLayout(new Button(\"Handheld\"))\n" +
-                                ");", "java", "Java"),
-                        new CodeExample("DemoView demoView = new DemoView(\"DemoView Demo\", \n" +
-                                "        \"https://github.com/appreciated/vaadin-app-layout\", \n" +
-                                "        new VerticalLayout(new Button(\"Tablet\")), \n" +
-                                "        new VerticalLayout(new Button(\"Handheld\"))\n" +
-                                ");", "java", "Java"),
-                        new CodeExample("DemoView demoView = new DemoView(\"DemoView Demo\", \n" +
-                                "        \"https://github.com/appreciated/vaadin-app-layout\", \n" +
-                                "        new VerticalLayout(new Button(\"Tablet\")), \n" +
-                                "        new VerticalLayout(new Button(\"Handheld\"))\n" +
-                                ");", "java", "Java")
-                );
+                .withStep("I am also a StepView", "And I contain multiple highlighted code examples",
+                        new CodeExample("package com.github.appreciated.demo.helper.view.devices;\n" +
+                                "\n" +
+                                "import com.vaadin.flow.component.Component;\n" +
+                                "\n" +
+                                "public class MyClass extends AnotherClass {\n" +
+                                "    private AndAnotherClass attribute;\n" +
+                                "    \n" +
+                                "    \n" +
+                                "    public MyClass(Component component) {\n" +
+                                "        super(component);\n" +
+                                "        someMethod();\n" +
+                                "    }\n" +
+                                "\n" +
+                                "    private void someMethod() {\n" +
+                                "        \n" +
+                                "    }\n" +
+                                "\n" +
+                                "}\n", Language.java, "Java"),
+                        new CodeExample("package com.github.appreciated.demo.helper.view.devices;\n" +
+                                "\n" +
+                                "import com.vaadin.flow.component.Component;\n" +
+                                "\n" +
+                                "public class MyClass extends AnotherClass {\n" +
+                                "    private AndAnotherClass attribute;\n" +
+                                "    \n" +
+                                "    \n" +
+                                "    public MyClass(Component component) {\n" +
+                                "        super(component);\n" +
+                                "        someMethod();\n" +
+                                "    }\n" +
+                                "\n" +
+                                "    private void someMethod() {\n" +
+                                "        \n" +
+                                "    }\n" +
+                                "\n" +
+                                "}\n", Language.java, "Java"),
+                        new CodeExample("package com.github.appreciated.demo.helper.view.devices;\n" +
+                                "\n" +
+                                "import com.vaadin.flow.component.Component;\n" +
+                                "\n" +
+                                "public class MyClass extends AnotherClass {\n" +
+                                "    private AndAnotherClass attribute;\n" +
+                                "    \n" +
+                                "    \n" +
+                                "    public MyClass(Component component) {\n" +
+                                "        super(component);\n" +
+                                "        someMethod();\n" +
+                                "    }\n" +
+                                "\n" +
+                                "    private void someMethod() {\n" +
+                                "        \n" +
+                                "    }\n" +
+                                "\n" +
+                                "}\n", Language.java, "Java")
+                );*/
     }
+
 
     VerticalLayout getDeviceContent(String text) {
         Label label = new Label(text);

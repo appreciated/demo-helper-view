@@ -2,6 +2,7 @@ package com.github.appreciated.demo.helper.view.other;
 
 
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
+import com.github.appreciated.prism.element.Language;
 import com.github.appreciated.prism.element.PrismHighlighter;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -18,13 +19,13 @@ public class CodeExampleViewContent extends VerticalLayout {
     private Label codeTypeLabel;
 
     public CodeExampleViewContent(CodeExample example) {
-        this(example.getCode(), example.getCodeType());
+        this(example.getCode(), example.getHighlightingType(), example.getCodeType());
         setMargin(false);
     }
 
-    public CodeExampleViewContent(String code, String lang) {
+    public CodeExampleViewContent(String code, Language highlightingType, String lang) {
         getStyle().set("position", "relative").set("overflow", "auto");
-        stepCode = new PrismHighlighter(code, lang);
+        stepCode = new PrismHighlighter(code, highlightingType);
         add(stepCode);
         if (lang != null) {
             codeTypeLabel = new Label(lang);
