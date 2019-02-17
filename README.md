@@ -1,10 +1,10 @@
-# demo-helper-view Add-on for Vaadin 10
+# demo-helper-view Add-on for Vaadin 12
 
-demo-helper is a UI component add-on for Vaadin 10 to assist you in creating visually appealing demos including code examples in a short amount of time.
+demo-helper is a UI component add-on for Vaadin 12 to assist you in creating visually appealing demos including code examples in a short amount of time.
 
 ## Online demo
 
-[Try the add-on demo](https://vaadin-demo-helper-addon.herokuapp.com/)
+[Try the add-on demo](https://appreciated-collection.herokuapp.com/demo-helper/)
 
 ## Download release
 
