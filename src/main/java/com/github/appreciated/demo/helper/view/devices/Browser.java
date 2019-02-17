@@ -26,10 +26,9 @@ public class Browser extends VerticalLayout {
         navigationBar.setValue(UI.getCurrent().getRouter().getUrl(route));
         navigationBar.addKeyPressListener(Key.ENTER, event -> browserWindow.setSrc(navigationBar.getValue()));
         HorizontalLayout wrapper = new HorizontalLayout(
-                new Button(VaadinIcon.ARROW_LEFT.create(), event -> {
-                }),
-                new Button(VaadinIcon.ARROW_RIGHT.create(), event -> {
-                }),
+                new Button(VaadinIcon.ARROW_LEFT.create(), event -> browserWindow.back()),
+                new Button(VaadinIcon.ARROW_RIGHT.create(), event -> browserWindow.forward()),
+                new Button(VaadinIcon.REFRESH.create(), event -> browserWindow.reload()),
                 navigationBar
         );
         wrapper.setWidth("100%");

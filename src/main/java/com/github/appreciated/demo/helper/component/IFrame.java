@@ -31,7 +31,6 @@ public class IFrame extends HtmlContainer {
     }
 
     public void setSrc(String src) {
-        System.out.println(src);
         getElement().setAttribute("src", src);
     }
 
@@ -49,6 +48,18 @@ public class IFrame extends HtmlContainer {
 
     public void setOnLoadListener(DomEventListener loadListener) {
         getElement().addEventListener("load", loadListener);
+    }
+
+    public void back() {
+        getElement().callFunction("contentWindow.history.back");
+    }
+
+    public void forward() {
+        getElement().callFunction("contentWindow.history.forward");
+    }
+
+    public void reload() {
+        getElement().callFunction("contentWindow.location.reload");
     }
 
 }
