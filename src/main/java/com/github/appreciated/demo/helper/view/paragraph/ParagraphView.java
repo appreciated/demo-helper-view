@@ -21,7 +21,7 @@ public class ParagraphView extends VerticalLayout {
             getDescriptionLabel().setText(description);
             add(descriptionLabel);
         } else {
-            setVisible(false);
+            descriptionLabel.setVisible(false);
         }
         setAlignItems(Alignment.CENTER);
     }
