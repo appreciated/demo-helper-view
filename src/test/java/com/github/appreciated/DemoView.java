@@ -19,7 +19,9 @@ public class DemoView extends DemoHelperView {
         frame.setHeight("500px");
         this.getStyle().set("--lumo-primary-color", "hsl(122, 90%, 52%)");
         this.getStyle().set("--lumo-primary-text-color", "hsl(122, 90%, 52%)");
-        frame.setOnLoadListener(event -> frame.setInnerStyle(this.getStyle()));
+        frame.getBrowserWindow().addOnLoadListener(event -> {
+            frame.getBrowserWindow().setInnerStyle(this.getStyle());
+        });
 
         with(frame);
 
