@@ -1,5 +1,6 @@
 package com.github.appreciated.demo.helper.view.entity;
 
+import com.github.appreciated.demo.helper.code.CodeExampleFormatter;
 import com.github.appreciated.prism.element.Language;
 
 public class CodeExample {
@@ -13,8 +14,10 @@ public class CodeExample {
         this.code = code;
     }
 
-    public CodeExample(String code) {
-        this.code = code;
+    public CodeExample(Class className) {
+        this.highlightingType = Language.java;
+        this.codeType = "Java";
+        this.code = new CodeExampleFormatter(className).getCodeExample();
     }
 
     public String getCode() {
