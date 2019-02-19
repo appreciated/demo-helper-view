@@ -99,7 +99,6 @@ public class Browser extends VerticalLayout {
     private void updateButtons() {
         backButton.setEnabled(history.size() > 0 && historyMarker > 0);
         forwardButton.setEnabled(historyMarker < history.size() - 1);
-        System.out.println("Path: " + history.get(historyMarker) + ", HistorySize: " + history.size() + ", HistoryMarker: " + historyMarker);
     }
 
     public IFrame getBrowserWindow() {
