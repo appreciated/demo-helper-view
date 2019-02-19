@@ -1,6 +1,7 @@
 package com.github.appreciated.demo.helper.view.entity;
 
-import com.github.appreciated.demo.helper.code.CodeExampleFormatter;
+import com.github.appreciated.demo.helper.code.JavaCodeReader;
+import com.github.appreciated.demo.helper.dependencies.MavenDependencyReader;
 import com.github.appreciated.prism.element.Language;
 
 public class CodeExample {
@@ -17,7 +18,13 @@ public class CodeExample {
     public CodeExample(Class className) {
         this.highlightingType = Language.java;
         this.codeType = "Java";
-        this.code = new CodeExampleFormatter(className).getCodeExample();
+        this.code = new JavaCodeReader(className).getCodeExample();
+    }
+
+    public CodeExample(MavenDependencyReader reader) {
+        this.highlightingType = Language.markup;
+        this.codeType = "Maven";
+        this.code = reader.getDependencyString();
     }
 
     public String getCode() {

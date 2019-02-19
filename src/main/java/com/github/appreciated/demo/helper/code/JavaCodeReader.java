@@ -8,11 +8,11 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CodeExampleFormatter {
+public class JavaCodeReader {
 
     private List<String> classContent;
 
-    public CodeExampleFormatter(Class className) {
+    public JavaCodeReader(Class className) {
         String path = className.getName();
         path = path.replaceAll("\\.", "/") + ".java";
         URL resource = getClass().getClassLoader().getResource(path);

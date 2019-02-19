@@ -12,13 +12,13 @@ import java.util.Optional;
 /**
  * To use this your are required to add your pom.yml resource! Otherwise this class can't do anything.
  */
-public class DependencyReader {
+public class MavenDependencyReader {
 
     private final Optional<Dependency> dependency;
     private String groupID;
     private String artifactID;
 
-    public DependencyReader(String groupID, String artifactID) {
+    public MavenDependencyReader(String groupID, String artifactID) {
         this.groupID = groupID;
         this.artifactID = artifactID;
         MavenXpp3Reader reader = new MavenXpp3Reader();

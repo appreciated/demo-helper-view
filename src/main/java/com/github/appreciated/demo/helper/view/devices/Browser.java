@@ -12,6 +12,8 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.server.WebBrowser;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Browser extends VerticalLayout {
     private final TextField url;
@@ -21,13 +23,19 @@ public class Browser extends VerticalLayout {
     private final Button refreshButton;
     private final HorizontalLayout navigationBar;
 
+    private final List<String> history = new ArrayList<>();
+    private int historyMarker = 0;
+
     public Browser(Class<? extends Component> route) {
         setSizeUndefined();
         browserWindow = new IFrame(route);
         browserWindow.setSizeFull();
         url = new TextField();
         url.getStyle().set("flex", "1 1");
-        url.setValue(UI.getCurrent().getRouter().getUrl(route));
+        String urlPath = UI.getCurrent().getRouter().getUrl(route);
+        url.setValue(urlPath);
+        history.add(urlPath);
+        historyMarker = 0;
         url.addKeyPressListener(Key.ENTER, event -> browserWindow.setSrc(url.getValue()));
         url.getStyle()
                 .set("padding-left", "var(--lumo-space-s)")
@@ -37,11 +45,25 @@ public class Browser extends VerticalLayout {
         Label prefixLabel = new Label((browser.isSecureConnection() ? "https://" : "http://") + browser.getAddress() + "/");
         url.setPrefixComponent(prefixLabel);
 
-        backButton = new Button(VaadinIcon.ARROW_LEFT.create(), event -> browserWindow.back());
+        backButton = new Button(VaadinIcon.ARROW_LEFT.create());
         backButton.setThemeName("tertiary");
+        backButton.setEnabled(false);
 
-        forwardButton = new Button(VaadinIcon.ARROW_RIGHT.create(), event -> browserWindow.forward());
+        forwardButton = new Button(VaadinIcon.ARROW_RIGHT.create());
         forwardButton.setThemeName("tertiary");
+        forwardButton.setEnabled(false);
+
+        backButton.addClickListener(event -> {
+            browserWindow.back();
+            historyMarker--;
+            updateButtons();
+        });
+
+        forwardButton.addClickListener(event -> {
+            browserWindow.forward();
+            historyMarker++;
+            updateButtons();
+        });
 
         refreshButton = new Button(VaadinIcon.REFRESH.create(), event -> browserWindow.reload());
         refreshButton.setThemeName("tertiary");
@@ -72,9 +94,19 @@ public class Browser extends VerticalLayout {
                 .set("overflow", "hidden");
         setMargin(false);
         setPadding(false);
-        browserWindow.addOnUrlChangedListener(url::setValue);
+        browserWindow.addOnUrlChangedListener(path -> {
+            history.add(path);
+            url.setValue(path);
+            historyMarker++;
+            updateButtons();
+        });
     }
 
+    private void updateButtons() {
+        backButton.setEnabled(history.size() > 0 && historyMarker > 0);
+        forwardButton.setEnabled(historyMarker < history.size() - 1);
+        System.out.println("Path: " + history.get(historyMarker) + ", HistorySize: " + history.size() + ", HistoryMarker: " + historyMarker);
+    }
 
     public IFrame getBrowserWindow() {
         return browserWindow;
