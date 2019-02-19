@@ -62,12 +62,14 @@ public class Browser extends VerticalLayout {
         backButton.addClickListener(event -> {
             browserWindow.back();
             historyMarker--;
+            url.setValue(history.get(historyMarker));
             updateButtons();
         });
 
         forwardButton.addClickListener(event -> {
             browserWindow.forward();
             historyMarker++;
+            url.setValue(history.get(historyMarker));
             updateButtons();
         });
 
