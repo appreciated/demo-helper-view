@@ -24,7 +24,7 @@ public class Browser extends VerticalLayout {
     private final HorizontalLayout navigationBar;
 
     private final List<String> history = new ArrayList<>();
-    private int historyMarker = 0;
+    private int historyMarker;
 
     public Browser(Class<? extends Component> route) {
         setSizeUndefined();
