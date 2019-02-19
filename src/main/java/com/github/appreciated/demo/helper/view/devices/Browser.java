@@ -1,6 +1,7 @@
 package com.github.appreciated.demo.helper.view.devices;
 
 import com.github.appreciated.demo.helper.component.IFrame;
+import com.github.appreciated.demo.helper.style.CustomElementStylePropertyMap;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.UI;
@@ -10,6 +11,8 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.dom.Style;
+import com.vaadin.flow.internal.StateNode;
 import com.vaadin.flow.server.WebBrowser;
 
 import java.util.ArrayList;
@@ -24,12 +27,14 @@ public class Browser extends VerticalLayout {
     private final HorizontalLayout navigationBar;
 
     private final List<String> history = new ArrayList<>();
+    private final CustomElementStylePropertyMap queryStyle;
     private int historyMarker;
 
     public Browser(Class<? extends Component> route) {
-        setSizeUndefined();
         browserWindow = new IFrame(route);
         browserWindow.setSizeFull();
+        queryStyle = new CustomElementStylePropertyMap(new StateNode());
+        queryStyle.addChangeListener(browserWindow::setInnerStyle);
         url = new TextField();
         url.getStyle().set("flex", "1 1");
         String urlPath = UI.getCurrent().getRouter().getUrl(route);
@@ -94,6 +99,7 @@ public class Browser extends VerticalLayout {
             historyMarker++;
             updateButtons();
         });
+        setSizeFull();
     }
 
     private void updateButtons() {
@@ -123,5 +129,10 @@ public class Browser extends VerticalLayout {
 
     public HorizontalLayout getNavigationBar() {
         return navigationBar;
+    }
+
+    @Override
+    public Style getStyle() {
+        return queryStyle.getStyle();
     }
 }

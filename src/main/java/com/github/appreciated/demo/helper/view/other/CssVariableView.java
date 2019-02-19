@@ -4,6 +4,7 @@ import com.github.appreciated.calc.color.helper.CalculatedColorHelper;
 import com.github.appreciated.demo.helper.view.entity.CssVariable;
 import com.github.appreciated.demo.helper.view.entity.CssVariableChangeListener;
 import com.github.appreciated.papercolor.textfield.PaperColorTextField;
+import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
@@ -11,6 +12,8 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.binder.Binder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class CssVariableView extends VerticalLayout {
@@ -20,6 +23,7 @@ public class CssVariableView extends VerticalLayout {
     private Optional<CssVariableChangeListener> listener = Optional.empty();
     private CssVariable[] variables;
     private CalculatedColorHelper helper;
+    private List<HasStyle> styleableViews = new ArrayList<>();
 
     public CssVariableView(CalculatedColorHelper helper, CssVariable... variables) {
         this(variables);
@@ -65,10 +69,17 @@ public class CssVariableView extends VerticalLayout {
 
     public void setCalculatedColorHelper(CalculatedColorHelper helper) {
         this.helper = helper;
-        setValueChangeListener((variable) -> helper.setCalculatedColor(variable.getName(), variable.getValue()));
+        setValueChangeListener((variable) -> {
+            helper.setCalculatedColor(variable.getName(), variable.getValue());
+            styleableViews.forEach(component -> component.getStyle().set(variable.getName(), variable.getValue()));
+        });
     }
 
     public void setValueChangeListener(CssVariableChangeListener listener) {
         this.listener = Optional.ofNullable(listener);
+    }
+
+    public void addStylableView(HasStyle content) {
+        styleableViews.add(content);
     }
 }

@@ -1,6 +1,7 @@
 package com.github.appreciated.demo.helper;
 
 import com.github.appreciated.demo.helper.view.components.layout.SinglePageLayout;
+import com.github.appreciated.demo.helper.view.devices.Browser;
 import com.github.appreciated.demo.helper.view.devices.Device;
 import com.github.appreciated.demo.helper.view.devices.DeviceSwitchView;
 import com.github.appreciated.demo.helper.view.devices.DeviceType;
@@ -9,6 +10,7 @@ import com.github.appreciated.demo.helper.view.entity.CssVariable;
 import com.github.appreciated.demo.helper.view.other.ThemeSwitchView;
 import com.github.appreciated.demo.helper.view.paragraph.*;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.dependency.StyleSheet;
 
 import java.util.Arrays;
@@ -85,6 +87,9 @@ public class DemoHelperView extends SinglePageLayout {
         DeviceSwitchView view = new DeviceSwitchView(content);
         if (cssVariables.length > 0) {
             view.withStyleableVariables(cssVariables);
+            if (content instanceof Browser) {
+                view.withStyleableView((HasStyle) content);
+            }
         }
         view.setDeviceType(type);
         add(view);

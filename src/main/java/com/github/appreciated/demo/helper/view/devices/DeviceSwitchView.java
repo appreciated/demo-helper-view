@@ -5,6 +5,7 @@ import com.github.appreciated.calc.color.helper.CalculatedColorHelper;
 import com.github.appreciated.demo.helper.view.entity.CssVariable;
 import com.github.appreciated.demo.helper.view.other.CssVariableView;
 import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.icon.Icon;
@@ -24,6 +25,7 @@ public class DeviceSwitchView extends Div implements HasOrientation {
     private final HashMap<Tab, DeviceType> deviceMap;
     private final VerticalLayout contentHolder;
     private final Tabs tabs;
+    private CssVariableView variableView;
 
     public DeviceSwitchView(Component content) {
         super();
@@ -67,7 +69,9 @@ public class DeviceSwitchView extends Div implements HasOrientation {
 
     public DeviceSwitchView withStyleableVariables(CssVariable... variables) {
         CalculatedColorHelper helper = new CalculatedColorHelper();
-        IronCollapse collapse = new IronCollapse(new CssVariableView(helper, variables));
+
+        variableView = new CssVariableView(helper, variables);
+        IronCollapse collapse = new IronCollapse(variableView);
         device.withButton(VaadinIcon.PAINTBRUSH.create(), event -> collapse.toggle())
                 .withCalculatedColorHelper(helper);
         contentHolder.add(collapse);
@@ -81,5 +85,11 @@ public class DeviceSwitchView extends Div implements HasOrientation {
                 tabs.setSelectedTab(tab);
             }
         });
+    }
+
+    public void withStyleableView(HasStyle content) {
+        if (variableView != null) {
+            variableView.addStylableView(content);
+        }
     }
 }
