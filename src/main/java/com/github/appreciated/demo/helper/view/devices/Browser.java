@@ -43,6 +43,7 @@ public class Browser extends VerticalLayout {
         historyMarker = 0;
         url.addKeyPressListener(Key.ENTER, event -> browserWindow.setSrc(url.getValue()));
         url.getStyle()
+                .set("min-width", "0px")
                 .set("padding-left", "var(--lumo-space-s)")
                 .set("--lumo-border-radius", "var(--lumo-size-m)");
 
