@@ -85,13 +85,7 @@ public class Browser extends VerticalLayout {
         navigationBar.setSpacing(false);
         add(navigationBar);
         add(browserWindow);
-        setWidth("500px");
-        setHeight("500px");
         setSpacing(false);
-        getStyle()
-                .set("box-shadow", "var(--lumo-box-shadow-m)")
-                .set("border-radius", "var(--lumo-border-radius)")
-                .set("overflow", "hidden");
         setMargin(false);
         setPadding(false);
         browserWindow.addOnUrlChangedListener(path -> {

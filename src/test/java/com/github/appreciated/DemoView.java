@@ -1,7 +1,10 @@
 package com.github.appreciated;
 
 import com.github.appreciated.demo.helper.DemoHelperView;
-import com.github.appreciated.demo.helper.view.devices.Browser;
+import com.github.appreciated.demo.helper.view.devices.*;
+import com.github.appreciated.demo.helper.view.entity.CodeExample;
+import com.github.appreciated.demo.helper.view.entity.CssVariable;
+import com.github.appreciated.prism.element.Language;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -13,19 +16,7 @@ import com.vaadin.flow.router.Route;
 public class DemoView extends DemoHelperView {
 
     public DemoView() {
-
-        Browser frame = new Browser(OtherContent.class);
-        frame.setWidth("500px");
-        frame.setHeight("500px");
-        this.getStyle().set("--lumo-primary-color", "hsl(122, 90%, 52%)");
-        this.getStyle().set("--lumo-primary-text-color", "hsl(122, 90%, 52%)");
-        frame.getBrowserWindow().addOnLoadListener(event -> {
-            frame.getBrowserWindow().setInnerStyle(this.getStyle());
-        });
-
-        with(frame);
-
-  /*      withVerticalHeader("VerticalHeaderView",
+        withVerticalHeader("VerticalHeaderView",
                 "I can display a header and an optionally an image or a subtitle",
                 "images/demo-helper-logo.png")
                 .withHorizontalHeader("HorizontalHeaderView",
@@ -40,6 +31,7 @@ public class DemoView extends DemoHelperView {
                         new TabletView(getDeviceContent("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >")).withOrientation(Orientation.LANDSCAPE),
                         new PhoneView(getDeviceContent("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >"))
                 )
+                .withDevice(new LaptopView(new Browser(OtherContent.class)))
                 .withParagraph("I am a ParagraphView", "I can display a header and a description")
                 .withStylableDevice(getDeviceContent("< I'm a StylablePhoneView I display content and my css variables can be edited beside me >"), new CssVariable("--lumo-primary-text-color"), new CssVariable("--lumo-primary-color"))
                 .withDevice(new PhoneView(
@@ -124,7 +116,7 @@ public class DemoView extends DemoHelperView {
                                 "    }\n" +
                                 "\n" +
                                 "}\n", Language.java, "Java")
-                );*/
+                );
     }
 
 
