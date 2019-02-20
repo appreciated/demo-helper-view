@@ -1,9 +1,11 @@
 package com.github.appreciated.demo.helper.component;
 
+import com.github.appreciated.demo.helper.style.CustomElementStylePropertyMap;
 import com.vaadin.flow.component.*;
 import com.vaadin.flow.component.dependency.JavaScript;
 import com.vaadin.flow.dom.DomEventListener;
 import com.vaadin.flow.dom.Style;
+import com.vaadin.flow.internal.StateNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.function.Consumer;
 @JavaScript("com/github/appreciated/demo-helper/iframe-helper.js")
 public class IFrame extends HtmlContainer {
 
-    private boolean sizeFull;
+    private final CustomElementStylePropertyMap queryStyle;
     private List<Consumer<String>> listeners = new ArrayList<>();
 
     public IFrame(Class<? extends Component> className) {
@@ -23,7 +25,9 @@ public class IFrame extends HtmlContainer {
     }
 
     public IFrame() {
-        getStyle().set("border", "none");
+        super.getStyle().set("border", "none");
+        queryStyle = new CustomElementStylePropertyMap(new StateNode());
+        queryStyle.addChangeListener(this::setInnerStyle);
     }
 
     public void addOnLoadListener(DomEventListener loadListener) {
@@ -48,7 +52,7 @@ public class IFrame extends HtmlContainer {
         return this;
     }
 
-    public void setInnerStyle(Style style) {
+    private void setInnerStyle(Style style) {
         getElement().callFunction("contentWindow.document.body.setAttribute", "style",
                 style.getNames()
                         .map(name -> name + ":" + style.get(name)).reduce((s, s2) -> s + ";" + s2).orElse("")
@@ -76,5 +80,9 @@ public class IFrame extends HtmlContainer {
         getElement().callFunction("contentWindow.location.reload");
     }
 
+    @Override
+    public Style getStyle() {
+        return queryStyle.getStyle();
+    }
 }
 

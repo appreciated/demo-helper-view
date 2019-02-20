@@ -1,5 +1,6 @@
 package com.github.appreciated.demo.helper;
 
+import com.github.appreciated.demo.helper.component.IFrame;
 import com.github.appreciated.demo.helper.view.components.layout.SinglePageLayout;
 import com.github.appreciated.demo.helper.view.devices.Browser;
 import com.github.appreciated.demo.helper.view.devices.Device;
@@ -88,6 +89,9 @@ public class DemoHelperView extends SinglePageLayout {
         if (cssVariables.length > 0) {
             view.withStyleableVariables(cssVariables);
             if (content instanceof Browser) {
+                view.withStyleableView(((Browser) content).getBrowserWindow());
+            }
+            if (content instanceof IFrame) {
                 view.withStyleableView((HasStyle) content);
             }
         }
