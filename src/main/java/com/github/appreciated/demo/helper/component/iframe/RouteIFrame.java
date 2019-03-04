@@ -7,7 +7,6 @@ public class RouteIFrame extends IFrame {
 
     public RouteIFrame(Class<? extends Component> className) {
         setSrc(UI.getCurrent().getRouter().getUrl(className));
-        addOnLoadListener(event -> getElement().executeJavaScript("initIFrameObserver($0)", getElement()));
     }
 }
 

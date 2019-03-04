@@ -24,6 +24,7 @@ public class IFrame extends HtmlContainer {
         super.getStyle().set("border", "none");
         queryStyle = new CustomElementStylePropertyMap(new StateNode());
         queryStyle.addChangeListener(this::setInnerStyle);
+        addOnLoadListener(event -> getElement().executeJavaScript("initIFrameObserver($0)", getElement()));
     }
 
     public void addOnLoadListener(DomEventListener loadListener) {

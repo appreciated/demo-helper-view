@@ -8,7 +8,6 @@ public class HasParameterRouteIFrame<T, C extends Component & HasUrlParameter<T>
 
     public HasParameterRouteIFrame(Class<C> className, T parameter) {
         setSrc(UI.getCurrent().getRouter().getUrl(className, parameter));
-        addOnLoadListener(event -> getElement().executeJavaScript("initIFrameObserver($0)", getElement()));
     }
 }
 

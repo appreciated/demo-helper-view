@@ -13,6 +13,9 @@ public class Device<T> extends Div implements HasOrientation<T> {
     public Device(Component component) {
         this();
         add(component);
+        component.getElement().getStyle()
+                .set("width", "100%")
+                .set("height", "100%");
     }
 
     public Device() {
