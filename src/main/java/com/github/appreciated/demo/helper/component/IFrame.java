@@ -1,12 +1,13 @@
 package com.github.appreciated.demo.helper.component;
 
 import com.github.appreciated.demo.helper.style.CustomElementStylePropertyMap;
-import com.vaadin.flow.component.*;
+import com.vaadin.flow.component.ClientCallable;
+import com.vaadin.flow.component.HtmlContainer;
+import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JavaScript;
 import com.vaadin.flow.dom.DomEventListener;
 import com.vaadin.flow.dom.Style;
 import com.vaadin.flow.internal.StateNode;
-import com.vaadin.flow.router.HasUrlParameter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,22 +15,10 @@ import java.util.function.Consumer;
 
 @Tag("iframe")
 @JavaScript("com/github/appreciated/demo-helper/iframe-helper.js")
-public class IFrame<T, C extends Component & HasUrlParameter<T>> extends HtmlContainer {
+public class IFrame extends HtmlContainer {
 
     private final CustomElementStylePropertyMap queryStyle;
     private List<Consumer<String>> listeners = new ArrayList<>();
-
-    public IFrame(Class<C> className, T parameter) {
-        this();
-        setSrc(UI.getCurrent().getRouter().getUrl(className, parameter));
-        addOnLoadListener(event -> getElement().executeJavaScript("initIFrameObserver($0)", getElement()));
-    }
-
-    public IFrame(Class<? extends Component> className) {
-        this();
-        setSrc(UI.getCurrent().getRouter().getUrl(className));
-        addOnLoadListener(event -> getElement().executeJavaScript("initIFrameObserver($0)", getElement()));
-    }
 
     public IFrame() {
         super.getStyle().set("border", "none");

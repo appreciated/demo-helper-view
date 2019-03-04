@@ -1,7 +1,6 @@
 package com.github.appreciated.demo.helper.view.devices;
 
 import com.github.appreciated.demo.helper.component.IFrame;
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -26,12 +25,11 @@ public class Browser extends VerticalLayout {
     private final List<String> history = new ArrayList<>();
     private int historyMarker;
 
-    public Browser(Class<? extends Component> route) {
-        browserWindow = new IFrame(route);
+    public Browser(String urlPath) {
+        browserWindow = new IFrame(urlPath);
         browserWindow.setSizeFull();
         url = new TextField();
         url.getStyle().set("flex", "1 1");
-        String urlPath = UI.getCurrent().getRouter().getUrl(route);
         url.setValue(urlPath);
         history.add(urlPath);
         historyMarker = 0;
@@ -103,6 +101,7 @@ public class Browser extends VerticalLayout {
         backButton.setEnabled(history.size() > 0 && historyMarker > 0);
         forwardButton.setEnabled(historyMarker < history.size() - 1);
     }
+
 
     public IFrame getBrowserWindow() {
         return browserWindow;
