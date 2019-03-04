@@ -4,7 +4,7 @@ import com.github.appreciated.demo.helper.view.animation.RippleAnimation;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import org.vaadin.addons.PaperToggleButton;
+import org.vaadin.addons.papertogglebutton.PaperToggleButton;
 
 import static com.vaadin.flow.component.orderedlayout.FlexComponent.JustifyContentMode.CENTER;
 
@@ -24,8 +24,8 @@ public class ThemeSwitchView extends HorizontalLayout {
                 .set("position", "relative")
                 .set("overflow", "hidden")
                 .set("transition", "all 1s");
-        toggle.addChangeListener(event -> {
-            if (event.getToggleState()) {
+        toggle.addValueChangeListener(event -> {
+            if (event.getValue()) {
                 getElement().setAttribute("theme", "dark");
                 addAnimation(new RippleAnimation());
             } else {
