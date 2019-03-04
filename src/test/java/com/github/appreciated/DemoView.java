@@ -1,7 +1,8 @@
 package com.github.appreciated;
 
 import com.github.appreciated.demo.helper.DemoHelperView;
-import com.github.appreciated.demo.helper.component.IFrame;
+import com.github.appreciated.demo.helper.component.browser.RouteBrowser;
+import com.github.appreciated.demo.helper.component.iframe.RouteIFrame;
 import com.github.appreciated.demo.helper.view.devices.*;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
 import com.github.appreciated.demo.helper.view.entity.CssVariable;
@@ -26,8 +27,8 @@ public class DemoView extends DemoHelperView {
                         new Button("Click Me!")
                 )
                 .withStylableDevice(getDeviceContent("< I am a stylable device, meaning that you can edit the css variables of this view by clicking on the brush button below) >"), new CssVariable("--lumo-primary-text-color"), new CssVariable("--lumo-primary-color"))
-                .withStylableDevice(new Browser(OtherContent.class), new CssVariable("--lumo-primary-text-color"), new CssVariable("--lumo-primary-color"))
-                .withStylableDevice(new IFrame(OtherContent.class), new CssVariable("--lumo-primary-text-color"), new CssVariable("--lumo-primary-color"))
+                .withStylableDevice(new RouteBrowser(OtherContent.class), new CssVariable("--lumo-primary-text-color"), new CssVariable("--lumo-primary-color"))
+                .withStylableDevice(new RouteIFrame(OtherContent.class), new CssVariable("--lumo-primary-text-color"), new CssVariable("--lumo-primary-color"))
                 .withThemeableAndStylableDevice(getDeviceContent("< I am also a stylable device as above and also themeable meaning that the theme (Lumo.Dark and Lumo.Light) can be switched between by clicking on the switch above) >"), new CssVariable("--lumo-primary-text-color"), new CssVariable("--lumo-primary-color"))
                 .withStylableDevice(getDeviceContent("Yay"), DeviceType.TABLET_LANDSCAPE)
                 .withDevices(

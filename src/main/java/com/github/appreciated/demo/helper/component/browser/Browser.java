@@ -1,6 +1,6 @@
-package com.github.appreciated.demo.helper.view.devices;
+package com.github.appreciated.demo.helper.component.browser;
 
-import com.github.appreciated.demo.helper.component.IFrame;
+import com.github.appreciated.demo.helper.component.iframe.IFrame;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;

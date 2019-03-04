@@ -1,4 +1,4 @@
-package com.github.appreciated.demo.helper.component;
+package com.github.appreciated.demo.helper.component.iframe;
 
 import com.github.appreciated.demo.helper.style.CustomElementStylePropertyMap;
 import com.vaadin.flow.component.ClientCallable;
