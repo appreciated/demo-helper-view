@@ -6,6 +6,8 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.dom.Style;
+import com.vaadin.flow.dom.impl.ImmutableEmptyStyle;
 
 import java.util.Arrays;
 
@@ -13,9 +15,11 @@ public class Device<T> extends Div implements HasOrientation<T> {
     public Device(Component component) {
         this();
         add(component);
-        component.getElement().getStyle()
-                .set("width", "100%")
-                .set("height", "100%");
+        Style style = component.getElement().getStyle();
+        if (!(style instanceof ImmutableEmptyStyle)) {
+            style.set("width", "100%")
+                    .set("height", "100%");
+        }
     }
 
     public Device() {

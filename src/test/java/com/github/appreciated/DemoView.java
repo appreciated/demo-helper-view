@@ -7,6 +7,7 @@ import com.github.appreciated.demo.helper.view.devices.*;
 import com.github.appreciated.demo.helper.view.entity.CodeExample;
 import com.github.appreciated.demo.helper.view.entity.CssVariable;
 import com.github.appreciated.prism.element.Language;
+import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -34,6 +35,7 @@ public class DemoView extends DemoHelperView {
                 .withStylableDevice(new RouteIFrame(OtherContent.class), new CssVariable(LUMO_PRIMARY_TEXT_COLOR), new CssVariable(LUMO_PRIMARY_COLOR))
                 .withThemeableAndStylableDevice(getDeviceContent("< I am also a stylable device as above and also themeable meaning that the theme (Lumo.Dark and Lumo.Light) can be switched between by clicking on the switch above) >"), new CssVariable(LUMO_PRIMARY_TEXT_COLOR), new CssVariable(LUMO_PRIMARY_COLOR))
                 .withStylableDevice(getDeviceContent("Yay"), DeviceType.TABLET_LANDSCAPE)
+                .withDevice(new LaptopView(new Text("test")))
                 .withDevices(
                         new TabletView(getDeviceContent("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >")).withOrientation(Orientation.LANDSCAPE),
                         new PhoneView(getDeviceContent("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >"))
@@ -60,7 +62,7 @@ public class DemoView extends DemoHelperView {
                         new CodeExample("<dependency>\n" +
                                 "\t<groupId>com.github.appreciated</groupId>\n" +
                                 "\t<artifactId>demo-helper</artifactId>\n" +
-                                "\t<version>2.0.7</version>\n" +
+                                "\t<version>2.0.8</version>\n" +
                                 "</dependency>", Language.markup, "Maven")
                 )
                 .withStep("I am also a StepView",
