@@ -1,4 +1,4 @@
-package com.github.appreciated;
+package com.github.appreciated.demo.helper.demo;
 
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;

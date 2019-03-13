@@ -1,4 +1,4 @@
-package com.github.appreciated;
+package com.github.appreciated.demo.helper.demo;
 
 import com.github.appreciated.demo.helper.DemoHelperView;
 import com.github.appreciated.demo.helper.component.browser.RouteBrowser;
@@ -22,6 +22,7 @@ import static com.github.appreciated.calc.color.helper.LumoVariables.LUMO_PRIMAR
 public class DemoView extends DemoHelperView {
 
     public DemoView() {
+        super("https://github.com/appreciated/vaadin-app-layout", "https://github.com/PolymerElements/app-layout");
         withVerticalHeader("VerticalHeaderView",
                 "I can display a header and an optionally an image or a subtitle",
                 "images/demo-helper-logo.png")
@@ -124,7 +125,9 @@ public class DemoView extends DemoHelperView {
                                 "    }\n" +
                                 "\n" +
                                 "}\n", Language.java, "Java")
-                );
+                )
+                .withThanks()
+                .withDependencyNotice();
     }
 
 

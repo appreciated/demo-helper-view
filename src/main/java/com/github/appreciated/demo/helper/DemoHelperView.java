@@ -2,6 +2,10 @@ package com.github.appreciated.demo.helper;
 
 import com.github.appreciated.demo.helper.component.browser.Browser;
 import com.github.appreciated.demo.helper.component.iframe.IFrame;
+import com.github.appreciated.demo.helper.external.ContributorParser;
+import com.github.appreciated.demo.helper.external.ProjectParser;
+import com.github.appreciated.demo.helper.external.github.GithubContributorParser;
+import com.github.appreciated.demo.helper.external.github.GithubProjectParser;
 import com.github.appreciated.demo.helper.view.components.layout.SinglePageLayout;
 import com.github.appreciated.demo.helper.view.devices.Device;
 import com.github.appreciated.demo.helper.view.devices.DeviceSwitchView;
@@ -19,11 +23,41 @@ import java.util.Arrays;
 @StyleSheet("com/github/appreciated/demo-helper/demo-helper.css")
 public class DemoHelperView extends SinglePageLayout {
 
+    private ProjectParser projectParser;
+    private String dependencyUrl;
+    private ContributorParser contributorParser;
+    private String projectUrl;
     private int counter = 1;
+
+    public DemoHelperView(String projectUrl, String dependencyUrl) {
+        this(projectUrl.startsWith("https://github.com/") ? GithubContributorParser.getInstance(projectUrl) : null,
+                projectUrl.startsWith("https://github.com/") ? GithubProjectParser.getInstance(projectUrl) : null);
+        this.dependencyUrl = dependencyUrl;
+        this.projectUrl = projectUrl;
+    }
+
+    public DemoHelperView(ContributorParser contributorParser, ProjectParser projectParser) {
+        this(contributorParser);
+        if (projectParser != null) {
+            this.projectParser = projectParser;
+        }
+    }
+
+    public DemoHelperView(ContributorParser parser) {
+        this();
+        if (parser != null) {
+            contributorParser = parser;
+        }
+    }
 
     public DemoHelperView() {
         getElement().setAttribute("theme", "spacing-xl");
         getElement().getStyle().set("--flex-layout-space", "3rem");
+    }
+
+    public DemoHelperView(String projectUrl) {
+        this(projectUrl.startsWith("https://github.com/") ? GithubContributorParser.getInstance(projectUrl) : null);
+        this.projectUrl = projectUrl;
     }
 
     public DemoHelperView withVerticalHeader(String header) {
@@ -167,5 +201,35 @@ public class DemoHelperView extends SinglePageLayout {
     public DemoHelperView with(Component component) {
         add(component);
         return this;
+    }
+
+    /**
+     * requires the url constructor to be used
+     */
+    public DemoHelperView withThanks() {
+        if (contributorParser == null) {
+            throw new IllegalStateException("Please set the project URL or a ContributorParser by using the DemoHelperView constructor");
+        }
+        addParagraph(new ContributorView(contributorParser.getContributors()));
+        return this;
+    }
+
+    /**
+     * requires the url constructor to be used
+     */
+    public DemoHelperView withDependencyNotice() {
+        if (projectParser == null) {
+            throw new IllegalStateException("Please set the project dependency URL or a ProjectParser by using the DemoHelperView constructor");
+        }
+        addParagraph(new ProjectDependencyView(projectParser.getProjects()));
+        return this;
+    }
+
+    public String getProjectUrl() {
+        return projectUrl;
+    }
+
+    public String getDependencyUrl() {
+        return dependencyUrl;
     }
 }
