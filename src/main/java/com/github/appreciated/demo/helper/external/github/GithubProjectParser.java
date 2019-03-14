@@ -40,7 +40,6 @@ public class GithubProjectParser implements ProjectParser {
     }
 
     private void parseProject(String json) {
-        System.out.println(json);
         JSONObject project = new JSONObject(json);
         projects.add(new Project(
                 project.getString("full_name"),

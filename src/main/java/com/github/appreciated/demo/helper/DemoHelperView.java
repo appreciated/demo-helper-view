@@ -31,7 +31,7 @@ public class DemoHelperView extends SinglePageLayout {
 
     public DemoHelperView(String projectUrl, String dependencyUrl) {
         this(projectUrl.startsWith("https://github.com/") ? GithubContributorParser.getInstance(projectUrl) : null,
-                projectUrl.startsWith("https://github.com/") ? GithubProjectParser.getInstance(projectUrl) : null);
+                projectUrl.startsWith("https://github.com/") ? GithubProjectParser.getInstance(dependencyUrl) : null);
         this.dependencyUrl = dependencyUrl;
         this.projectUrl = projectUrl;
     }

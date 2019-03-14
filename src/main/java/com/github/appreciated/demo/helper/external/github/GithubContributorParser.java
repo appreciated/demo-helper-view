@@ -39,7 +39,6 @@ public class GithubContributorParser implements ContributorParser {
     }
 
     private void parseUsers(String json) {
-        System.out.println(json);
         JSONArray users = new JSONArray(json);
         List<JSONObject> objects = new ArrayList<>();
         for (int i = 0; i < users.length(); i++) {
