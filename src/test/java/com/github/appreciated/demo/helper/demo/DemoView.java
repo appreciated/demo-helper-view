@@ -3,10 +3,10 @@ package com.github.appreciated.demo.helper.demo;
 import com.github.appreciated.demo.helper.DemoHelperView;
 import com.github.appreciated.demo.helper.component.browser.RouteBrowser;
 import com.github.appreciated.demo.helper.component.iframe.RouteIFrame;
-import com.github.appreciated.demo.helper.entitiy.CodeExample;
-import com.github.appreciated.demo.helper.entitiy.CssVariable;
-import com.github.appreciated.demo.helper.entitiy.GithubDependencies;
-import com.github.appreciated.demo.helper.entitiy.GithubUrl;
+import com.github.appreciated.demo.helper.entity.CodeExample;
+import com.github.appreciated.demo.helper.entity.CssVariable;
+import com.github.appreciated.demo.helper.entity.GithubDependencies;
+import com.github.appreciated.demo.helper.entity.GithubUrl;
 import com.github.appreciated.demo.helper.view.devices.*;
 import com.github.appreciated.prism.element.Language;
 import com.vaadin.flow.component.Text;
@@ -128,7 +128,7 @@ public class DemoView extends DemoHelperView {
                                 "\n" +
                                 "}\n", Language.java, "Java")
                 )
-                .withThanks()
+                .withContributorNotice()
                 .withDependencyNotice();
     }
 

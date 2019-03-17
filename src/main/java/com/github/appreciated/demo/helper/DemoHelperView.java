@@ -2,7 +2,7 @@ package com.github.appreciated.demo.helper;
 
 import com.github.appreciated.demo.helper.component.browser.Browser;
 import com.github.appreciated.demo.helper.component.iframe.IFrame;
-import com.github.appreciated.demo.helper.entitiy.*;
+import com.github.appreciated.demo.helper.entity.*;
 import com.github.appreciated.demo.helper.external.ContributorParser;
 import com.github.appreciated.demo.helper.external.ProjectParser;
 import com.github.appreciated.demo.helper.external.github.GithubContributorParser;
@@ -208,7 +208,7 @@ public class DemoHelperView extends SinglePageLayout {
     /**
      * requires the url constructor to be used
      */
-    public DemoHelperView withThanks() {
+    public DemoHelperView withContributorNotice() {
         if (contributorParser == null) {
             throw new IllegalStateException("Please set the project URL or a ContributorParser by using the DemoHelperView constructor");
         }

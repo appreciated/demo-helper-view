@@ -1,6 +1,6 @@
 package com.github.appreciated.demo.helper.external.github;
 
-import com.github.appreciated.demo.helper.entitiy.Contributor;
+import com.github.appreciated.demo.helper.entity.Contributor;
 import com.github.appreciated.demo.helper.external.ContributorParser;
 import org.json.JSONArray;
 import org.json.JSONObject;

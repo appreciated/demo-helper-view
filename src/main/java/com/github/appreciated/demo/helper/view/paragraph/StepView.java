@@ -1,7 +1,7 @@
 package com.github.appreciated.demo.helper.view.paragraph;
 
 import com.github.appreciated.card.RippleClickableCard;
-import com.github.appreciated.demo.helper.entitiy.CodeExample;
+import com.github.appreciated.demo.helper.entity.CodeExample;
 import com.github.appreciated.demo.helper.view.components.layout.CssFlexLayout;
 import com.github.appreciated.demo.helper.view.other.CodeExampleView;
 import com.vaadin.flow.component.html.Label;

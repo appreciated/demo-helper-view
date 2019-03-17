@@ -1,4 +1,4 @@
-package com.github.appreciated.demo.helper.entitiy;
+package com.github.appreciated.demo.helper.entity;
 
 import java.util.Arrays;
 

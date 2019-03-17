@@ -1,7 +1,7 @@
 package com.github.appreciated.demo.helper.external.github;
 
-import com.github.appreciated.demo.helper.entitiy.GithubDependencies;
-import com.github.appreciated.demo.helper.entitiy.Project;
+import com.github.appreciated.demo.helper.entity.GithubDependencies;
+import com.github.appreciated.demo.helper.entity.Project;
 import com.github.appreciated.demo.helper.external.ProjectParser;
 import org.json.JSONObject;
 
