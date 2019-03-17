@@ -24,7 +24,7 @@ import static com.github.appreciated.calc.color.helper.LumoVariables.LUMO_PRIMAR
 public class DemoView extends DemoHelperView {
 
     public DemoView() {
-        super(new GithubUrl("https://github.com/appreciated/vaadin-app-layout"), new GithubDependencies("https://github.com/PolymerElements/app-layout"));
+        super(new GithubUrl("https://github.com/appreciated/vaadin-app-layout"), new GithubDependencies("https://github.com/OlliTietavainenVaadin/clipboardhelper", "https://github.com/appreciated/grid-layout", "https://github.com/appreciated/card", "https://github.com/appreciated/prism-element", "https://github.com/appreciated/paper-color", "https://github.com/appreciated/iron-collapse", "https://github.com/appreciated/calculated-color-helper"));
         withVerticalHeader("VerticalHeaderView",
                 "I can display a header and an optionally an image or a subtitle",
                 "images/demo-helper-logo.png")
