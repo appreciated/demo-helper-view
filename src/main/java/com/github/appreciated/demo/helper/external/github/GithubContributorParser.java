@@ -1,7 +1,7 @@
 package com.github.appreciated.demo.helper.external.github;
 
+import com.github.appreciated.demo.helper.entitiy.Contributor;
 import com.github.appreciated.demo.helper.external.ContributorParser;
-import com.github.appreciated.demo.helper.view.entity.Contributor;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -61,8 +61,8 @@ public class GithubContributorParser implements ContributorParser {
     }
 
     public static void main(String[] args) {
-        Arrays.stream(GithubProjectParser.getInstance("https://github.com/appreciated/vaadin-app-layout").getProjects()).forEach(project -> {
-            System.out.println(project.getName());
+        Arrays.stream(GithubContributorParser.getInstance("https://github.com/appreciated/vaadin-app-layout").getContributors()).forEach(contributor -> {
+            System.out.println(contributor.getName());
         });
     }
 

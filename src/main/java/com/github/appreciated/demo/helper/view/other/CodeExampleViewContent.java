@@ -1,7 +1,7 @@
 package com.github.appreciated.demo.helper.view.other;
 
 
-import com.github.appreciated.demo.helper.view.entity.CodeExample;
+import com.github.appreciated.demo.helper.entitiy.CodeExample;
 import com.github.appreciated.prism.element.Language;
 import com.github.appreciated.prism.element.PrismHighlighter;
 import com.vaadin.flow.component.html.Label;

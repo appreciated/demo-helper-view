@@ -1,4 +1,4 @@
-package com.github.appreciated.demo.helper.view.entity;
+package com.github.appreciated.demo.helper.entitiy;
 
 import com.github.appreciated.demo.helper.code.JavaCodeReader;
 import com.github.appreciated.demo.helper.dependencies.MavenDependencyReader;

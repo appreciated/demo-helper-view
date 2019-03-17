@@ -1,7 +1,7 @@
 package com.github.appreciated.demo.helper.view.other;
 
 
-import com.github.appreciated.demo.helper.view.entity.CodeExample;
+import com.github.appreciated.demo.helper.entitiy.CodeExample;
 import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.icon.VaadinIcon;

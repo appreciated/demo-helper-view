@@ -1,62 +1,60 @@
 package com.github.appreciated.demo.helper.external.github;
 
+import com.github.appreciated.demo.helper.entitiy.GithubDependencies;
+import com.github.appreciated.demo.helper.entitiy.Project;
 import com.github.appreciated.demo.helper.external.ProjectParser;
-import com.github.appreciated.demo.helper.view.entity.Project;
 import org.json.JSONObject;
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class GithubProjectParser implements ProjectParser {
-    static Map<String, GithubProjectParser> parsers = new HashMap<>();
-
-    private List<Project> projects = new ArrayList<>();
+    static Map<String, Project> parsedProjects = new HashMap<>();
+    private String[] projectUrls;
 
     /**
      * Please provide the complete url f.e:
      * https://github.com/appreciated/vaadin-app-layout/
      *
-     * @param projectUrls
+     * @param dependencies
      */
-    private GithubProjectParser(String... projectUrls) {
-        Arrays.stream(projectUrls).forEach(projectUrl -> {
-            if (projectUrl.startsWith("https://github.com/")) {
-                projectUrl = "https://api.github.com/repos/" + projectUrl.substring("https://github.com/".length());
-                HttpClient client = HttpClient.newHttpClient();
-                HttpRequest request = HttpRequest.newBuilder()
-                        .uri(URI.create(projectUrl))
-                        .GET()
-                        .build();
-                client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-                        .thenApply(HttpResponse::body)
-                        .thenAccept(this::parseProject)
-                        .join();
-            }
-        });
+    public GithubProjectParser(GithubDependencies dependencies) {
+        this.projectUrls = dependencies.getDependencies();
+        Arrays.stream(projectUrls)
+                .filter(s -> !parsedProjects.containsKey(s))
+                .forEach(projectUrl -> {
+                    String actualProjectUrl = "https://api.github.com/repos/" + projectUrl.substring("https://github.com/".length());
+                    HttpClient client = HttpClient.newHttpClient();
+                    HttpRequest request = HttpRequest.newBuilder()
+                            .uri(URI.create(actualProjectUrl))
+                            .GET()
+                            .build();
+                    client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                            .thenApply(HttpResponse::body)
+                            .thenAccept(s -> parseProject(projectUrl, s))
+                            .join();
+                });
     }
 
-    private void parseProject(String json) {
+    private void parseProject(String url, String json) {
         JSONObject project = new JSONObject(json);
-        projects.add(new Project(
-                project.getString("full_name"),
-                project.getJSONObject("owner").getString("avatar_url"),
-                project.getJSONObject("owner").getString("html_url")
-        ));
-    }
-
-    public static GithubProjectParser getInstance(String projectUrl) {
-        if (!parsers.containsKey(projectUrl)) {
-            parsers.put(projectUrl, new GithubProjectParser(projectUrl));
-        }
-        return parsers.get(projectUrl);
+        parsedProjects.put(
+                url,
+                new Project(
+                        project.getString("full_name"),
+                        project.getJSONObject("owner").getString("avatar_url"),
+                        project.getJSONObject("owner").getString("html_url")
+                ));
     }
 
     @Override
     public Project[] getProjects() {
-        return projects.toArray(Project[]::new);
+        return Arrays.stream(projectUrls).map(s -> parsedProjects.get(s)).toArray(Project[]::new);
     }
 }

@@ -1,4 +1,4 @@
-package com.github.appreciated.demo.helper.view.entity;
+package com.github.appreciated.demo.helper.entitiy;
 
 
 public class CssVariable {

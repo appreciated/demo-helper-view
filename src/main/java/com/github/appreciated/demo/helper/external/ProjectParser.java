@@ -1,6 +1,6 @@
 package com.github.appreciated.demo.helper.external;
 
-import com.github.appreciated.demo.helper.view.entity.Project;
+import com.github.appreciated.demo.helper.entitiy.Project;
 
 public interface ProjectParser {
     public Project[] getProjects();

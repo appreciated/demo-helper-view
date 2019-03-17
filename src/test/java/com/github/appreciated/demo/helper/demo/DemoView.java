@@ -3,9 +3,11 @@ package com.github.appreciated.demo.helper.demo;
 import com.github.appreciated.demo.helper.DemoHelperView;
 import com.github.appreciated.demo.helper.component.browser.RouteBrowser;
 import com.github.appreciated.demo.helper.component.iframe.RouteIFrame;
+import com.github.appreciated.demo.helper.entitiy.CodeExample;
+import com.github.appreciated.demo.helper.entitiy.CssVariable;
+import com.github.appreciated.demo.helper.entitiy.GithubDependencies;
+import com.github.appreciated.demo.helper.entitiy.GithubUrl;
 import com.github.appreciated.demo.helper.view.devices.*;
-import com.github.appreciated.demo.helper.view.entity.CodeExample;
-import com.github.appreciated.demo.helper.view.entity.CssVariable;
 import com.github.appreciated.prism.element.Language;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
@@ -22,7 +24,7 @@ import static com.github.appreciated.calc.color.helper.LumoVariables.LUMO_PRIMAR
 public class DemoView extends DemoHelperView {
 
     public DemoView() {
-        super("https://github.com/appreciated/vaadin-app-layout", "https://github.com/PolymerElements/app-layout");
+        super(new GithubUrl("https://github.com/appreciated/vaadin-app-layout"), new GithubDependencies("https://github.com/PolymerElements/app-layout"));
         withVerticalHeader("VerticalHeaderView",
                 "I can display a header and an optionally an image or a subtitle",
                 "images/demo-helper-logo.png")

@@ -2,6 +2,7 @@ package com.github.appreciated.demo.helper;
 
 import com.github.appreciated.demo.helper.component.browser.Browser;
 import com.github.appreciated.demo.helper.component.iframe.IFrame;
+import com.github.appreciated.demo.helper.entitiy.*;
 import com.github.appreciated.demo.helper.external.ContributorParser;
 import com.github.appreciated.demo.helper.external.ProjectParser;
 import com.github.appreciated.demo.helper.external.github.GithubContributorParser;
@@ -10,8 +11,6 @@ import com.github.appreciated.demo.helper.view.components.layout.SinglePageLayou
 import com.github.appreciated.demo.helper.view.devices.Device;
 import com.github.appreciated.demo.helper.view.devices.DeviceSwitchView;
 import com.github.appreciated.demo.helper.view.devices.DeviceType;
-import com.github.appreciated.demo.helper.view.entity.CodeExample;
-import com.github.appreciated.demo.helper.view.entity.CssVariable;
 import com.github.appreciated.demo.helper.view.other.ThemeSwitchView;
 import com.github.appreciated.demo.helper.view.paragraph.*;
 import com.vaadin.flow.component.Component;
@@ -24,15 +23,18 @@ import java.util.Arrays;
 public class DemoHelperView extends SinglePageLayout {
 
     private ProjectParser projectParser;
-    private String dependencyUrl;
     private ContributorParser contributorParser;
     private String projectUrl;
     private int counter = 1;
+    private Dependencies dependencies;
 
-    public DemoHelperView(String projectUrl, String dependencyUrl) {
-        this(projectUrl.startsWith("https://github.com/") ? GithubContributorParser.getInstance(projectUrl) : null,
-                projectUrl.startsWith("https://github.com/") ? GithubProjectParser.getInstance(dependencyUrl) : null);
-        this.dependencyUrl = dependencyUrl;
+    public DemoHelperView(GithubUrl url, GithubDependencies dependencies) {
+        this(url.getUrl(), dependencies, GithubContributorParser.getInstance(url.getUrl()), new GithubProjectParser(dependencies));
+    }
+
+    public DemoHelperView(String projectUrl, Dependencies dependencies, ContributorParser parser, ProjectParser projectParser) {
+        this(parser, projectParser);
+        this.dependencies = dependencies;
         this.projectUrl = projectUrl;
     }
 
@@ -229,7 +231,7 @@ public class DemoHelperView extends SinglePageLayout {
         return projectUrl;
     }
 
-    public String getDependencyUrl() {
-        return dependencyUrl;
+    public Dependencies getDependencies() {
+        return dependencies;
     }
 }

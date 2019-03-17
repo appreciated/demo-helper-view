@@ -1,8 +1,8 @@
 package com.github.appreciated.demo.helper.view.other;
 
 import com.github.appreciated.calc.color.helper.CalculatedColorHelper;
-import com.github.appreciated.demo.helper.view.entity.CssVariable;
-import com.github.appreciated.demo.helper.view.entity.CssVariableChangeListener;
+import com.github.appreciated.demo.helper.entitiy.CssVariable;
+import com.github.appreciated.demo.helper.interfaces.CssVariableChangeListener;
 import com.github.appreciated.papercolor.textfield.PaperColorTextField;
 import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.button.Button;

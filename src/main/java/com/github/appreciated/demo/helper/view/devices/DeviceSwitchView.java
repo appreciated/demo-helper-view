@@ -2,7 +2,7 @@ package com.github.appreciated.demo.helper.view.devices;
 
 import com.github.appreciated.IronCollapse;
 import com.github.appreciated.calc.color.helper.CalculatedColorHelper;
-import com.github.appreciated.demo.helper.view.entity.CssVariable;
+import com.github.appreciated.demo.helper.entitiy.CssVariable;
 import com.github.appreciated.demo.helper.view.other.CssVariableView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasStyle;
