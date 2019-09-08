@@ -53,9 +53,9 @@ h1, h2, h3 {
     box-shadow: var(--lumo-box-shadow-s) !important;
     border: none !important;
     border-radius: var(--demo-helper-view-border-radius);
-    cursor: pointer;
+    /*cursor: pointer;
     -moz-user-select: -moz-none;
-    user-select: none;
+    user-select: none;*/
 }
 
 .v-slot-step-view-wrapper + .v-spacing + .v-slot-step-view-wrapper .step-view, .v-slot-step-view-wrapper + .v-slot-step-view-wrapper .step-view {
