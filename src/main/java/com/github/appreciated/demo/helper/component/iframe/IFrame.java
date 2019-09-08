@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 @Tag("iframe")
-@JavaScript("com/github/appreciated/demo-helper/iframe-helper.js")
+@JavaScript("./com/github/appreciated/demo-helper/iframe-helper.js")
 public class IFrame extends HtmlContainer {
 
     private final CustomElementStylePropertyMap queryStyle;
@@ -24,7 +24,7 @@ public class IFrame extends HtmlContainer {
         super.getStyle().set("border", "none");
         queryStyle = new CustomElementStylePropertyMap(new StateNode());
         queryStyle.addChangeListener(this::setInnerStyle);
-        addOnLoadListener(event -> getElement().executeJavaScript("initIFrameObserver($0)", getElement()));
+        addOnLoadListener(event -> getElement().executeJs("window.com_github_appreciated_demo_helper_iframe_helper.initIFrameObserver($0)", getElement()));
     }
 
     public void addOnLoadListener(DomEventListener loadListener) {
