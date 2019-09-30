@@ -3,7 +3,7 @@ package com.github.appreciated.demo.helper.view.other;
 import com.github.appreciated.calc.color.helper.CalculatedColorHelper;
 import com.github.appreciated.demo.helper.entity.CssVariable;
 import com.github.appreciated.demo.helper.interfaces.CssVariableChangeListener;
-import com.github.juchar.colorpicker.ColorPickerTextFieldRaw;
+import com.github.juchar.colorpicker.ColorPickerFieldRaw;
 import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -46,10 +46,10 @@ public class CssVariableView extends VerticalLayout {
         grid.addColumn(CssVariable::getName).setHeader("Variable");
         grid.addComponentColumn(cssVariable -> {
             Binder<CssVariable> binder = new Binder<>(CssVariable.class);
-            ColorPickerTextFieldRaw tf = new ColorPickerTextFieldRaw();
+            ColorPickerFieldRaw tf = new ColorPickerFieldRaw();
             binder.setBean(cssVariable);
-            binder.forField(tf).bind(CssVariable::getValue, CssVariable::setValue);
-            binder.addValueChangeListener(valueChangeEvent -> {
+            binder.forField(tf.getTextField()).bind(CssVariable::getValue, CssVariable::setValue);
+            tf.getTextField().addValueChangeListener(valueChangeEvent -> {
                 button.setVisible(true);
                 listener.ifPresent(listener1 -> listener1.onVariableChanged(cssVariable));
             });
