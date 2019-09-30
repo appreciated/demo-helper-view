@@ -3,13 +3,13 @@ package com.github.appreciated.demo.helper.view.other;
 import com.github.appreciated.calc.color.helper.CalculatedColorHelper;
 import com.github.appreciated.demo.helper.entity.CssVariable;
 import com.github.appreciated.demo.helper.interfaces.CssVariableChangeListener;
+import com.github.juchar.colorpicker.ColorPickerTextFieldRaw;
 import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class CssVariableView extends VerticalLayout {
         grid.addColumn(CssVariable::getName).setHeader("Variable");
         grid.addComponentColumn(cssVariable -> {
             Binder<CssVariable> binder = new Binder<>(CssVariable.class);
-            TextField tf = new TextField();
+            ColorPickerTextFieldRaw tf = new ColorPickerTextFieldRaw();
             binder.setBean(cssVariable);
             binder.forField(tf).bind(CssVariable::getValue, CssVariable::setValue);
             binder.addValueChangeListener(valueChangeEvent -> {

@@ -32,8 +32,13 @@ public class GithubContributorParser implements ContributorParser {
                     .GET()
                     .build();
             client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-                    .thenApply(HttpResponse::body)
-                    .thenAccept(this::parseUsers)
+                    .thenAccept(s -> {
+                        if (s.statusCode() >= 200 && s.statusCode() <= 299) {
+                            parseUsers(s.body());
+                        } else {
+                            System.err.println("Github Request failed with " + s.statusCode());
+                        }
+                    })
                     .join();
         }
     }
@@ -53,13 +58,6 @@ public class GithubContributorParser implements ContributorParser {
                 .toArray(Contributor[]::new);
     }
 
-    public static GithubContributorParser getInstance(String projectUrl) {
-        if (!parsers.containsKey(projectUrl)) {
-            parsers.put(projectUrl, new GithubContributorParser(projectUrl));
-        }
-        return parsers.get(projectUrl);
-    }
-
     public static void main(String[] args) {
         Arrays.stream(GithubContributorParser.getInstance("https://github.com/appreciated/vaadin-app-layout").getContributors()).forEach(contributor -> {
             System.out.println(contributor.getName());
@@ -68,5 +66,12 @@ public class GithubContributorParser implements ContributorParser {
 
     public Contributor[] getContributors() {
         return contributors;
+    }
+
+    public static GithubContributorParser getInstance(String projectUrl) {
+        if (!parsers.containsKey(projectUrl)) {
+            parsers.put(projectUrl, new GithubContributorParser(projectUrl));
+        }
+        return parsers.get(projectUrl);
     }
 }

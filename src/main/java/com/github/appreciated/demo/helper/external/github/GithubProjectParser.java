@@ -36,8 +36,13 @@ public class GithubProjectParser implements ProjectParser {
                             .GET()
                             .build();
                     client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-                            .thenApply(HttpResponse::body)
-                            .thenAccept(s -> parseProject(projectUrl, s))
+                            .thenAccept(s -> {
+                                if (s.statusCode() >= 200 && s.statusCode() <= 299) {
+                                    parseProject(projectUrl, s.body());
+                                } else {
+                                    System.err.println("Github Request failed with " + s.statusCode());
+                                }
+                            })
                             .join();
                 });
     }

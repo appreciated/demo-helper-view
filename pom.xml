@@ -5,12 +5,12 @@
 
     <groupId>com.github.appreciated</groupId>
     <artifactId>demo-helper-view</artifactId>
-    <version>4.0.0.beta1</version>
+    <version>4.0.0.beta2</version>
     <name>DemoHelperView</name>
     <description>DemoHelperView for Vaadin 14</description>
 
     <properties>
-        <vaadin.version>14.0.3</vaadin.version>
+        <vaadin.version>14.0.6</vaadin.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -102,6 +102,11 @@
         </dependency>
         <dependency>
             <groupId>com.github.appreciated</groupId>
+            <artifactId>color-picker-field-flow</artifactId>
+            <version>2.0.0.beta4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.appreciated</groupId>
             <artifactId>vaadin-css-grid</artifactId>
             <version>2.0.0.beta1</version>
         </dependency>
@@ -118,6 +123,7 @@
     </dependencies>
 
     <build>
+        <defaultGoal>jetty:run</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -136,15 +142,26 @@
                     </archive>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-maven-plugin</artifactId>
+                <version>${vaadin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-frontend</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty.version}</version>
                 <configuration>
-                    <scanIntervalSeconds>-1</scanIntervalSeconds>
+                    <scanIntervalSeconds>3</scanIntervalSeconds>
                     <!-- Use test scope because the UI/demo classes are in
-                        the test package. -->
+                            the test package. -->
                     <useTestScope>true</useTestScope>
                     <supportedPackagings>
                         <supportedPackaging>jar</supportedPackaging>
@@ -155,26 +172,7 @@
                             <resourceBase>${project.basedir}/src/test/resources/</resourceBase>
                         </resourceBases>
                     </webApp>
-                    <stopKey>${project.artifactId}</stopKey>
-                    <stopPort>8081</stopPort>
                 </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>com.vaadin</groupId>
-                <artifactId>vaadin-maven-plugin</artifactId>
-                <version>${vaadin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>prepare-frontend</goal>
-                            <goal>build-frontend</goal>
-                        </goals>
-                        <configuration>
-                            <convertHtml>false</convertHtml>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
@@ -233,6 +231,17 @@
                         <configuration>
                             <quiet>true</quiet>
                             <additionalparam>-Xdoclint:none</additionalparam>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <version>3.1.2</version>
+                        <configuration>
+                            <!-- Generated file that shouldn't be included in add-ons -->
+                            <excludes>
+                                <exclude>META-INF/VAADIN/config/flow-build-info.json</exclude>
+                            </excludes>
                         </configuration>
                     </plugin>
                 </plugins>
