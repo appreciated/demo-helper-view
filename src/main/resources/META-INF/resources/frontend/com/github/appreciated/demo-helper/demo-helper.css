@@ -16,6 +16,15 @@ h1, h2, h3 {
     font-weight: 300;
 }
 
+[theme~="dark"], [theme~="dark"] * {
+    color: var(--lumo-body-text-color);
+    transition: color 0.3s ease;
+}
+
+[theme~="dark"], .screen > * {
+    background-color: var(--lumo-base-color);
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
 .onload-animated {
     animation: animationFrames ease 0.7s;
     animation-iteration-count: 1;
@@ -90,69 +99,6 @@ h1, h2, h3 {
 
 .device-wrapper.align-center > * {
     align-self: center;
-}
-
-.device {
-    transition: all 0.5s, color 0s;
-    overflow: hidden;
-    background: var(--lumo-base-color);
-}
-
-.phone {
-    --button-padding: 9px;
-    width: 15vw;
-    height: 30vw;
-    max-width: 7cm;
-    max-height: 14cm;
-    min-width: 6cm;
-    min-height: 12cm;
-    border: 4px solid black;
-    border-radius: 1.5vw;
-    box-shadow: var(--demo-helper-box-shadow-small);
-}
-
-.phone.landscape {
-    height: 15vw;
-    width: 30vw;
-    max-height: 7cm;
-    max-width: 14cm;
-    min-height: 6cm;
-    min-width: 12cm;
-}
-
-.tablet {
-    --button-padding: 15px;
-    width: 40vw;
-    height: 53.333vw;
-    max-width: 17cm;
-    max-height: 24cm;
-    min-width: 10cm;
-    min-height: 14.11cm;
-    border: 4px solid black;
-    border-radius: 2vw;
-    box-shadow: var(--demo-helper-box-shadow);
-}
-
-.tablet.landscape {
-    width: 53.333vw;
-    height: 40vw;
-    max-width: 24cm;
-    max-height: 17cm;
-    min-width: 14.11cm;
-    min-height: 10cm;
-}
-
-.laptop {
-    --button-padding: 25px;
-    width: 80vw;
-    height: 45vw;
-    max-width: 33.2cm;
-    max-height: 18.7cm;
-    min-width: 19.2cm;
-    min-height: 10.8cm;
-    border: 5px solid black;
-    border-radius: 2vw;
-    box-shadow: var(--demo-helper-box-shadow);
 }
 
 @media screen and (min-width: 2000px) {

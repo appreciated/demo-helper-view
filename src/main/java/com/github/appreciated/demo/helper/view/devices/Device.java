@@ -1,51 +1,39 @@
 package com.github.appreciated.demo.helper.view.devices;
 
 import com.github.appreciated.calc.color.helper.CalculatedColorHelper;
+import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.html.Div;
+import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.dependency.NpmPackage;
+import com.vaadin.flow.component.page.Page;
 import com.vaadin.flow.dom.Style;
 import com.vaadin.flow.dom.impl.ImmutableEmptyStyle;
 
-import java.util.Arrays;
+import java.util.Objects;
 
-public class Device<T> extends Div implements HasOrientation<T> {
+@NpmPackage(value = "marvel-devices.css", version = "1.0.0")
+@CssImport("marvel-devices.css/assets/devices.min.css")
+public abstract class Device<T> extends FluentDiv implements HasOrientation<T> {
+    private final Component content;
+
     public Device(Component component) {
-        this();
-        add(component);
+        Objects.requireNonNull(component);
+        this.content = component;
         Style style = component.getElement().getStyle();
         if (!(style instanceof ImmutableEmptyStyle)) {
             style.set("width", "100%")
                     .set("height", "100%");
         }
+        getElement().getStyle()
+                .set("flex-shrink", "0")
+                .set("transition", "scale 0.1s")
+                .set("transform", "scale(" + getMaxScale() + ")");
     }
 
-    public Device() {
-        getClassNames().add("device");
-        changeToPhone();
-        getStyle().set("position", "relative");
-    }
-
-    public void changeToPhone() {
-        changeTo("phone");
-    }
-
-    public void changeTo(String... classNames) {
-        getClassNames().removeAll(Arrays.asList("phone", "tablet", "laptop", "landscape"));
-        for (String className : classNames) {
-            getClassNames().add(className);
-        }
-    }
-
-    public void changeToTablet() {
-        changeTo("tablet");
-    }
-
-    public void changeToLaptop() {
-        changeTo("laptop");
-    }
+    protected abstract double getMaxScale();
 
     public Device withButton(Component icon, ComponentEventListener<ClickEvent<Button>> listner) {
         Button button = new Button(icon, listner);
@@ -68,4 +56,32 @@ public class Device<T> extends Div implements HasOrientation<T> {
         add(helper);
         return this;
     }
+
+    abstract String[] getColors();
+
+    public Component getContent() {
+        return content;
+    }
+
+    @Override
+    protected void onAttach(AttachEvent attachEvent) {
+        super.onAttach(attachEvent);
+        Page page = attachEvent.getUI().getPage();
+        page.addBrowserWindowResizeListener(event -> setScale(event.getWidth()));
+    }
+
+    private void setScale(int currentWidth) {
+        getElement().getStyle()
+                .set("transform", "scale(" + getDesiredScale(currentWidth) + ")")
+                .set("margin-top", "-" + ((100 - (getDesiredScale(currentWidth) * 100)) / 2) + "%")
+                .set("margin-bottom", "-" + ((100 - (getDesiredScale(currentWidth) * 100)) / 2) + "%");
+    }
+
+    private double getDesiredScale(int currentWidth) {
+        return Math.min(((double) currentWidth / (double) getMaxDeviceWidth()) * 0.9, getMaxScale());
+    }
+
+    protected abstract int getMaxDeviceWidth();
+
+    abstract public Orientation[] hasOrientation();
 }

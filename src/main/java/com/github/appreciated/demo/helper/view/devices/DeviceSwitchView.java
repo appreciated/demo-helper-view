@@ -31,7 +31,7 @@ public class DeviceSwitchView extends Div implements HasOrientation {
         super();
         deviceMap = new HashMap<>();
         getClassNames().add("device-wrapper");
-        device = new Device(content);
+        device = new IPhone5C(content);
         device.getStyle().set("margin-left", "calc(104px + 1em)");
 
         actions.setWidth("undefined");
@@ -51,7 +51,7 @@ public class DeviceSwitchView extends Div implements HasOrientation {
         deviceMap.put(tab5, DeviceType.LAPTOP);
         tabs.add(tab1, tab2, tab3, tab4, tab5);
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
-        tabs.addSelectedChangeListener(event -> device.changeTo(deviceMap.get(tabs.getSelectedTab()).getClassNames()));
+        //tabs.addSelectedChangeListener(event -> device.changeTo(deviceMap.get(tabs.getSelectedTab()).getClassNames()));
         tabs.setSelectedTab(tab1);
         actions.add(tabs);
         HorizontalLayout deviceWrapper = new HorizontalLayout(device, actions);
