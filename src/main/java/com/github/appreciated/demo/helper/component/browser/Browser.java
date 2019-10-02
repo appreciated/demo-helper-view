@@ -40,7 +40,7 @@ public class Browser extends VerticalLayout {
                 .set("--lumo-border-radius", "var(--lumo-size-m)");
 
         WebBrowser browser = UI.getCurrent().getSession().getBrowser();
-        Label prefixLabel = new Label((browser.isSecureConnection() ? "https://" : "http://") + browser.getAddress() + "/");
+        Label prefixLabel = new Label(browser.getAddress() + "/");
         url.setPrefixComponent(prefixLabel);
 
         backButton = new Button(VaadinIcon.ARROW_LEFT.create());

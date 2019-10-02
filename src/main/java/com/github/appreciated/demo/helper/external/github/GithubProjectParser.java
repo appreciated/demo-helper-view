@@ -54,12 +54,15 @@ public class GithubProjectParser implements ProjectParser {
                 new Project(
                         project.getString("full_name"),
                         project.getJSONObject("owner").getString("avatar_url"),
-                        project.getJSONObject("owner").getString("html_url")
+                        project.getString("url").replace("https://api.github.com/repos/", "https://github.com/")
                 ));
     }
 
     @Override
     public Project[] getProjects() {
-        return Arrays.stream(projectUrls).map(s -> parsedProjects.get(s)).toArray(Project[]::new);
+        return Arrays.stream(projectUrls)
+                .filter(url -> parsedProjects.get(url) != null)
+                .map(url -> parsedProjects.get(url))
+                .toArray(Project[]::new);
     }
 }

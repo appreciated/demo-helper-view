@@ -1,6 +1,6 @@
 package com.github.appreciated.demo.helper.view.paragraph;
 
-import com.github.appreciated.card.Card;
+import com.github.appreciated.card.RippleClickableCard;
 import com.github.appreciated.demo.helper.entity.CodeExample;
 import com.github.appreciated.demo.helper.view.components.layout.CssFlexLayout;
 import com.github.appreciated.demo.helper.view.other.CodeExampleView;
@@ -30,7 +30,7 @@ public class StepView extends CssFlexLayout {
         stepDescription.setText(description);
         Arrays.stream(codeExamples).forEach(codeExample -> {
             CodeExampleView codeExampleView = new CodeExampleView(codeExample);
-            Card card = new Card(codeExampleView);
+            RippleClickableCard card = new RippleClickableCard(codeExampleView);
             card.setWidth("100%");
             card.getStyle().set("user-select", "none");
             getCodeExampleHolder().add(card);

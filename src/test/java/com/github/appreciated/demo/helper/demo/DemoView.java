@@ -37,29 +37,67 @@ public class DemoView extends DemoHelperView {
                 .withStylableDevice(new RouteBrowser(OtherContent.class), new CssVariable(LUMO_PRIMARY_TEXT_COLOR), new CssVariable(LUMO_PRIMARY_COLOR))
                 .withStylableDevice(new RouteIFrame(OtherContent.class), new CssVariable(LUMO_PRIMARY_TEXT_COLOR), new CssVariable(LUMO_PRIMARY_COLOR))
                 .withThemeableAndStylableDevice(getDeviceContent("< I am also a stylable device as above and also themeable meaning that the theme (Lumo.Dark and Lumo.Light) can be switched between by clicking on the switch above) >"), new CssVariable(LUMO_PRIMARY_TEXT_COLOR), new CssVariable(LUMO_PRIMARY_COLOR))
-                .withStylableDevice(getDeviceContent("Yay"), DeviceType.TABLET_LANDSCAPE)
-                .withDevice(new LaptopView(new Text("test")))
+                .withStylableDevice(new IPadMiniView(getDeviceContent("Yay")))
+                .withDevice(new MacBookProView(new Text("test")))
                 .withDevices(
-                        new TabletView(getDeviceContent("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >")).withOrientation(Orientation.LANDSCAPE),
-                        new PhoneView(getDeviceContent("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >"))
+                        new IPadMiniView(getDeviceContent("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >")).withOrientation(Orientation.LANDSCAPE),
+                        new IPhoneXView(getDeviceContent("< I also belong to a TabletAndPhoneView an display content inside a css rendered phone >"))
                 )
                 .withParagraph("I am a ParagraphView", "I can display a header and a description")
                 .withStylableDevice(getDeviceContent("< I'm a StylablePhoneView I display content and my css variables can be edited beside me >"), new CssVariable(LUMO_PRIMARY_TEXT_COLOR), new CssVariable(LUMO_PRIMARY_COLOR))
-                .withDevice(new PhoneView(
-                                getDeviceContent("< I belong to a PhoneView I display content inside a css rendered phone >")),
-                        "Also I can show a optional message beside the PhoneView"
+                .withDevice(new IPhone5C(
+                                getDeviceContent("< I belong to a " + IPhone5C.class.getName() + " I display content inside a css rendered phone >")),
+                        "Also I can show a optional message beside the " + IPhone5C.class.getName() + ""
                 )
                 .withImage("I am a ImageParagraphView", "I can display a header, a description and an image", "images/phone.png")
-                .withStylableDevice(getDeviceContent("< I belong to a TabletView I display content inside a css rendered tablet >"), new CssVariable(LUMO_PRIMARY_TEXT_COLOR))
-                .withDevice(new TabletView(getDeviceContent("< I belong to a TabletView I display content inside a css rendered tablet >")))
+                .withStylableDevice(getDeviceContent("< I belong to a " + IPadMiniView.class.getName() + " I display content inside a css rendered tablet >"), new CssVariable(LUMO_PRIMARY_TEXT_COLOR))
+                .withDevice(new IPadMiniView(getDeviceContent("< I belong to a " + IPadMiniView.class.getName() + " I display content inside a css rendered tablet >")))
                 .withParagraph("I am a ParagraphView",
                         "I display a header and optionally a description. Also you can add components below the description",
                         new Button("Click Me!")
                 )
                 .withParagraph("I am a ParagraphView without description")
-                .withParagraph("I am a ParagraphView without description")
+                .withCodeExample(
+                        new VerticalLayout(new Button("Test")),
+                        new CodeExample("package com.github.appreciated.demo.helper.view.devices;\n" +
+                                "\n" +
+                                "import com.vaadin.flow.component.Component;\n" +
+                                "\n" +
+                                "public class MyClass extends AnotherClass {\n" +
+                                "    private AndAnotherClass attribute;\n" +
+                                "    \n" +
+                                "    \n" +
+                                "    public MyClass(Component component) {\n" +
+                                "        super(component);\n" +
+                                "        someMethod();\n" +
+                                "    }\n" +
+                                "\n" +
+                                "    private void someMethod() {\n" +
+                                "        \n" +
+                                "    }\n" +
+                                "\n" +
+                                "}\n", Language.java, "Java"))
+                .withCodeExample(
+                        new CodeExample("package com.github.appreciated.demo.helper.view.devices;\n" +
+                                "\n" +
+                                "import com.vaadin.flow.component.Component;\n" +
+                                "\n" +
+                                "public class MyClass extends AnotherClass {\n" +
+                                "    private AndAnotherClass attribute;\n" +
+                                "    \n" +
+                                "    \n" +
+                                "    public MyClass(Component component) {\n" +
+                                "        super(component);\n" +
+                                "        someMethod();\n" +
+                                "    }\n" +
+                                "\n" +
+                                "    private void someMethod() {\n" +
+                                "        \n" +
+                                "    }\n" +
+                                "\n" +
+                                "}\n", Language.java, "Java"))
                 .withParagraph("I am a ParagraphView without description but with a Component", new Button("Click Me"))
-                .withDevice(new LaptopView(getDeviceContent("< I belong to a LaptopView I display content inside a css rendered laptop >")))
+                .withDevice(new MacBookProView(getDeviceContent("< I belong to a " + MacBookProView.class.getName() + " I display content inside a css rendered laptop >")))
                 .withStep("I am a StepView",
                         "I display a header step number (1,2,3,4,5) which is automatically generated, also a description and one or multiple code examples",
                         new CodeExample("<dependency>\n" +
@@ -68,6 +106,7 @@ public class DemoView extends DemoHelperView {
                                 "\t<version>2.0.8</version>\n" +
                                 "</dependency>", Language.markup, "Maven")
                 )
+
                 .withStep("I am also a StepView",
                         "And I contain a single code example",
                         new CodeExample("clean install", Language.markup, "Maven")

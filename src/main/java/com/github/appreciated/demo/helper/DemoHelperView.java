@@ -1,5 +1,7 @@
 package com.github.appreciated.demo.helper;
 
+import com.github.appreciated.card.Card;
+import com.github.appreciated.card.RippleClickableCard;
 import com.github.appreciated.demo.helper.component.browser.Browser;
 import com.github.appreciated.demo.helper.component.iframe.IFrame;
 import com.github.appreciated.demo.helper.entity.*;
@@ -10,7 +12,8 @@ import com.github.appreciated.demo.helper.external.github.GithubProjectParser;
 import com.github.appreciated.demo.helper.view.components.layout.SinglePageLayout;
 import com.github.appreciated.demo.helper.view.devices.Device;
 import com.github.appreciated.demo.helper.view.devices.DeviceSwitchView;
-import com.github.appreciated.demo.helper.view.devices.DeviceType;
+import com.github.appreciated.demo.helper.view.devices.IPhoneXView;
+import com.github.appreciated.demo.helper.view.other.CodeExampleView;
 import com.github.appreciated.demo.helper.view.other.ThemeSwitchView;
 import com.github.appreciated.demo.helper.view.paragraph.*;
 import com.vaadin.flow.component.Component;
@@ -117,35 +120,35 @@ public class DemoHelperView extends SinglePageLayout {
     }
 
     public DemoHelperView withStylableDevice(Component content, CssVariable... cssVariables) {
-        return withStylableDevice(content, DeviceType.PHONE, cssVariables);
+        return withStylableDevice(new IPhoneXView(content), cssVariables);
     }
 
-    public DemoHelperView withStylableDevice(Component content, DeviceType type, CssVariable... cssVariables) {
-        DeviceSwitchView view = new DeviceSwitchView(content);
+    public DemoHelperView withStylableDevice(Device device, CssVariable... cssVariables) {
+        DeviceSwitchView view = new DeviceSwitchView(device);
         if (cssVariables.length > 0) {
             view.withStyleableVariables(cssVariables);
-            if (content instanceof Browser) {
-                view.withStyleableView(((Browser) content).getBrowserWindow());
+            if (device.getContent() instanceof Browser) {
+                view.withStyleableView(((Browser) device.getContent()).getBrowserWindow());
             }
-            if (content instanceof IFrame) {
-                view.withStyleableView((HasStyle) content);
+            if (device.getContent() instanceof IFrame) {
+                view.withStyleableView((HasStyle) device.getContent());
             }
         }
-        view.setDeviceType(type);
+        //view.setDeviceType(type);
         add(view);
         return this;
     }
 
     public DemoHelperView withThemeableAndStylableDevice(Component content, CssVariable... cssVariables) {
-        return withThemeableAndStylableDevice(content, DeviceType.PHONE, cssVariables);
+        return withThemeableAndStylableDevice(new IPhoneXView(content), cssVariables);
     }
 
-    public DemoHelperView withThemeableAndStylableDevice(Component content, DeviceType type, CssVariable... cssVariables) {
-        DeviceSwitchView view = new DeviceSwitchView(content);
+    public DemoHelperView withThemeableAndStylableDevice(Device device, CssVariable... cssVariables) {
+        DeviceSwitchView view = new DeviceSwitchView(device);
         if (cssVariables.length > 0) {
             view.withStyleableVariables(cssVariables);
         }
-        view.setDeviceType(type);
+        //view.setDeviceType(type);
         add(new ThemeSwitchView(view));
         return this;
     }
@@ -223,7 +226,11 @@ public class DemoHelperView extends SinglePageLayout {
         if (projectParser == null) {
             throw new IllegalStateException("Please set the project dependency URL or a ProjectParser by using the DemoHelperView constructor");
         }
-        addParagraph(new ProjectDependencyView(projectParser.getProjects()));
+        Project[] projects = projectParser.getProjects();
+
+        if (projects != null && projects.length > 0) {
+            addParagraph(new ProjectDependencyView(projects));
+        }
         return this;
     }
 
@@ -234,4 +241,28 @@ public class DemoHelperView extends SinglePageLayout {
     public Dependencies getDependencies() {
         return dependencies;
     }
+
+    public DemoHelperView withCodeExample(CodeExample codeExample) {
+        CodeExampleView codeExampleView = new CodeExampleView(codeExample);
+        RippleClickableCard card = new RippleClickableCard(codeExampleView);
+        card.setWidth("100%");
+        card.getStyle().set("user-select", "none");
+        addParagraph(card);
+        return this;
+    }
+
+    public DemoHelperView withCodeExample(Component componentExample, CodeExample codeExample) {
+        CodeExampleView codeExampleView = new CodeExampleView(codeExample);
+        codeExampleView.getElement().getStyle().set("background", "var(--lumo-contrast-5pct)");
+        RippleClickableCard wrapper = new RippleClickableCard(codeExampleView);
+        wrapper.setElevation(0);
+        wrapper.setWidthFull();
+        wrapper.getTemplateDiv().getStyle().set("border-radius", "0px");
+        Card card = new Card(componentExample, wrapper);
+        card.setWidth("100%");
+        card.getStyle().set("user-select", "none");
+        addParagraph(card);
+        return this;
+    }
+
 }
