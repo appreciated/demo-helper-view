@@ -1,5 +1,6 @@
 package com.github.appreciated.demo.helper;
 
+import com.github.appreciated.card.Card;
 import com.github.appreciated.card.RippleClickableCard;
 import com.github.appreciated.demo.helper.component.browser.Browser;
 import com.github.appreciated.demo.helper.component.iframe.IFrame;
@@ -253,7 +254,11 @@ public class DemoHelperView extends SinglePageLayout {
     public DemoHelperView withCodeExample(Component componentExample, CodeExample codeExample) {
         CodeExampleView codeExampleView = new CodeExampleView(codeExample);
         codeExampleView.getElement().getStyle().set("background", "var(--lumo-contrast-5pct)");
-        RippleClickableCard card = new RippleClickableCard(componentExample, codeExampleView);
+        RippleClickableCard wrapper = new RippleClickableCard(codeExampleView);
+        wrapper.setElevation(0);
+        wrapper.setWidthFull();
+        wrapper.getTemplateDiv().getStyle().set("border-radius", "0px");
+        Card card = new Card(componentExample, wrapper);
         card.setWidth("100%");
         card.getStyle().set("user-select", "none");
         addParagraph(card);

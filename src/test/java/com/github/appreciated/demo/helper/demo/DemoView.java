@@ -25,26 +25,6 @@ public class DemoView extends DemoHelperView {
 
     public DemoView() {
         super(new GithubUrl("https://github.com/appreciated/vaadin-app-layout"), new GithubDependencies("https://github.com/OlliTietavainenVaadin/clipboardhelper", "https://github.com/appreciated/grid-layout", "https://github.com/appreciated/card", "https://github.com/appreciated/prism-element", "https://github.com/appreciated/paper-color", "https://github.com/appreciated/iron-collapse", "https://github.com/appreciated/calculated-color-helper"));
-        withCodeExample(
-                new VerticalLayout(new Button("Test")),
-                new CodeExample("package com.github.appreciated.demo.helper.view.devices;\n" +
-                        "\n" +
-                        "import com.vaadin.flow.component.Component;\n" +
-                        "\n" +
-                        "public class MyClass extends AnotherClass {\n" +
-                        "    private AndAnotherClass attribute;\n" +
-                        "    \n" +
-                        "    \n" +
-                        "    public MyClass(Component component) {\n" +
-                        "        super(component);\n" +
-                        "        someMethod();\n" +
-                        "    }\n" +
-                        "\n" +
-                        "    private void someMethod() {\n" +
-                        "        \n" +
-                        "    }\n" +
-                        "\n" +
-                        "}\n", Language.java, "Java"));
         withVerticalHeader("VerticalHeaderView",
                 "I can display a header and an optionally an image or a subtitle",
                 "images/demo-helper-logo.png")
@@ -77,7 +57,45 @@ public class DemoView extends DemoHelperView {
                         new Button("Click Me!")
                 )
                 .withParagraph("I am a ParagraphView without description")
-
+                .withCodeExample(
+                        new VerticalLayout(new Button("Test")),
+                        new CodeExample("package com.github.appreciated.demo.helper.view.devices;\n" +
+                                "\n" +
+                                "import com.vaadin.flow.component.Component;\n" +
+                                "\n" +
+                                "public class MyClass extends AnotherClass {\n" +
+                                "    private AndAnotherClass attribute;\n" +
+                                "    \n" +
+                                "    \n" +
+                                "    public MyClass(Component component) {\n" +
+                                "        super(component);\n" +
+                                "        someMethod();\n" +
+                                "    }\n" +
+                                "\n" +
+                                "    private void someMethod() {\n" +
+                                "        \n" +
+                                "    }\n" +
+                                "\n" +
+                                "}\n", Language.java, "Java"))
+                .withCodeExample(
+                        new CodeExample("package com.github.appreciated.demo.helper.view.devices;\n" +
+                                "\n" +
+                                "import com.vaadin.flow.component.Component;\n" +
+                                "\n" +
+                                "public class MyClass extends AnotherClass {\n" +
+                                "    private AndAnotherClass attribute;\n" +
+                                "    \n" +
+                                "    \n" +
+                                "    public MyClass(Component component) {\n" +
+                                "        super(component);\n" +
+                                "        someMethod();\n" +
+                                "    }\n" +
+                                "\n" +
+                                "    private void someMethod() {\n" +
+                                "        \n" +
+                                "    }\n" +
+                                "\n" +
+                                "}\n", Language.java, "Java"))
                 .withParagraph("I am a ParagraphView without description but with a Component", new Button("Click Me"))
                 .withDevice(new MacBookProView(getDeviceContent("< I belong to a " + MacBookProView.class.getName() + " I display content inside a css rendered laptop >")))
                 .withStep("I am a StepView",
