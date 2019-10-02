@@ -252,7 +252,7 @@ public class DemoHelperView extends SinglePageLayout {
 
     public DemoHelperView withCodeExample(Component componentExample, CodeExample codeExample) {
         CodeExampleView codeExampleView = new CodeExampleView(codeExample);
-        codeExampleView.getElement().getStyle().set("background", "var(--lumo-contrast-5pct);");
+        codeExampleView.getElement().getStyle().set("background", "var(--lumo-contrast-5pct)");
         RippleClickableCard card = new RippleClickableCard(componentExample, codeExampleView);
         card.setWidth("100%");
         card.getStyle().set("user-select", "none");
