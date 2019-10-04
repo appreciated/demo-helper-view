@@ -33,7 +33,7 @@ public class IPhone5C extends Device<IPhone5C> {
     }
 
     @Override
-    public Orientation[] hasOrientation() {
+    public Orientation[] getOrientations() {
         return new Orientation[]{Orientation.PORTRAIT, Orientation.LANDSCAPE};
     }
 }

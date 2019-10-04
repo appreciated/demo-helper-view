@@ -29,7 +29,7 @@ public class IPadMiniView extends Device<IPadMiniView> {
     }
 
     @Override
-    public Orientation[] hasOrientation() {
+    public Orientation[] getOrientations() {
         return new Orientation[]{Orientation.PORTRAIT, Orientation.LANDSCAPE};
     }
 }

@@ -12,7 +12,7 @@ import com.github.appreciated.demo.helper.external.github.GithubProjectParser;
 import com.github.appreciated.demo.helper.view.components.layout.SinglePageLayout;
 import com.github.appreciated.demo.helper.view.devices.Device;
 import com.github.appreciated.demo.helper.view.devices.DeviceSwitchView;
-import com.github.appreciated.demo.helper.view.devices.DeviceType;
+import com.github.appreciated.demo.helper.view.devices.IPhoneXView;
 import com.github.appreciated.demo.helper.view.other.CodeExampleView;
 import com.github.appreciated.demo.helper.view.other.ThemeSwitchView;
 import com.github.appreciated.demo.helper.view.paragraph.*;
@@ -120,35 +120,35 @@ public class DemoHelperView extends SinglePageLayout {
     }
 
     public DemoHelperView withStylableDevice(Component content, CssVariable... cssVariables) {
-        return withStylableDevice(content, DeviceType.PHONE, cssVariables);
+        return withStylableDevice(new IPhoneXView(content), cssVariables);
     }
 
-    public DemoHelperView withStylableDevice(Component content, DeviceType type, CssVariable... cssVariables) {
-        DeviceSwitchView view = new DeviceSwitchView(content);
+    public DemoHelperView withStylableDevice(Device device, CssVariable... cssVariables) {
+        DeviceSwitchView view = new DeviceSwitchView(device);
         if (cssVariables.length > 0) {
             view.withStyleableVariables(cssVariables);
-            if (content instanceof Browser) {
-                view.withStyleableView(((Browser) content).getBrowserWindow());
+            if (device.getContent() instanceof Browser) {
+                view.withStyleableView(((Browser) device.getContent()).getBrowserWindow());
             }
-            if (content instanceof IFrame) {
-                view.withStyleableView((HasStyle) content);
+            if (device.getContent() instanceof IFrame) {
+                view.withStyleableView((HasStyle) device.getContent());
             }
         }
-        view.setDeviceType(type);
+        //view.setDeviceType(type);
         add(view);
         return this;
     }
 
     public DemoHelperView withThemeableAndStylableDevice(Component content, CssVariable... cssVariables) {
-        return withThemeableAndStylableDevice(content, DeviceType.PHONE, cssVariables);
+        return withThemeableAndStylableDevice(new IPhoneXView(content), cssVariables);
     }
 
-    public DemoHelperView withThemeableAndStylableDevice(Component content, DeviceType type, CssVariable... cssVariables) {
-        DeviceSwitchView view = new DeviceSwitchView(content);
+    public DemoHelperView withThemeableAndStylableDevice(Device device, CssVariable... cssVariables) {
+        DeviceSwitchView view = new DeviceSwitchView(device);
         if (cssVariables.length > 0) {
             view.withStyleableVariables(cssVariables);
         }
-        view.setDeviceType(type);
+        //view.setDeviceType(type);
         add(new ThemeSwitchView(view));
         return this;
     }

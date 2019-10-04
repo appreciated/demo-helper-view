@@ -23,7 +23,6 @@ h1, h2, h3 {
 
 [theme~="dark"], .screen > * {
     background-color: var(--lumo-base-color);
-    transition: color 0.3s ease, background-color 0.3s ease;
 }
 .onload-animated {
     animation: animationFrames ease 0.7s;
@@ -113,6 +112,10 @@ h1, h2, h3 {
     .laptop {
         border-radius: 1cm;
     }
+}
+
+.iphone-x, .iphone8, .macbook, .iphone5c, .ipad, .note8 {
+    --button-padding: 44px;
 }
 
 .ripple-animation-dark:after {

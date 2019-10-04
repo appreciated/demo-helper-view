@@ -37,7 +37,7 @@ public class DemoView extends DemoHelperView {
                 .withStylableDevice(new RouteBrowser(OtherContent.class), new CssVariable(LUMO_PRIMARY_TEXT_COLOR), new CssVariable(LUMO_PRIMARY_COLOR))
                 .withStylableDevice(new RouteIFrame(OtherContent.class), new CssVariable(LUMO_PRIMARY_TEXT_COLOR), new CssVariable(LUMO_PRIMARY_COLOR))
                 .withThemeableAndStylableDevice(getDeviceContent("< I am also a stylable device as above and also themeable meaning that the theme (Lumo.Dark and Lumo.Light) can be switched between by clicking on the switch above) >"), new CssVariable(LUMO_PRIMARY_TEXT_COLOR), new CssVariable(LUMO_PRIMARY_COLOR))
-                .withStylableDevice(getDeviceContent("Yay"), DeviceType.TABLET_LANDSCAPE)
+                .withStylableDevice(new IPadMiniView(getDeviceContent("Yay")))
                 .withDevice(new MacBookProView(new Text("test")))
                 .withDevices(
                         new IPadMiniView(getDeviceContent("< I belong to a TabletAndPhoneView an display content inside a css rendered tablet >")).withOrientation(Orientation.LANDSCAPE),

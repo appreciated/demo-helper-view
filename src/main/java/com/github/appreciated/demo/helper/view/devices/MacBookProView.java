@@ -30,7 +30,7 @@ public class MacBookProView extends Device<MacBookProView> {
     }
 
     @Override
-    public Orientation[] hasOrientation() {
+    public Orientation[] getOrientations() {
         return new Orientation[]{Orientation.LANDSCAPE};
     }
 }

@@ -4,8 +4,9 @@ import com.github.appreciated.IronCollapse;
 import com.github.appreciated.calc.color.helper.CalculatedColorHelper;
 import com.github.appreciated.demo.helper.entity.CssVariable;
 import com.github.appreciated.demo.helper.view.other.CssVariableView;
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasStyle;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.icon.Icon;
@@ -14,7 +15,6 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.tabs.Tab;
-import com.vaadin.flow.component.tabs.Tabs;
 
 import java.util.HashMap;
 
@@ -24,17 +24,17 @@ public class DeviceSwitchView extends Div implements HasOrientation {
     private final VerticalLayout actions = new VerticalLayout();
     private final HashMap<Tab, DeviceType> deviceMap;
     private final VerticalLayout contentHolder;
-    private final Tabs tabs;
     private CssVariableView variableView;
 
-    public DeviceSwitchView(Component content) {
+    public DeviceSwitchView(Device device) {
         super();
+        this.device = device;
         deviceMap = new HashMap<>();
         getClassNames().add("device-wrapper");
-        device = new IPhone5C(content);
         device.getStyle().set("margin-left", "calc(104px + 1em)");
 
         actions.setWidth("undefined");
+        /*
         tabs = new Tabs();
         Tab tab1 = new Tab(VaadinIcon.MOBILE.create());
         Tab tab2 = new Tab(getRotatedIcon(VaadinIcon.MOBILE, 90));
@@ -49,12 +49,18 @@ public class DeviceSwitchView extends Div implements HasOrientation {
         deviceMap.put(tab3, DeviceType.TABLET);
         deviceMap.put(tab4, DeviceType.TABLET_LANDSCAPE);
         deviceMap.put(tab5, DeviceType.LAPTOP);
-        tabs.add(tab1, tab2, tab3, tab4, tab5);
+        tabs.add(tab1, tab2); //, tab3, tab4, tab5);
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
-        //tabs.addSelectedChangeListener(event -> device.changeTo(deviceMap.get(tabs.getSelectedTab()).getClassNames()));
+        tabs.addSelectedChangeListener(event -> device.changeTo(deviceMap.get(tabs.getSelectedTab()).getClassNames()));
         tabs.setSelectedTab(tab1);
-        actions.add(tabs);
-        HorizontalLayout deviceWrapper = new HorizontalLayout(device, actions);
+        actions.add(tabs);*/
+        Button button = new Button(VaadinIcon.ROTATE_RIGHT.create(), buttonClickEvent -> device.switchRotation());
+        button.addThemeVariants(ButtonVariant.LUMO_TERTIARY, ButtonVariant.LUMO_ICON);
+        actions.add(button);
+        HorizontalLayout deviceWrapper = new HorizontalLayout(device);
+        if (device.getOrientations().length > 0) {
+            deviceWrapper.add(actions);
+        }
         contentHolder = new VerticalLayout(deviceWrapper);
         contentHolder.setAlignItems(FlexComponent.Alignment.CENTER);
         add(contentHolder);
@@ -79,13 +85,13 @@ public class DeviceSwitchView extends Div implements HasOrientation {
         return this;
     }
 
-    public void setDeviceType(DeviceType type) {
+   /* public void setDeviceType(DeviceType type) {
         deviceMap.forEach((tab, deviceType) -> {
             if (deviceType == type) {
                 tabs.setSelectedTab(tab);
             }
         });
-    }
+    }*/
 
     public void withStyleableView(HasStyle content) {
         if (variableView != null) {

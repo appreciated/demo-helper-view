@@ -38,7 +38,7 @@ public class GalaxyNote8View extends Device<IPhoneXView> {
     }
 
     @Override
-    public Orientation[] hasOrientation() {
+    public Orientation[] getOrientations() {
         return new Orientation[]{Orientation.PORTRAIT, Orientation.LANDSCAPE};
     }
 }

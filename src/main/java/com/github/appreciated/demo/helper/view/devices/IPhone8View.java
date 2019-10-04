@@ -33,7 +33,7 @@ public class IPhone8View extends Device<IPhone8View> {
     }
 
     @Override
-    public Orientation[] hasOrientation() {
+    public Orientation[] getOrientations() {
         return new Orientation[]{Orientation.PORTRAIT, Orientation.LANDSCAPE};
     }
 }

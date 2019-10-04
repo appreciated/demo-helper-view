@@ -18,6 +18,7 @@ import java.util.Objects;
 @CssImport("marvel-devices.css/assets/devices.min.css")
 public abstract class Device<T> extends FluentDiv implements HasOrientation<T> {
     private final Component content;
+    private Orientation currentRotation;
 
     public Device(Component component) {
         Objects.requireNonNull(component);
@@ -29,27 +30,18 @@ public abstract class Device<T> extends FluentDiv implements HasOrientation<T> {
         }
         getElement().getStyle()
                 .set("flex-shrink", "0")
-                .set("transition", "scale 0.1s")
-                .set("transform", "scale(" + getMaxScale() + ")");
+                .set("transition", "scale 0.1s");
+
+        setScale(9999);
     }
 
     protected abstract double getMaxScale();
 
-    public Device withButton(Component icon, ComponentEventListener<ClickEvent<Button>> listner) {
-        Button button = new Button(icon, listner);
-        button.getStyle()
-                .set("position", "absolute")
-                .set("transition", "all 0.3s ease")
-                .set("color", "var(--lumo-primary-contrast-color)")
-                .set("right", "calc(var(--button-padding) + 4px)")
-                .set("box-shadow", "var(--lumo-box-shadow-m)")
-                .set("background", "var(--lumo-primary-color)")
-                .set("border-radius", "100%")
-                .set("bottom", "var(--button-padding)");
-        button.setWidth("50px");
-        button.setHeight("50px");
-        add(button);
-        return this;
+    private void setScale(int currentWidth) {
+        getElement().getStyle()
+                .set("transform", "scale(" + getDesiredScale(currentWidth) + ")")
+                .set("margin-top", "-" + ((100 - (getDesiredScale(currentWidth) * 100)) / 4) + "%")
+                .set("margin-bottom", "-" + ((100 - (getDesiredScale(currentWidth) * 100)) / 4) + "%");
     }
 
     public Device withCalculatedColorHelper(CalculatedColorHelper helper) {
@@ -70,11 +62,22 @@ public abstract class Device<T> extends FluentDiv implements HasOrientation<T> {
         page.addBrowserWindowResizeListener(event -> setScale(event.getWidth()));
     }
 
-    private void setScale(int currentWidth) {
-        getElement().getStyle()
-                .set("transform", "scale(" + getDesiredScale(currentWidth) + ")")
-                .set("margin-top", "-" + ((100 - (getDesiredScale(currentWidth) * 100)) / 2) + "%")
-                .set("margin-bottom", "-" + ((100 - (getDesiredScale(currentWidth) * 100)) / 2) + "%");
+    public Device withButton(Component icon, ComponentEventListener<ClickEvent<Button>> listner) {
+        Button button = new Button(icon, listner);
+        button.getStyle()
+                .set("position", "absolute")
+                .set("transition", "all 0.3s ease")
+                .set("color", "var(--lumo-primary-contrast-color)")
+                .set("right", "calc(var(--button-padding) + 4px)")
+                .set("box-shadow", "var(--lumo-box-shadow-m)")
+                .set("background", "var(--lumo-primary-color)")
+                .set("border-radius", "100%")
+                .set("z-index", "20")
+                .set("bottom", "var(--button-padding)");
+        button.setWidth("50px");
+        button.setHeight("50px");
+        add(button);
+        return this;
     }
 
     private double getDesiredScale(int currentWidth) {
@@ -83,5 +86,18 @@ public abstract class Device<T> extends FluentDiv implements HasOrientation<T> {
 
     protected abstract int getMaxDeviceWidth();
 
-    abstract public Orientation[] hasOrientation();
+    public void switchRotation() {
+        if (getOrientations().length > 0) {
+            if (currentRotation == null) {
+                currentRotation = getOrientations()[0];
+            }
+            this.removeClassName(currentRotation.getCssClassName());
+            currentRotation = currentRotation == getOrientations()[0] ? getOrientations()[1] : getOrientations()[0];
+            this.addClassName(currentRotation.getCssClassName());
+        } else {
+            throw new IllegalStateException("Device cannot be rotated!");
+        }
+    }
+
+    abstract public Orientation[] getOrientations();
 }
