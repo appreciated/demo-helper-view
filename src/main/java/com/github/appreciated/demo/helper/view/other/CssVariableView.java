@@ -5,10 +5,8 @@ import com.github.appreciated.demo.helper.entity.CssVariable;
 import com.github.appreciated.demo.helper.interfaces.CssVariableChangeListener;
 import com.github.juchar.colorpicker.ColorPickerFieldRaw;
 import com.vaadin.flow.component.HasStyle;
-import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.GridVariant;
-import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.binder.Binder;
 
@@ -17,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class CssVariableView extends VerticalLayout {
-    private final Button button = new Button("Download", VaadinIcon.DOWNLOAD.create());
+    //private final Button button = new Button("Download", VaadinIcon.DOWNLOAD.create());
     private Grid<CssVariable> grid = new Grid<>();
 
     private Optional<CssVariableChangeListener> listener = Optional.empty();
@@ -50,18 +48,18 @@ public class CssVariableView extends VerticalLayout {
             binder.setBean(cssVariable);
             binder.forField(tf.getTextField()).bind(CssVariable::getValue, CssVariable::setValue);
             tf.getTextField().addValueChangeListener(valueChangeEvent -> {
-                button.setVisible(true);
+                //button.setVisible(true);
                 listener.ifPresent(listener1 -> listener1.onVariableChanged(cssVariable));
             });
             return tf;
         }).setHeader("Value");
 
-        button.setVisible(false);
-        button.addClickListener(buttonClickEvent -> {
+        //button.setVisible(false);
+        //button.addClickListener(buttonClickEvent -> {
 
-        });
+        //});
         grid.getStyle().set("border", "none");
-        add(grid, button);
+        add(grid);
         getStyle().set("max-width", "790px").set("margin-top", "50px");
         setMargin(false);
         setPadding(false);

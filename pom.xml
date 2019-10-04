@@ -103,7 +103,7 @@
         <dependency>
             <groupId>com.github.appreciated</groupId>
             <artifactId>color-picker-field-flow</artifactId>
-            <version>2.0.0.beta4</version>
+            <version>2.0.0.beta5</version>
         </dependency>
         <dependency>
             <groupId>com.github.appreciated</groupId>
