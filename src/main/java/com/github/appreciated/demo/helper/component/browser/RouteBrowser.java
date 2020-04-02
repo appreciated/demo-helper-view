@@ -5,6 +5,11 @@ import com.vaadin.flow.component.UI;
 
 public class RouteBrowser extends Browser {
     public RouteBrowser(Class<? extends Component> route) {
-        super(UI.getCurrent().getRouter().getUrl(route));
+        super(UI.getCurrent()
+                .getRouter()
+                .getRegistry()
+                .getTargetUrl(route)
+                .orElseThrow(() -> new IllegalArgumentException("Class needs to have a @Route"))
+        );
     }
 }

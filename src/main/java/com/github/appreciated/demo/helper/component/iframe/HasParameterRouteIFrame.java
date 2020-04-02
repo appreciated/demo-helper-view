@@ -6,8 +6,13 @@ import com.vaadin.flow.router.HasUrlParameter;
 
 public class HasParameterRouteIFrame<T, C extends Component & HasUrlParameter<T>> extends IFrame {
 
-    public HasParameterRouteIFrame(Class<C> className, T parameter) {
-        setSrc(UI.getCurrent().getRouter().getUrl(className, parameter));
+    public HasParameterRouteIFrame(Class<C> className, String parameter) {
+        setSrc(UI.getCurrent()
+                .getRouter()
+                .getRegistry()
+                .getTargetUrl(className)
+                .orElseThrow(() -> new IllegalArgumentException("Class needs to have a @Route"))
+                + "/" + parameter);
     }
 }
 

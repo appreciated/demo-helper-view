@@ -7,6 +7,11 @@ import com.vaadin.flow.router.HasUrlParameter;
 public class HasParameterRouteBrowser<T, C extends Component & HasUrlParameter<T>> extends Browser {
 
     public HasParameterRouteBrowser(Class<C> route, T parameter) {
-        super(UI.getCurrent().getRouter().getUrl(route, parameter));
+        super(UI.getCurrent()
+                .getRouter()
+                .getRegistry()
+                .getTargetUrl(route)
+                .orElseThrow(() -> new IllegalArgumentException("Class needs to have a @Route"))
+                + "/" + parameter);
     }
 }

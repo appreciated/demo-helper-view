@@ -22,7 +22,7 @@ import com.vaadin.flow.component.dependency.StyleSheet;
 
 import java.util.Arrays;
 
-@StyleSheet("com/github/appreciated/demo-helper/demo-helper.css")
+@StyleSheet("./com/github/appreciated/demo-helper/demo-helper.css")
 public class DemoHelperView extends SinglePageLayout {
 
     private ProjectParser projectParser;

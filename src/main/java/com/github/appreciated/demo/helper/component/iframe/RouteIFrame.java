@@ -6,7 +6,12 @@ import com.vaadin.flow.component.UI;
 public class RouteIFrame extends IFrame {
 
     public RouteIFrame(Class<? extends Component> className) {
-        setSrc(UI.getCurrent().getRouter().getUrl(className));
+        setSrc(UI.getCurrent()
+                .getRouter()
+                .getRegistry()
+                .getTargetUrl(className)
+                .orElseThrow(() -> new IllegalArgumentException("Class needs to have a @Route"))
+        );
     }
 }
 
