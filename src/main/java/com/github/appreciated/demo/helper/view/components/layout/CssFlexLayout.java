@@ -84,14 +84,6 @@ public class CssFlexLayout extends com.vaadin.flow.component.orderedlayout.FlexL
         setSpacing(this.hasSpacing);
     }
 
-    public FlexWrap getFlexWrap() {
-        return flexWrap;
-    }
-
-    public void setFlexWrap(FlexWrap flexWrap) {
-        this.flexWrap = flexWrap;
-        getStyle().set(FlexWrap.styleName, flexWrap.getWrapValue());
-    }
 
     public BoxSizing getBoxSizing() {
         return boxSizing;
@@ -128,32 +120,6 @@ public class CssFlexLayout extends com.vaadin.flow.component.orderedlayout.FlexL
         String getFlexValue() {
             return this.flexValue;
         }
-    }
-
-    public static enum FlexWrap {
-        NO_WRAP("no-wrap"),
-        WRAP("wrap"),
-        WRAP_REVERSE("wrap-reverse");
-
-        public static final String styleName = "flex-wrap";
-        private final String wrapValue;
-
-        private FlexWrap(String wrapValue) {
-            this.wrapValue = wrapValue;
-        }
-
-        static FlexWrap toFlexDirection(String flexValue) {
-            return toFlexDirection(flexValue, NO_WRAP);
-        }
-
-        static FlexWrap toFlexDirection(String flexValue, FlexWrap defaultValue) {
-            return Arrays.stream(values()).filter((alignment) -> alignment.getWrapValue().equals(flexValue)).findFirst().orElse(defaultValue);
-        }
-
-        String getWrapValue() {
-            return this.wrapValue;
-        }
-
     }
 
     public static enum BoxSizing {
