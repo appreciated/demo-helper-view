@@ -67,6 +67,7 @@ if (watchDogPort) {
     setupWatchDog();
 }
 
+
 exports = {
     frontendFolder: `${frontendFolder}`,
     buildFolder: `${buildFolder}`,
